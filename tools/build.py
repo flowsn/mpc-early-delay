@@ -71,7 +71,7 @@ def main():
         print("host_sim or native build missing; cannot test")
         return 1
     worst = 0
-    for block in (32, 128, 512):
+    for block in (32, 64, 96, 128, 192, 256, 512):
         cmd = [host_sim, libs[0], "test", "--seconds", "3", "--block", str(block)]
         if block == 128:
             cmd += ["--wav", os.path.join(ROOT, "build", "host-sim.wav")]

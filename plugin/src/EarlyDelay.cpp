@@ -22,8 +22,8 @@
 //  7  bandwidth  Bandwidth   0..100 %              converter bandwidth + memory size (aged..fresh)
 //  8  drive      Drive       0..100 %              input op-amp drive 0..+24 dB
 //  9  hold       Hold        Off/On                infinite repeat (frozen memory loop)
-// 10  stereoize  Stereoize   Off/On                decorrelated L/R clocks, opposite LFO
-// 11  width      Width       0..100 %              amount of stereoize spread
+// 10  stereoize  Stereoize   Off/On                alternating L/R cross-feedback repeats
+// 11  width      Width       0..100 %              wet ping-pong pan separation
 
 #include "mpc_plugin.h"
 #include "early_delay_dsp.h"
@@ -42,7 +42,7 @@ public:
         i.name = "Early Delay";
         i.vendor = "Flat Peach";
         i.uniqueId = MPC_FOURCC('F', 'p', 'E', 'd');   // == "uid" in plugin.json
-        i.version = 100;                                // 0.1.0.0 (v0.1.0-alpha)
+        i.version = 110;                                // 0.1.1 development candidate
         i.isInstrument = false;
         i.numInputs = 2;
         i.numOutputs = 2;
@@ -91,18 +91,18 @@ public:
     void process(mpc::ProcessContext& ctx) override
     {
         edly::EngineParams p;
-        p.mix = get(kMix) * 0.01f;
-        p.timeMs = get(kTime);
-        p.feedback = get(kFeedback) * 0.01f;
-        p.modSpeedHz = get(kModSpeed);
-        p.modDepth = get(kModDepth) * 0.01f;
-        p.tone = get(kTone) * 0.01f;
-        p.grit = get(kGrit) * 0.01f;
-        p.bandwidth = get(kBandwidth) * 0.01f;
-        p.drive = get(kDrive) * 0.01f;
-        p.hold = getBool(kHold);
-        p.stereoize = getBool(kStereoize);
-        p.width = get(kWidth) * 0.01f;
+        p.mix = safeGet(kMix) * 0.01f;
+        p.timeMs = safeGet(kTime);
+        p.feedback = safeGet(kFeedback) * 0.01f;
+        p.modSpeedHz = safeGet(kModSpeed);
+        p.modDepth = safeGet(kModDepth) * 0.01f;
+        p.tone = safeGet(kTone) * 0.01f;
+        p.grit = safeGet(kGrit) * 0.01f;
+        p.bandwidth = safeGet(kBandwidth) * 0.01f;
+        p.drive = safeGet(kDrive) * 0.01f;
+        p.hold = safeGet(kHold) >= 0.5f;
+        p.stereoize = safeGet(kStereoize) >= 0.5f;
+        p.width = safeGet(kWidth) * 0.01f;
         engine_.setParams(p);
 
         const float* inL = ctx.inputs[0];
@@ -149,6 +149,11 @@ public:
     }
 
 private:
+    float safeGet(int i) const
+    {
+        const float norm = getNormalised(i);
+        return std::isfinite(norm) ? param(i).toPlain(mpc::clamp(norm, 0.0f, 1.0f)) : param(i).def;
+    }
     edly::Engine engine_;
 };
 
