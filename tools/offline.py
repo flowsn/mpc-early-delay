@@ -3,7 +3,9 @@
 
 Usage:
     python3 tools/offline.py selftest              # pass/fail checks (exit code)
-    python3 tools/offline.py measure [out.md]       # measurement tables (default: stdout)
+    python3 tools/offline.py measure [out.md]       # measurement tables (default: stdout); if out.md
+                                                    # contains <!-- BEGIN GENERATED --> / <!-- END GENERATED -->
+                                                    # only the part between the markers is replaced
     python3 tools/offline.py demos [dir]            # demo WAVs (default: demos/, gitignored)
 
 Compiles with the host C++ compiler (c++/g++/clang++), -O2, against the same engine header the
@@ -44,8 +46,17 @@ def main():
         os.makedirs(d, exist_ok=True)
         return subprocess.call([exe, "demos", d])
     if cmd == "measure" and len(sys.argv) > 2:
-        with open(sys.argv[2], "w") as f:
-            return subprocess.call([exe, "measure"], stdout=f)
+        p = subprocess.run([exe, "measure"], stdout=subprocess.PIPE)
+        text = p.stdout.decode()
+        target = sys.argv[2]
+        begin, end = "<!-- BEGIN GENERATED -->", "<!-- END GENERATED -->"
+        if os.path.exists(target):
+            old = open(target).read()
+            if begin in old and end in old:
+                text = old[:old.index(begin) + len(begin)] + "\n" + text + old[old.index(end):]
+        with open(target, "w") as f:
+            f.write(text)
+        return p.returncode
     return subprocess.call([exe, cmd])
 
 

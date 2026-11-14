@@ -449,13 +449,16 @@ static void measure()
         for (size_t i = 0; i < nz.size(); ++i) in.l[i] = in.r[i] = nz[i];
         Stereo out = run(*e, in, p, 128, [](size_t pos, EngineParams& q) { q.hold = pos >= 44100; });
         delete e;
-        const size_t L = 4410;
+        size_t L = 0;
         double best = -1;
-        for (size_t lag = L - 3; lag <= L + 3; ++lag)
-            best = std::max(best, corr(std::vector<float>(out.l.begin() + 44100 * 10, out.l.begin() + 44100 * 11),
-                                       std::vector<float>(out.l.begin() + 44100 * 10 + lag, out.l.begin() + 44100 * 11 + lag), 0, 44100));
+        for (size_t lag = 4380; lag <= 4440; ++lag)
+        {
+            const double c = corr(std::vector<float>(out.l.begin() + 44100 * 10, out.l.begin() + 44100 * 11),
+                                  std::vector<float>(out.l.begin() + 44100 * 10 + lag, out.l.begin() + 44100 * 11 + lag), 0, 44100);
+            if (c > best) { best = c; L = lag; }
+        }
         std::printf("Loop periodicity (Time 100 ms, Grit 0, no modulation): correlation of the held output with itself "
-                    "one loop (~%zu samples) later = %.5f. The memory itself recirculates bit-exactly (cell copy); "
+                    "one loop (best lag %zu samples, i.e. Time minus the 8-sample converter latency compensation) later = %.5f. The memory itself recirculates bit-exactly (cell copy); "
                     "what remains is the free-running clock's jitter and the output-stage noise.\n\n", L, best);
     }
     // hold + time change re-pitches the loop
