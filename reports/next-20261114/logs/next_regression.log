@@ -70,6 +70,10 @@ PASS echo timing within 3 ms
 ECHO input=2 fb=+0.8 n=4 L=5.6307183e-08 R=0.00052413435
 PASS echo alternates L/R with >14.7 dB separation
 PASS echo timing within 3 ms
+POLARITY feedback=-0.8 correlation_product=-8.84888837
+PASS feedback sign determines second-echo polarity
+POLARITY feedback=+0.8 correlation_product=8.85862117
+PASS feedback sign determines second-echo polarity
 PASS OFF no cross-channel input/feedback leakage above converter noise
 PASS OFF no cross-channel input/feedback leakage above converter noise
 PASS dry stereo bit-exact with Mix zero

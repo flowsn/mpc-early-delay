@@ -1,0 +1,90 @@
+{
+  "status": "development candidate; no hardware validation or public release",
+  "branch": "repair/stereo-pingpong-next-20261114",
+  "implementation_checkpoint": "a6474d4",
+  "sdk_commit": "febd2ca5bd9eb16c4a412837196e145566bc981b",
+  "artifacts": [
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/plugin/dist/early-delay-0.1.1-mpc.zip",
+      "bytes": 366127,
+      "sha256": "4df94272b37632fb531cd8abf668583acc1c348f4a01b6c72fa2c2a7aceb4c8f"
+    },
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/plugin/build/native/early-delay.so",
+      "bytes": 2665768,
+      "sha256": "11cfbfaf012489aa4aa9fbeeb191cc96e956a3b1cdc058cd250852558f7170e6"
+    },
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/plugin/build/Flat Peach - VST - Early Delay/VST/early-delay-arm32.so",
+      "bytes": 211212,
+      "sha256": "0b7630eb874a09a702129e5f97722b5c9b17a829b13a4eee4e6a6fadecacab08"
+    },
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/plugin/build/Flat Peach - VST - Early Delay/VST/early-delay-arm64.so",
+      "bytes": 257408,
+      "sha256": "73f0d8822287f3785efdcbf2567ed734458b8594fd90f2d1331db1dda1ccc0b6"
+    },
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/demos/next-20261114/ordinary-stereo-mono-plucks.wav",
+      "bytes": 882044,
+      "sha256": "d5c73b115adaf2b6098714cff8279d23f14e868256791da5c6278fcf5504e8a8",
+      "channels": 2,
+      "sample_rate": 44100,
+      "seconds": 5.0,
+      "bits": 16
+    },
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/demos/next-20261114/pingpong-mono-plucks.wav",
+      "bytes": 882044,
+      "sha256": "3b20614f23cb6317e272f222fc08f9096107f7ac4f1f080af5ad1101794034e1",
+      "channels": 2,
+      "sample_rate": 44100,
+      "seconds": 5.0,
+      "bits": 16
+    },
+    {
+      "path": "/home/flow/projects/mpc-plugins/early-delay/demos/next-20261114/pingpong-stereo-negative-feedback.wav",
+      "bytes": 882044,
+      "sha256": "86c903d6902fa996f3c7665a0cce304022ce9bd687ea043b721306a6e366032d",
+      "channels": 2,
+      "sample_rate": 44100,
+      "seconds": 5.0,
+      "bits": 16
+    }
+  ],
+  "zip_members": [
+    "Flat Peach - VST - Early Delay/plugin.json",
+    "Flat Peach - VST - Early Delay/version.xml",
+    "Flat Peach - VST - Early Delay/Content/LICENSES.txt",
+    "Flat Peach - VST - Early Delay/Content/TitilliumWeb-OFL.txt",
+    "Flat Peach - VST - Early Delay/Plugin Skins/Q-Links.json",
+    "Flat Peach - VST - Early Delay/Plugin Skins/TUI.json",
+    "Flat Peach - VST - Early Delay/Plugin Skins/hold_off.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/hold_on.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/knob_112_bi.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/knob_112_uni.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/knob_88_uni.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/logo_plate.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_age.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_drive.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_feedback.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_grit.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_hold.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_mix.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_mod_depth.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_mod_speed.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_stereoize.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_time.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/name_tone.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/panel.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/skin-map.json",
+    "Flat Peach - VST - Early Delay/Plugin Skins/stereoize_off.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/stereoize_on.png",
+    "Flat Peach - VST - Early Delay/Plugin Skins/value_plate.png",
+    "Flat Peach - VST - Early Delay/VST/early-delay-arm32.so",
+    "Flat Peach - VST - Early Delay/VST/early-delay-arm64.so",
+    "INSTALL.txt",
+    "README.md"
+  ],
+  "zip_integrity": "PASS"
+}

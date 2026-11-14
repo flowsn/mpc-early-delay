@@ -1,0 +1,4 @@
+Packaged 32 files into:
+  /home/flow/projects/mpc-plugins/early-delay/plugin/dist/early-delay-0.1.1-mpc.zip
+Share that zip. Users unzip it and copy the "Flat Peach - VST - Early Delay" folder into "VST2 Plugins" on their MPC drive
+(full instructions are in INSTALL.txt inside the zip).

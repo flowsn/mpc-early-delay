@@ -1,12 +1,36 @@
-NAN_PARAMETER index=0 nonfinite=0
-NAN_PARAMETER index=1 nonfinite=0
-NAN_PARAMETER index=2 nonfinite=0
-NAN_PARAMETER index=3 nonfinite=0
-NAN_PARAMETER index=4 nonfinite=0
-NAN_PARAMETER index=5 nonfinite=0
-NAN_PARAMETER index=6 nonfinite=0
-NAN_PARAMETER index=7 nonfinite=0
-NAN_PARAMETER index=8 nonfinite=0
-NAN_PARAMETER index=9 nonfinite=0
-NAN_PARAMETER index=10 nonfinite=0
-NAN_PARAMETER index=11 nonfinite=0
+nan NAN_PARAMETER index=0 nonfinite=0
+nan NAN_PARAMETER index=1 nonfinite=0
+nan NAN_PARAMETER index=2 nonfinite=0
+nan NAN_PARAMETER index=3 nonfinite=0
+nan NAN_PARAMETER index=4 nonfinite=0
+nan NAN_PARAMETER index=5 nonfinite=0
+nan NAN_PARAMETER index=6 nonfinite=0
+nan NAN_PARAMETER index=7 nonfinite=0
+nan NAN_PARAMETER index=8 nonfinite=0
+nan NAN_PARAMETER index=9 nonfinite=0
+nan NAN_PARAMETER index=10 nonfinite=0
+nan NAN_PARAMETER index=11 nonfinite=0
+inf NAN_PARAMETER index=0 nonfinite=0
+inf NAN_PARAMETER index=1 nonfinite=0
+inf NAN_PARAMETER index=2 nonfinite=0
+inf NAN_PARAMETER index=3 nonfinite=0
+inf NAN_PARAMETER index=4 nonfinite=0
+inf NAN_PARAMETER index=5 nonfinite=0
+inf NAN_PARAMETER index=6 nonfinite=0
+inf NAN_PARAMETER index=7 nonfinite=0
+inf NAN_PARAMETER index=8 nonfinite=0
+inf NAN_PARAMETER index=9 nonfinite=0
+inf NAN_PARAMETER index=10 nonfinite=0
+inf NAN_PARAMETER index=11 nonfinite=0
+-inf NAN_PARAMETER index=0 nonfinite=0
+-inf NAN_PARAMETER index=1 nonfinite=0
+-inf NAN_PARAMETER index=2 nonfinite=0
+-inf NAN_PARAMETER index=3 nonfinite=0
+-inf NAN_PARAMETER index=4 nonfinite=0
+-inf NAN_PARAMETER index=5 nonfinite=0
+-inf NAN_PARAMETER index=6 nonfinite=0
+-inf NAN_PARAMETER index=7 nonfinite=0
+-inf NAN_PARAMETER index=8 nonfinite=0
+-inf NAN_PARAMETER index=9 nonfinite=0
+-inf NAN_PARAMETER index=10 nonfinite=0
+-inf NAN_PARAMETER index=11 nonfinite=0

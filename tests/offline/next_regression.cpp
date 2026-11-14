@@ -12,6 +12,12 @@ int main(int argc,char**argv){
   auto p=wet();p.timeMs=100;p.feedback=fb;p.stereoize=true;p.width=1;Engine e;e.prepare(fs);e.setParams(p);Audio a(fs);a.l[0]=input==2?0:.8;a.r[0]=input==1?0:.8;render(e,a,37);
   for(int echo=1;echo<=4;echo++){int c=echo*4410;double l=energy(a.l,c-100,c+300),r=energy(a.r,c-100,c+300);printf("ECHO input=%d fb=%+.1f n=%d L=%.8g R=%.8g\n",input,fb,echo,l,r);check(echo&1?l>30*r:r>30*l,"echo alternates L/R with >14.7 dB separation");auto&v=echo&1?a.l:a.r;int peak=c-100;for(int i=c-100;i<c+300;i++)if(fabs(v[i])>fabs(v[peak]))peak=i;check(fabs(peak/fs-echo*.1)<.003,"echo timing within 3 ms");}
  }
+ // A narrowband burst establishes signed repeat polarity without aligning tiny filtered impulse lobes.
+ for(float fb:{-.8f,.8f}){auto p=wet();p.timeMs=100;p.feedback=fb;p.stereoize=true;p.width=1;
+ Engine e;e.prepare(fs);e.setParams(p);Audio a(fs);for(int i=0;i<882;i++)a.l[i]=a.r[i]=.25f*sin(2*pi*500*i/fs)*sin(pi*i/882);render(e,a);
+ double cross=0;for(int i=4500;i<5200;i++)cross+=double(a.l[i])*a.r[i+4410];
+ printf("POLARITY feedback=%+.1f correlation_product=%.9g\n",fb,cross);
+ check(cross*fb>0,"feedback sign determines second-echo polarity");}
  // OFF remains stereo; left/right asymmetric material does not cross over.
  for(int side:{0,1}){auto p=wet();p.timeMs=100;p.feedback=.8;Engine e;e.prepare(fs);e.setParams(p);Audio a(fs);(side?a.r:a.l)[0]=.8;render(e,a);check(energy(side?a.l:a.r,4300,19000)<1e-5,"OFF no cross-channel input/feedback leakage above converter noise");}
  // Dry stereo is bit-exact under either mode, even with rapid settings changes.

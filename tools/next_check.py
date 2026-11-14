@@ -17,6 +17,7 @@ def compile_run(name,src,sanitize=False,args=()):
     return run([exe,*args],exe.name+'.log')
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--sanitize',action='store_true');a=ap.parse_args()
+    (LOG/'regression-summary.txt').write_text('RUNNING — no current completion claim.\n')
     probe=compile_run('probe',R/'probe.cpp')
     assert 'RESET max_delta=0 ' in probe and 'INPLACE identical=1' in probe
     assert 'CALLBACK_NEW_COUNT 0' in probe
@@ -31,9 +32,10 @@ def main():
     framework=compile_run('framework_probe',R/'framework_probe.cpp')
     assert 'PARAMS 12 PROGRAMS 11' in framework and framework.count('roundtrip=1')==11
     with (LOG/'parameter-nan.log').open('w') as f:
-        for i in range(12):
-            text=subprocess.check_output([str(ROOT/'build/framework_probe'),str(i)],text=True)
-            f.write(text);f.flush();assert 'nonfinite=0' in text
+        for bad in ('nan','inf','-inf'):
+            for i in range(12):
+                text=subprocess.check_output([str(ROOT/'build/framework_probe'),str(i),bad],text=True)
+                f.write(bad+' '+text);f.flush();assert 'nonfinite=0' in text
     demos=ROOT/'demos/next-20261114';demos.mkdir(parents=True,exist_ok=True)
     compile_run('next_regression',ROOT/'tests/offline/next_regression.cpp',args=[demos])
     if a.sanitize:

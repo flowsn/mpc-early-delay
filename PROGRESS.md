@@ -20,8 +20,14 @@ New assertions: impulses alternate L/R at T/2T/3T/4T with ±feedback, mono/left/
 cross-leakage above noise; dry stereo bit-exact; Width mono sum unchanged; extreme HOLD pitchup/release finite.
 Demos: demos/next-20261114/*.wav. Logs: reports/next-20261114/logs/.
 
-RUNNING: full native/ARM32/ARM64 build (build-all.log); regression+sanitizer runner (regression-run.log).
-Next exact commands: inspect those logs; if incomplete rerun python3 tools/build.py and
-python3 tools/next_check.py --sanitize. Then finish reports/next-20261114/REPAIR.md, package via
-python3 sdk/tools/package.py plugin, produce artifact checksums, final commit/push, return for independent QA.
-No hardware deployment, public release or external messages. No remaining authority blocker.
+COMPLETE implementation/build/package checks as of final verification commit (see git log):
+- native/ARM32/ARM64 PASS with final custom skin; all7 hostsim sizes 20pass/0warn/0fail.
+- python3 tools/next_check.py --sanitize PASS, including all12 NaN/±Inf controls and signed burst polarity.
+- UI screen/program full12 mapping verifier PASS.
+- ZIP plugin/dist/early-delay-0.1.1-mpc.zip produced, integrity/content checked.
+- reports/next-20261114/artifacts.json contains exact binary/ZIP/demo paths and SHA256.
+- reports/next-20261114/REPAIR.md is the detailed repair handoff.
+
+Next step: parent independent QA; fix concrete findings if any, otherwise report this as a next development
+candidate, NOT hardware-ready. No device deployment, public release, or external messages. Original review untouched.
+Reproduction: python3 tools/build.py ; python3 tools/next_check.py --sanitize ; python3 tools/offline.py selftest.

@@ -102,6 +102,8 @@ def verify(skin,params_path,quiet=False):
             rx,ry,rw,rh=map(float,tab['qlinkBoundsData'][row].split())
             x,y,w,h=map(float,e['bounds']['bounds'].split())
             check(x>=rx and y>=ry and x+w<=rx+rw and y+h<=ry+rh,'Control outside its Q-Link row: '+p)
+    program=[v for v in qlinks['Program Mode Q-Links'].values() if v!=-1]
+    check(set(program)==set(ids) and len(program)==len(ids),'Program Q-Links must cover each parameter exactly once')
     check(mapped==set(ids),'Not all parameters accessible via Q-Links')
     check(rendered==set(ids),'Not all parameters have touchscreen controls')
     report=json.loads((skin/'skin-map.json').read_text())
