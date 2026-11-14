@@ -41,8 +41,8 @@ PASS  no clipping in the main pass (peak -5.21 dBFS)
 PASS  no denormals in the main pass
 
 == Check 6: timing ==
-INFO  block of 128 frames = 2.90 ms; processReplacing took on average 0.01% of that, worst block 0.04% (desktop CPU, for orientation only)
-PASS  timing: average 0.01% CPU per block
+INFO  block of 128 frames = 2.90 ms; processReplacing took on average 0.00% of that, worst block 0.04% (desktop CPU, for orientation only)
+PASS  timing: average 0.00% CPU per block
 
 == Host callbacks seen ==
 INFO  audioMasterGetTime 1824, Automate 0, UpdateDisplay 0, IOChanged 0, ProcessEvents 0 calls (0 MIDI events out)

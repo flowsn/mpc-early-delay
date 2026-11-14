@@ -37,7 +37,7 @@
     },
     {
       "key": "drive",
-      "label": "INPUT DRIVE",
+      "label": "DRIVE",
       "aliases": [
         "Drive",
         "Input Drive",
@@ -68,7 +68,7 @@
     },
     {
       "key": "age",
-      "label": "BANDWIDTH / AGE",
+      "label": "BANDWIDTH",
       "aliases": [
         "Bandwidth/Age",
         "Bandwidth",
@@ -84,7 +84,8 @@
         "Width",
         "Stereo Width"
       ],
-      "caption": "STEREO SPREAD"
+      "caption": "STEREO SPREAD",
+      "fallbackOnly": true
     },
     {
       "key": "mod_speed",

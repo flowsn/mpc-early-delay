@@ -1,0 +1,33 @@
+{
+  "seed": 1471,
+  "defaultWear": 0.55,
+  "budgetBytes": 409600,
+  "variants": {
+    "distressed": {
+      "wear": 0.55,
+      "skinBytes": 363986,
+      "files": 24
+    },
+    "repeat": {
+      "wear": 0.55,
+      "skinBytes": 363986,
+      "files": 24
+    },
+    "clean": {
+      "wear": 0,
+      "skinBytes": 327431,
+      "files": 24
+    },
+    "maximum": {
+      "wear": 1,
+      "skinBytes": 387600,
+      "files": 24
+    }
+  },
+  "byteIdenticalRegeneration": true,
+  "verifiedFiles": 55,
+  "protectedReadouts": true,
+  "stableFilmFinish": true,
+  "marksChecked": true,
+  "headroomStudyNotInstalled": true
+}

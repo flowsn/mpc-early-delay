@@ -86,3 +86,29 @@ def render_previews(skin,params_path,output,style):
         path=output if i==0 else output.with_stem(output.stem+'-more'+str(i))
         save(im.convert('RGB'),path); outputs.append(path)
     return outputs
+
+
+def render_material_study(assets, output):
+    """Review-only contact sheet; never copied into a runtime skin."""
+    assets=Path(assets)
+    im=Image.new('RGB',(1280,800),'#1d242b');d=ImageDraw.Draw(im)
+    text(d,(32,24),'DISTRESSED MATERIAL STUDY / ORIGINAL ARTWORK','#e5dfcb',30,True)
+    text(d,(32,70),'Review details • wear 0.55 • seed 1471 • not a hardware screenshot','#c6bda5',20)
+    panel=Image.open(assets/'panel.png').convert('RGB')
+    im.paste(panel.crop((0,0,580,92)).resize((1160,184)),(40,117))
+    text(d,(40,307),'2× perimeter detail — restrained silver chips and matte grain','#c6bda5',20)
+    strip=Image.open(assets/'knob_112_bi.png').convert('RGBA')
+    frame=strip.crop((0,63*112,112,64*112)).resize((224,224),Image.Resampling.LANCZOS)
+    im.paste(frame,(48,374),frame)
+    text(d,(40,615),'2× knob / centre zero','#e5dfcb',22)
+    for i,state in enumerate(('off','on')):
+        img=Image.open(assets/f'hold_{state}.png').convert('RGBA')
+        im.paste(img,(370,390+i*112),img)
+    text(d,(370,615),'Slide-switch states / 1×','#e5dfcb',22)
+    meter=Image.open(assets/'headroom_unbound.png').resize((360,60),Image.Resampling.LANCZOS)
+    im.paste(meter,(800,400))
+    text(d,(800,478),'Five dull-glass lenses / 2×','#e5dfcb',22)
+    text(d,(800,512),'Unbound study only; not installed.','#c6bda5',18)
+    text(d,(800,544),'No live headroom source is available.','#c6bda5',18)
+    text(d,(40,710),'Touch targets and live values remain protected; physical-screen checks are still pending.','#c6bda5',21)
+    save(im,Path(output))

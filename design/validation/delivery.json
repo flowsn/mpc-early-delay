@@ -1,0 +1,17 @@
+{
+  "remote": "klawsapp:MPC-plugins/early-delay/design/",
+  "verification": "rclone check --one-way --download: 9 matching PNGs plus DESIGN.md; 0 differences; both exit 0",
+  "privatePhotosIncluded": false,
+  "files": {
+    "option-A-charcoal-amber-more1.png": "ed7ba18d6d98c1c8993f3a80dd8c75a884e115040aaae132768c3d88d80ab133",
+    "option-A-charcoal-amber.png": "3df05e9afaad46137063f6f5f2f8ed9a1e89a5adf6310fad0219b81db48377cf",
+    "option-A-clean-more1.png": "ed7ba18d6d98c1c8993f3a80dd8c75a884e115040aaae132768c3d88d80ab133",
+    "option-A-clean.png": "4de367a72a023e99c41a21239b46ceb7208df230637b2d13db141d05b327a741",
+    "option-A-material-study.png": "639d3e5d213e511cc736d15de901adc520f3dde0a404907990c3a43fa7b16a39",
+    "option-B-parchment-oxide-more1.png": "fcc41ae048eb0ba2f67f9c152d414e3d6ebba129d563ece39ef568d809e53105",
+    "option-B-parchment-oxide.png": "37060792ca84bda299dfb7d09513f983407bece82d4c800ce6aa7336e08fc9cc",
+    "option-C-black-fluorescent-more1.png": "af088558954e5f6fbc815a297f4620e06c7d42bb8264327e907b2059e200bf71",
+    "option-C-black-fluorescent.png": "d9ea099f7e75c700bcc6743060253ea1314423d90149123ab7a1483115d09365",
+    "DESIGN.md": "b0f3c4f53cfb04beeeec485b25ea35b392298b2ffa035f0e4f1546e5e423d9a5"
+  }
+}

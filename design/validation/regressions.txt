@@ -6,6 +6,6 @@ test_nonboolean_hold_is_never_quantized_by_button (__main__.Integration.test_non
 test_reorder_does_not_change_control_meaning (__main__.Integration.test_reorder_does_not_change_control_meaning) ... ok
 
 ----------------------------------------------------------------------
-Ran 6 tests in 0.137s
+Ran 6 tests in 0.153s
 
 OK

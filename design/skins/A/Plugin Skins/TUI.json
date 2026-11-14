@@ -14,12 +14,12 @@
                             "version": 1,
                             "focussed": {
                                 "version": 1,
-                                "colour": "ff252724",
+                                "colour": "ff222930",
                                 "image": ""
                             },
                             "unfocussed": {
                                 "version": 1,
-                                "colour": "ff252724",
+                                "colour": "ff222930",
                                 "image": ""
                             }
                         },
@@ -76,12 +76,12 @@
                             "version": 1,
                             "focussed": {
                                 "version": 1,
-                                "colour": "ff252724",
+                                "colour": "ff222930",
                                 "image": ""
                             },
                             "unfocussed": {
                                 "version": 1,
-                                "colour": "ff252724",
+                                "colour": "ff222930",
                                 "image": ""
                             }
                         },
@@ -138,12 +138,12 @@
                             "version": 1,
                             "focussed": {
                                 "version": 1,
-                                "colour": "ff252724",
+                                "colour": "ff222930",
                                 "image": ""
                             },
                             "unfocussed": {
                                 "version": 1,
-                                "colour": "ff252724",
+                                "colour": "ff222930",
                                 "image": ""
                             }
                         },
@@ -236,24 +236,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "TIME"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_time.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -376,7 +364,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -476,24 +464,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "FEEDBACK"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_feedback.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -616,7 +592,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -654,7 +630,7 @@
                                                 "style": "Regular",
                                                 "height": 12.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "horizontallyCentred verticallyCentred",
                                             "case": "Original"
                                         },
@@ -754,24 +730,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "MIX"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_mix.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -894,7 +858,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -994,24 +958,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "INPUT DRIVE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_drive.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1134,7 +1086,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -1234,24 +1186,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "TONE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_tone.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1374,7 +1314,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -1474,24 +1414,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "GRIT"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_grit.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1614,7 +1542,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -1714,24 +1642,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "BANDWIDTH / AGE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_age.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1854,253 +1770,13 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
                                         "type": "Text",
                                         "handleName": "Invalid",
                                         "text": "CLOCK CHARACTER"
-                                    }
-                                },
-                                "handle remapping": {
-                                    "version": 1,
-                                    "map": []
-                                },
-                                "bounds": {
-                                    "version": 1,
-                                    "acceptsHWFocus": "No",
-                                    "showWhenDataModelInvalid": "Show",
-                                    "whenVisible": "Always",
-                                    "boundsType": "Absolute",
-                                    "bounds": "128 103 150 28"
-                                }
-                            },
-                            {
-                                "version": 2,
-                                "componentData": {
-                                    "version": 1,
-                                    "name": "focus",
-                                    "type": "Focus",
-                                    "data": {
-                                        "version": 1,
-                                        "backgroundColour": "19ffffff",
-                                        "outlineColour": "ffefb34e",
-                                        "backgroundInset": 4.0,
-                                        "outlineThickness": 1.0
-                                    }
-                                },
-                                "handle remapping": {
-                                    "version": 1,
-                                    "map": []
-                                },
-                                "bounds": {
-                                    "version": 1,
-                                    "acceptsHWFocus": "No",
-                                    "showWhenDataModelInvalid": "Show",
-                                    "whenVisible": "WhenFocussed",
-                                    "boundsType": "Absolute",
-                                    "bounds": "0 0 284 148"
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "key": "control width",
-                    "value": {
-                        "version": 2,
-                        "actions": [
-                            {
-                                "version": 1,
-                                "onAction": "Mouse Down",
-                                "handler": "Q-Link",
-                                "handleName": "Data",
-                                "additionalData": ""
-                            },
-                            {
-                                "version": 1,
-                                "onAction": "Double Click",
-                                "handler": "Show Overlay",
-                                "handleName": "Data",
-                                "additionalData": "knob overlay"
-                            },
-                            {
-                                "version": 1,
-                                "onAction": "Enter Pressed",
-                                "handler": "Show Overlay",
-                                "handleName": "Data",
-                                "additionalData": "knob overlay"
-                            }
-                        ],
-                        "backgroundData": {
-                            "version": 1,
-                            "focussed": {
-                                "version": 1,
-                                "colour": "00000000",
-                                "image": ""
-                            },
-                            "unfocussed": {
-                                "version": 1,
-                                "colour": "00000000",
-                                "image": ""
-                            }
-                        },
-                        "ignoreMousePresses": false,
-                        "disableCoarseDataWheel": false,
-                        "componentsData": [
-                            {
-                                "version": 2,
-                                "componentData": {
-                                    "version": 1,
-                                    "name": "name",
-                                    "type": "Label",
-                                    "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "WIDTH"
-                                    }
-                                },
-                                "handle remapping": {
-                                    "version": 1,
-                                    "map": []
-                                },
-                                "bounds": {
-                                    "version": 1,
-                                    "acceptsHWFocus": "No",
-                                    "showWhenDataModelInvalid": "Show",
-                                    "whenVisible": "Always",
-                                    "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
-                                }
-                            },
-                            {
-                                "version": 2,
-                                "componentData": {
-                                    "version": 1,
-                                    "name": "knob",
-                                    "type": "Knob",
-                                    "data": {
-                                        "version": 2,
-                                        "knobType": "FilmStrip",
-                                        "filmStrip": "knob_88_uni.png",
-                                        "numFrames": 127,
-                                        "invert": false,
-                                        "handleName": "Data"
-                                    }
-                                },
-                                "handle remapping": {
-                                    "version": 1,
-                                    "map": []
-                                },
-                                "bounds": {
-                                    "version": 1,
-                                    "acceptsHWFocus": "No",
-                                    "showWhenDataModelInvalid": "Show",
-                                    "whenVisible": "Always",
-                                    "boundsType": "Absolute",
-                                    "bounds": "0 45 88 88"
-                                }
-                            },
-                            {
-                                "version": 2,
-                                "componentData": {
-                                    "version": 1,
-                                    "name": "readout plate",
-                                    "type": "Image",
-                                    "data": {
-                                        "version": 2,
-                                        "imageType": "Regular",
-                                        "colour": "0",
-                                        "image": "value_plate.png"
-                                    }
-                                },
-                                "handle remapping": {
-                                    "version": 1,
-                                    "map": []
-                                },
-                                "bounds": {
-                                    "version": 1,
-                                    "acceptsHWFocus": "No",
-                                    "showWhenDataModelInvalid": "Show",
-                                    "whenVisible": "Always",
-                                    "boundsType": "Absolute",
-                                    "bounds": "128 48 150 48"
-                                }
-                            },
-                            {
-                                "version": 2,
-                                "componentData": {
-                                    "version": 1,
-                                    "name": "value",
-                                    "type": "Label",
-                                    "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 28.0
-                                            },
-                                            "colour": "ffffd48a",
-                                            "justification": "horizontallyCentred verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Value",
-                                        "handleName": "Data"
-                                    }
-                                },
-                                "handle remapping": {
-                                    "version": 1,
-                                    "map": []
-                                },
-                                "bounds": {
-                                    "version": 1,
-                                    "acceptsHWFocus": "No",
-                                    "showWhenDataModelInvalid": "Show",
-                                    "whenVisible": "Always",
-                                    "boundsType": "Absolute",
-                                    "bounds": "132 48 142 48"
-                                }
-                            },
-                            {
-                                "version": 2,
-                                "componentData": {
-                                    "version": 1,
-                                    "name": "hint",
-                                    "type": "Label",
-                                    "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc5b994",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "STEREO SPREAD"
                                     }
                                 },
                                 "handle remapping": {
@@ -2194,24 +1870,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "MOD SPEED"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_mod_speed.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2334,7 +1998,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -2434,24 +2098,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "MOD DEPTH"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_mod_depth.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2574,7 +2226,7 @@
                                                 "style": "Regular",
                                                 "height": 14.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -2678,7 +2330,7 @@
                                                 "style": "Regular",
                                                 "height": 18.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -2734,24 +2386,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 25.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "HOLD"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_hold.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2783,7 +2423,7 @@
                                                 "style": "Regular",
                                                 "height": 22.0
                                             },
-                                            "colour": "ffeee7d3",
+                                            "colour": "ffe5dfcb",
                                             "justification": "right verticallyCentred",
                                             "case": "Original"
                                         },
@@ -2820,7 +2460,7 @@
                                                 "style": "Regular",
                                                 "height": 15.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -2924,7 +2564,7 @@
                                                 "style": "Regular",
                                                 "height": 18.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -2980,24 +2620,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 25.0
-                                            },
-                                            "colour": "ffeee7d3",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "STEREOIZE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "name_stereoize.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -3029,7 +2657,7 @@
                                                 "style": "Regular",
                                                 "height": 22.0
                                             },
-                                            "colour": "ffeee7d3",
+                                            "colour": "ffe5dfcb",
                                             "justification": "right verticallyCentred",
                                             "case": "Original"
                                         },
@@ -3066,7 +2694,7 @@
                                                 "style": "Regular",
                                                 "height": 15.0
                                             },
-                                            "colour": "ffc5b994",
+                                            "colour": "ffc6bda5",
                                             "justification": "left verticallyCentred",
                                             "case": "Original"
                                         },
@@ -3117,6 +2745,103 @@
                             }
                         ]
                     }
+                },
+                {
+                    "key": "extra 9",
+                    "value": {
+                        "version": 2,
+                        "actions": [
+                            {
+                                "version": 1,
+                                "onAction": "Mouse Down",
+                                "handler": "Q-Link",
+                                "handleName": "Data",
+                                "additionalData": ""
+                            },
+                            {
+                                "version": 1,
+                                "onAction": "Double Click",
+                                "handler": "Show Overlay",
+                                "handleName": "Data",
+                                "additionalData": "knob overlay"
+                            },
+                            {
+                                "version": 1,
+                                "onAction": "Enter Pressed",
+                                "handler": "Show Overlay",
+                                "handleName": "Data",
+                                "additionalData": "knob overlay"
+                            }
+                        ],
+                        "backgroundData": {
+                            "version": 1,
+                            "focussed": {
+                                "version": 1,
+                                "colour": "00000000",
+                                "image": ""
+                            },
+                            "unfocussed": {
+                                "version": 1,
+                                "colour": "00000000",
+                                "image": ""
+                            }
+                        },
+                        "ignoreMousePresses": false,
+                        "disableCoarseDataWheel": false,
+                        "componentsData": [
+                            {
+                                "version": 2,
+                                "componentData": {
+                                    "version": 1,
+                                    "name": "focus",
+                                    "type": "Focus",
+                                    "data": {
+                                        "version": 1,
+                                        "backgroundColour": "19ffffff",
+                                        "outlineColour": "ffefb34e",
+                                        "backgroundInset": 4.0,
+                                        "outlineThickness": 1.0
+                                    }
+                                },
+                                "handle remapping": {
+                                    "version": 1,
+                                    "map": []
+                                },
+                                "bounds": {
+                                    "version": 1,
+                                    "acceptsHWFocus": "No",
+                                    "showWhenDataModelInvalid": "Show",
+                                    "whenVisible": "WhenFocussed",
+                                    "boundsType": "Absolute",
+                                    "bounds": "0 0 278 107"
+                                }
+                            },
+                            {
+                                "version": 2,
+                                "componentData": {
+                                    "version": 1,
+                                    "name": "slider",
+                                    "type": "Slider",
+                                    "data": {
+                                        "version": 1,
+                                        "handleName": "Data"
+                                    }
+                                },
+                                "handle remapping": {
+                                    "version": 1,
+                                    "map": []
+                                },
+                                "bounds": {
+                                    "version": 1,
+                                    "acceptsHWFocus": "No",
+                                    "showWhenDataModelInvalid": "Show",
+                                    "whenVisible": "Always",
+                                    "boundsType": "Absolute",
+                                    "bounds": "15 15 248 77"
+                                }
+                            }
+                        ]
+                    }
                 }
             ]
         },
@@ -3153,12 +2878,12 @@
                         "version": 1,
                         "focussed": {
                             "version": 1,
-                            "colour": "ff252724",
+                            "colour": "ff222930",
                             "image": ""
                         },
                         "unfocussed": {
                             "version": 1,
-                            "colour": "ff252724",
+                            "colour": "ff222930",
                             "image": ""
                         }
                     },
@@ -3233,7 +2958,7 @@
                                             "style": "Regular",
                                             "height": 20.0
                                         },
-                                        "colour": "ffc5b994",
+                                        "colour": "ffc6bda5",
                                         "justification": "right verticallyCentred",
                                         "case": "Original"
                                     },
@@ -3271,7 +2996,7 @@
                                             "style": "Regular",
                                             "height": 16.0
                                         },
-                                        "colour": "ffc5b994",
+                                        "colour": "ffc6bda5",
                                         "justification": "right verticallyCentred",
                                         "case": "Original"
                                     },
@@ -3384,7 +3109,7 @@
                             "version": 2,
                             "componentData": {
                                 "version": 1,
-                                "name": "INPUT DRIVE",
+                                "name": "DRIVE",
                                 "type": "control drive",
                                 "data": {
                                     "version": 1,
@@ -3471,7 +3196,7 @@
                             "version": 2,
                             "componentData": {
                                 "version": 1,
-                                "name": "BANDWIDTH / AGE",
+                                "name": "BANDWIDTH",
                                 "type": "control age",
                                 "data": {
                                     "version": 1,
@@ -3494,35 +3219,6 @@
                                 "whenVisible": "Always",
                                 "boundsType": "Absolute",
                                 "bounds": "654 288 284 148"
-                            }
-                        },
-                        {
-                            "version": 2,
-                            "componentData": {
-                                "version": 1,
-                                "name": "WIDTH",
-                                "type": "control width",
-                                "data": {
-                                    "version": 1,
-                                    "handleName": "Data"
-                                }
-                            },
-                            "handle remapping": {
-                                "version": 1,
-                                "map": [
-                                    {
-                                        "key": "Data",
-                                        "value": "Parameter 9"
-                                    }
-                                ]
-                            },
-                            "bounds": {
-                                "version": 1,
-                                "acceptsHWFocus": "Yes",
-                                "showWhenDataModelInvalid": "Hide",
-                                "whenVisible": "Always",
-                                "boundsType": "Absolute",
-                                "bounds": "966 288 284 148"
                             }
                         },
                         {
@@ -3648,6 +3344,68 @@
                     "20 274 1240 166",
                     "20 450 1240 166",
                     "0 0 0 0"
+                ]
+            },
+            {
+                "version": 1,
+                "tabName": "MORE",
+                "fnKeyIndex": 1,
+                "fnKeySubIndex": 0,
+                "componentDefinition": {
+                    "version": 2,
+                    "actions": [],
+                    "backgroundData": {
+                        "version": 1,
+                        "focussed": {
+                            "version": 1,
+                            "colour": "ff222930",
+                            "image": ""
+                        },
+                        "unfocussed": {
+                            "version": 1,
+                            "colour": "ff222930",
+                            "image": ""
+                        }
+                    },
+                    "ignoreMousePresses": false,
+                    "disableCoarseDataWheel": false,
+                    "componentsData": [
+                        {
+                            "version": 2,
+                            "componentData": {
+                                "version": 1,
+                                "name": "Width",
+                                "type": "extra 9",
+                                "data": {
+                                    "version": 1,
+                                    "handleName": "Data"
+                                }
+                            },
+                            "handle remapping": {
+                                "version": 1,
+                                "map": [
+                                    {
+                                        "key": "Data",
+                                        "value": "Parameter 9"
+                                    }
+                                ]
+                            },
+                            "bounds": {
+                                "version": 1,
+                                "acceptsHWFocus": "Yes",
+                                "showWhenDataModelInvalid": "Hide",
+                                "whenVisible": "Always",
+                                "boundsType": "Absolute",
+                                "bounds": "23 45 278 107"
+                            }
+                        }
+                    ]
+                },
+                "qlinkBoundsData": [
+                    "16 37 1248 123",
+                    "16 188 1248 123",
+                    "16 338 1248 123",
+                    "16 489 1248 123"
                 ]
             }
         ]

@@ -14,7 +14,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'sdk/tools'))
 sys.path.insert(0,str(ROOT/'design'))
 import gen_ui as ui
-from render_assets import render_assets, THEMES, FRAMES, XS, YS, SLOT_W, SLOT_H
+from render_assets import render_assets, THEMES, FRAMES, XS, YS, SLOT_W, SLOT_H, DEFAULT_WEAR, DEFAULT_SEED, wear_amount
 
 
 def normalized(name):
@@ -55,6 +55,11 @@ def match_params(params,layout,mapping):
         raise ValueError('Expected contiguous host_sim parameter indices starting at zero')
     assigned=[]; used=set()
     for spec in layout['controls']:
+        if spec.get('fallbackOnly'):
+            if spec['key'] in mapping:
+                raise ValueError('Control is reserved for fallback pages: '+spec['key'])
+            assigned.append((spec,None))
+            continue
         matches=[]
         if spec['key'] in mapping:
             matches=[p for p in params if p.name==mapping[spec['key']]]
@@ -80,13 +85,13 @@ def control_definition(spec,p,index,th):
         key=spec['key']
         children.append(label('caption',spec['caption'],(4,0,276,28),th['muted'],18))
         children.append(element('toggle','Button',ui.button_data(key+'_on.png',key+'_off.png',1,1),(3,35,278,76)))
-        children.append(label('name',spec['label'],(48,46,176,45),th.get('buttonText',th['text']),25,bold=True))
+        children.append(image_entry('name',f'name_{spec["key"]}.png',(48,46,176,45)) if th.get('engraved') else label('name',spec['label'],(48,46,176,45),th.get('buttonText',th['text']),25,bold=True))
         children.append(label('state','',(220,49,52,40),th.get('buttonText',th['text']),22,kind='Value',align='right verticallyCentred'))
         children.append(label('hint','LATCHING',(4,115,276,24),th['muted'],15))
     else:
         size=112 if index<4 else 88
         ky=33 if size==112 else 45
-        children.append(label('name',spec['label'],(4,0,276,30),th['text'],22,bold=True))
+        children.append(image_entry('name',f'name_{spec["key"]}' + ('_knob.png' if spec.get('switch') else '.png'),(4,0,276,30)) if th.get('engraved') else label('name',spec['label'],(4,0,276,30),th['text'],22,bold=True))
         children.append(element('knob','Knob',ui.knob_filmstrip_data(f'knob_{size}_{"bi" if bipolar else "uni"}.png',FRAMES),(0,ky,size,size)))
         children.append(image_entry('readout plate','value_plate.png',(128,48,150,48)))
         children.append(label('value','',(132,48,142,48),th['value'],28,kind='Value',align='horizontallyCentred verticallyCentred'))
@@ -145,21 +150,30 @@ def make_documents(params,assigned,extras,th,title):
     return tui,qlinks,mapping_report
 
 
-def generate(params_path,out,style='A',title=None,mapping=None,assets_out=None,preview=None):
+def generate(params_path,out,style='A',title=None,mapping=None,assets_out=None,preview=None,wear=DEFAULT_WEAR,seed=DEFAULT_SEED):
+    wear=wear_amount(wear)
     layout=json.loads((ROOT/'design/layout.json').read_text())
     title=title or layout['title']; params=ui.load_params(str(params_path))
     assigned,extras=match_params(params,layout,mapping or {})
     out=Path(out); out.mkdir(parents=True,exist_ok=True)
     temporary_assets=tempfile.TemporaryDirectory(prefix='early-delay-assets-') if assets_out is None else None
     assets=Path(assets_out) if assets_out else Path(temporary_assets.name)
-    th=render_assets(assets,style,title)
+    previous=set()
+    if (out/'TUI.json').exists():
+        old=json.loads((out/'TUI.json').read_text(),object_pairs_hook=ui.Obj)
+        previous=ui.referenced_images(old,set())
+    th=render_assets(assets,style,title,wear,seed)
     tui,qlinks,report=make_documents(params,assigned,extras,th,title)
     required=ui.referenced_images(tui,set())
     if assets.resolve()!=out.resolve():
         for filename in sorted(required): shutil.copyfile(assets/filename,out/filename)
+    # Remove only formerly referenced generated assets, never unrelated files.
+    for filename in sorted(previous-required):
+        if Path(filename).name==filename:
+            (out/filename).unlink(missing_ok=True)
     (out/'TUI.json').write_text(ui.dump_json(tui)+'\n')
     (out/'Q-Links.json').write_text(ui.dump_json(qlinks)+'\n')
-    (out/'skin-map.json').write_text(json.dumps(dict(style=style,title=title,parameters=report,
+    (out/'skin-map.json').write_text(json.dumps(dict(style=style,title=title,wear=wear if style=='A' else 0,seed=seed,parameters=report,
         missing=[s['key'] for s,p in assigned if p is None],fallback=[p.name for p in extras]),indent=2)+'\n')
     from verify_skin import verify
     verify(out,params_path,quiet=True)
@@ -182,9 +196,11 @@ def main():
     ap.add_argument('--mapping',type=Path,help='JSON object canonical key -> exact plugin parameter name')
     ap.add_argument('--assets-out',type=Path,help='Optional source asset directory (copies only used images to skin)')
     ap.add_argument('--preview',type=Path,help='Main page mock-up path; fallback pages get -moreN suffix')
+    ap.add_argument('--wear',type=wear_amount,default=DEFAULT_WEAR,help='0 clean .. 1 most worn (style A only)')
+    ap.add_argument('--seed',type=int,default=DEFAULT_SEED,help='Stable procedural wear seed')
     a=ap.parse_args()
     try:
-        generate(a.params,a.out,a.style,a.title,json.loads(a.mapping.read_text()) if a.mapping else None,a.assets_out,a.preview)
+        generate(a.params,a.out,a.style,a.title,json.loads(a.mapping.read_text()) if a.mapping else None,a.assets_out,a.preview,a.wear,a.seed)
     except (ValueError,OSError,ui.UiError) as e: ap.exit(1,str(e)+'\n')
 
 if __name__=='__main__': main()

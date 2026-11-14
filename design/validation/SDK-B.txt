@@ -26,7 +26,7 @@ OK     TUI.json: image panel.png present
 OK     TUI.json: image stereoize_off.png present
 OK     TUI.json: image stereoize_on.png present
 OK     TUI.json: image value_plate.png present
-OK     TUI.json: 1 tab
-OK     Q-Links.json: 1 tab map, all values in range
+OK     TUI.json: 2 tabs
+OK     Q-Links.json: 2 tab maps, all values in range
 OK     version.xml uiversion 0.1.0.0
 0 errors, 0 warnings

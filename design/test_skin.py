@@ -29,6 +29,8 @@ class Integration(unittest.TestCase):
         assigned,extras=skin.match_params(params,self.layout,mapping or {})
         tui,qmap,report=skin.make_documents(params,assigned,extras,skin.THEMES['A'],'EARLY DELAY')
         out=work/'Plugin Skins';shutil.copytree(self.base,out)
+        for name in skin.ui.referenced_images(tui,set()):
+            if not (out/name).exists(): shutil.copyfile(ROOT/'design/assets/A'/name,out/name)
         (out/'TUI.json').write_text(skin.ui.dump_json(tui))
         (out/'Q-Links.json').write_text(skin.ui.dump_json(qmap))
         (out/'skin-map.json').write_text(json.dumps({'parameters':report}))

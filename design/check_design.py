@@ -41,6 +41,7 @@ def main():
     # Leave the recommended option installed in the local testbed output.
     shutil.copytree(source,target/'Plugin Skins',dirs_exist_ok=True)
     run([PYTHON,'design/test_skin.py'],reports/'regressions.txt')
+    run([PYTHON,'design/check_distressed.py'],reports/'distressed.txt')
     sim=ROOT/'sdk/.sdk-tools/host_sim'
     run([str(sim),str(ROOT/'design/testbed/build/native/design-testbed.so'),'test'],reports/'host-sim.txt')
     summary={key:dict(skinBytes=sum(p.stat().st_size for p in (ROOT/f'design/skins/{key}/Plugin Skins').iterdir() if p.is_file()),

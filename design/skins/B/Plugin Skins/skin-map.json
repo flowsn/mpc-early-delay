@@ -1,6 +1,8 @@
 {
   "style": "B",
   "title": "EARLY DELAY",
+  "wear": 0,
+  "seed": 1471,
   "parameters": [
     {
       "control": "time",
@@ -52,13 +54,6 @@
       "qlink": 11
     },
     {
-      "control": "width",
-      "parameter": "Width",
-      "index": 9,
-      "page": "DELAY",
-      "qlink": 12
-    },
-    {
       "control": "mod_speed",
       "parameter": "Mod Speed",
       "index": 2,
@@ -85,8 +80,19 @@
       "index": 11,
       "page": "DELAY",
       "qlink": 8
+    },
+    {
+      "control": "fallback",
+      "parameter": "Width",
+      "index": 9,
+      "page": "MORE",
+      "qlink": 13
     }
   ],
-  "missing": [],
-  "fallback": []
+  "missing": [
+    "width"
+  ],
+  "fallback": [
+    "Width"
+  ]
 }
