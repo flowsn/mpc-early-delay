@@ -1,6 +1,7 @@
 # Next candidate repair — durable checkpoint
 
 Branch: repair/stereo-pingpong-next-20261114, private GitHub origin.
+Verified implementation/package commit: 7d4125f (this subsequent update only records that durable checkpoint).
 Starting HEAD b0310e6. d7deded preserved ALL inherited dirty/untracked work.
 f624c7c implemented initial repair and was pushed successfully.
 
