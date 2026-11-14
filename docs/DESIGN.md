@@ -1,8 +1,10 @@
 # Early Delay — touchscreen design handoff
 
-## Recommendation and options
+## Selected palette and archived options
 
-**Recommend A: Charcoal / Amber.** A muted charcoal faceplate, warm legends, amber value windows and a clearly lit STEREOIZE key feel like an original early-digital instrument without copying a commercial product. The restrained colour hierarchy leaves the live values and two latching keys prominent.
+**Selected: A — Charcoal / Amber.** Flo confirmed on 2026-11-14: “I think charcoal/amber is most fitting here”. This is the approved palette for the design: charcoal background with amber accents. Existing option A assets and the generator default already match, so no artwork, layout or touch-target changes are required. B and C are retained only as archived alternatives.
+
+A muted charcoal faceplate, warm legends, amber value windows and a clearly lit STEREOIZE key feel like an original early-digital instrument without copying a commercial product. The restrained colour hierarchy leaves the live values and two latching keys prominent.
 
 | Option | Character | Mock-up |
 | --- | --- | --- |
@@ -94,7 +96,7 @@ design/.venv/bin/python tools/verify_skin.py plugin/skins --params plugin/build/
 python3 sdk/tools/validate.py plugin --strict
 ```
 
-The second line is the **one-command regeneration** once `plugin/build/params.json` exists. Select `--style B` or `--style C` for the other option. The build copies `plugin/skins/` verbatim to the final `Plugin Skins/` directory and writes `uiversion` 0.1.0.0. Regenerate after any parameter list/name/order changes; do not copy the testbed's hardcoded output into a different plugin without regeneration.
+The second line is the **one-command regeneration** once `plugin/build/params.json` exists. `--style A` is the selected palette and the generator default. `--style B` and `--style C` reproduce the archived alternatives only. The build copies `plugin/skins/` verbatim to the final `Plugin Skins/` directory and writes `uiversion` 0.1.0.0. Regenerate after any parameter list/name/order changes; do not copy the testbed's hardcoded output into a different plugin without regeneration.
 
 To write directly to a complete skin directory and make a current preview:
 
@@ -175,4 +177,4 @@ Delivered runtime widgets — **Image, Knob, Label, Button, Focus, Slider, KnobO
 4. Indexed PNG transparency and frame selection at minimum/maximum/zero, including negative feedback. Confirm zero=0.5 and the DSP's negative=inverted convention.
 5. Real STEREOIZE widening and HOLD behaviour are implemented by the DSP, not the skin. Validate with the finished audio plugin on the device.
 
-Client decisions still open: **A/B/C**, **final product name**, and whether **Width** remains a separate control. Final parameter naming/ranges come from the DSP owner; regenerate against that dump before integration.
+Client decisions still open: **final product name** and whether **Width** remains a separate control. Palette selection is settled: **A — Charcoal / Amber**. Final parameter naming/ranges come from the DSP owner; regenerate against that dump before integration.
