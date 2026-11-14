@@ -30,10 +30,16 @@
 // no growth: loop gain is exactly 1 and the samples are bounded by the ADC range. Moving Time
 // during HOLD changes the clock and therefore the pitch of the frozen loop.
 //
+// Compander: the 2:1 compressor's gain is stored with every memory cell and the 1:2 expander
+// applies its inverse when the cell is read, through a control path that lags with Grit
+// (imperfect tracking). The tracking error is clamped to be a loss only. A detector-based
+// expander was tried first and measured unstable: its transient overshoot regenerated in the
+// feedback loop into a sustained limit cycle at high feedback.
+//
 // Stability (normal mode): every element of the loop has a peak gain <= 1 (Butterworth
-// converter filters, tone/low cut are passive, the compander pair has a
-// static gain of 1/kExpanderMismatch < 1, tanh has slope <= 1) and |feedback| <= 0.99, so the
-// small-signal loop gain is < 0.98. Large signals are bounded by the ADC clip and tanh.
+// converter filters, tone/low cut are passive, the compander's tracking error is a loss of at
+// least 1 %, tanh has slope <= 1) and |feedback| <= 0.99, so the loop gain is < 0.98 for any
+// signal. Large signals are additionally bounded by the ADC clip and tanh.
 // ---------------------------------------------------------------------------------------------
 
 #ifndef FLATPEACH_EARLY_DELAY_DSP_H
@@ -84,8 +90,7 @@ struct LpSection
 };
 
 // 4-pole Butterworth low-pass (two sections). Maximally flat: passband gain 1 and never above
-// 1, which matters because the compander squares any level error inside the loop (a filter
-// loss of L dB in the memory path becomes 2L dB at the expander output).
+// 1, so the converter filters can never push the feedback loop above unity gain.
 struct Lp4
 {
     LpSection a, b;
@@ -214,7 +219,7 @@ public:
     static constexpr int kCells = 65536;            // power of two >= 32768 + hold splice margin
     static constexpr int kMask = kCells - 1;
 
-    void allocate() { cells_.assign((size_t)kCells, 0.0f); }
+    void allocate() { cells_.assign((size_t)kCells, 0.0f); gains_.assign((size_t)kCells, 1.0f); }
 
     void setSampleRate(float sr)
     {
@@ -222,18 +227,20 @@ public:
         preEmph_.set(1500.0f, 4500.0f, sr);    // +9.5 dB shelf on the way in
         deEmph_.set(4500.0f, 1500.0f, sr);     // exact inverse on the way out
         fbLowCut_.setHz(55.0f, sr);
-        sideHp_.setHz(120.0f, sr);
-        compAtt_ = onePoleMs(2.5f); compRel_ = onePoleMs(30.0f);
+        sideHp_.setHz(150.0f, sr);
+        sideHp2_.setHz(150.0f, sr);
+        compAtt_ = onePoleMs(4.0f); compRel_ = onePoleMs(40.0f);
         aa_.lastHz = rec_.lastHz = toneLastHz_ = -1.0f;
     }
 
     void reset()
     {
         if (!cells_.empty()) std::memset(cells_.data(), 0, sizeof(float) * cells_.size());
+        for (float& g : gains_) g = 1.0f;
         w_ = 0; phase_ = 0.0f; dacPrev_ = dacCur_ = 0.0f; adcPrevIn_ = 0.0f;
-        envC_ = envE_ = 1e-4f;
+        envC_ = 1e-4f; gRead_ = 1.0f; gExp_ = 1.0f;
         aa_.reset(); rec_.reset(); tone_.reset(); preEmph_.reset(); deEmph_.reset();
-        fbLowCut_.reset(); sideHp_.reset();
+        fbLowCut_.reset(); sideHp_.reset(); sideHp2_.reset();
         lastWet_ = 0.0f; lOffset_ = 0.0f; holdMix_ = 0.0f; holdLen_ = 0; lCur_ = 0.0f;
         aa_.lastHz = rec_.lastHz = toneLastHz_ = -1.0f;
     }
@@ -243,7 +250,9 @@ public:
     {
         // Filters track the clock only partially: 0.42*fc puts the edge a bit below Nyquist,
         // so at low clock rates the 4-pole skirts let some aliasing / imaging through.
-        const float cut = std::fmin(bwCut * bwScale, 0.42f * fcHz);
+        // 1.12: two cascaded 4-pole Butterworths are -3 dB at 0.896 x their cutoff, so the
+        // nominal Bandwidth figure is the -3 dB point of the whole wet path.
+        const float cut = std::fmin(1.12f * bwCut * bwScale, 0.42f * fcHz);
         aa_.set(cut, sr_);
         rec_.set(cut * 1.03f, sr_);
         if (std::fabs(toneHz - toneLastHz_) > 0.004f * toneHz)
@@ -264,8 +273,8 @@ public:
         float hiss;          // noise before the ADC (linear)
         float noise;         // shared noise sample -1..1 for hiss
         float dither;        // shared noise sample -1..1 for converter dither
-        float expMismatch;   // expander reference / compressor reference (>= 1)
-        float expAtt, expRel;// expander detector coefficients (mistracking with Grit)
+        float trackLoss;     // static expander gain error (< 1, never a gain)
+        float expLag;        // expander smoothing coefficient (mistracking grows with Grit)
         bool  hold;
     };
 
@@ -319,34 +328,50 @@ public:
             const float rpf = std::floor(rp);
             const int i0 = (int)rpf & kMask;
             const float fr = rp - rpf;
-            const float c0 = cells_[(size_t)i0], c1 = cells_[(size_t)((i0 + 1) & kMask)];
+            const size_t i1 = (size_t)((i0 + 1) & kMask);
+            const float c0 = cells_[(size_t)i0], c1 = cells_[i1];
             const float readv = c0 + (c1 - c0) * fr;
+            const float g0 = gains_[(size_t)i0], g1 = gains_[i1];
+            const float readg = g0 + (g1 - g0) * fr;
 
-            float wv = q;
+            float wv = q, wg = gC;
             if (holdMix_ > 0.0f || t.hold)
             {
                 // digital recirculation: copy the cell one loop length back (exact, lossless)
-                const float copyv = holdLen_ > 0 ? cells_[(size_t)((w_ - holdLen_) & kMask)] : readv;
+                const size_t ic = (size_t)((w_ - holdLen_) & kMask);
+                const float copyv = holdLen_ > 0 ? cells_[ic] : readv;
+                const float copyg = holdLen_ > 0 ? gains_[ic] : readg;
                 holdMix_ = t.hold ? std::fmin(1.0f, holdMix_ + holdRamp_) : std::fmax(0.0f, holdMix_ - holdRamp_);
-                wv = q + (copyv - q) * holdMix_;
+                if (holdMix_ >= 1.0f) { wv = copyv; wg = copyg; }   // exact copy, no rounding
+                else { wv = q + (copyv - q) * holdMix_; wg = gC + (copyg - gC) * holdMix_; }
                 if (!t.hold && holdMix_ <= 0.0f) holdLen_ = 0;
             }
             cells_[(size_t)(w_ & kMask)] = wv;
+            gains_[(size_t)(w_ & kMask)] = wg;
             w_ = (w_ + 1) & kMask;
             dacPrev_ = dacCur_;
             dacCur_ = readv;
+            gRead_ = readg;
         }
         adcPrevIn_ = aaOut;
 
         // ---------------- read side: DAC hold -> recon -> expander -> de-emphasis ------------
-        const float ph = std::fmin(1.0f, phase_ / inc);
-        const float foh = dacPrev_ + (dacCur_ - dacPrev_) * ph;
-        float y = foh + (dacCur_ - foh) * t.zoh;
+        float y = dacCur_;
+        if (inc < 1.0f)
+        {   // between ticks the DAC holds (ZOH); low Grit blends in a first-order hold
+            const float ph = std::fmin(1.0f, phase_ / inc);
+            const float foh = dacPrev_ + (dacCur_ - dacPrev_) * ph;
+            y = foh + (dacCur_ - foh) * t.zoh;
+        }
         y = rec_.process(y);
-        const float ry = std::fabs(y);
-        envE_ += (ry > envE_ ? t.expAtt : t.expRel) * (ry - envE_);
-        const float gE = std::fmax(envE_, kEnvFloorE) / (kCompRef * t.expMismatch);
-        y *= std::fmin(gE, kExpMax);
+        // Expander (1:2): the inverse of the gain the compressor used for these cells. Its
+        // control voltage lags (more with Grit), which is the imperfect tracking: onsets come
+        // out softened and the noise floor swells and breathes behind the signal. The error is
+        // limited to a LOSS (ratio <= 1), so the compander can never add gain inside the loop.
+        const float gTarget = 1.0f / gRead_;
+        gExp_ += t.expLag * (gTarget - gExp_);
+        const float ratio = clamp(gExp_ * gRead_, 0.5f, 1.0f);
+        y *= ratio * gTarget * t.trackLoss;
         y = deEmph_.process(y);
         y = opampClip(y, 1.6f);
         y = tone_.process(y);
@@ -357,7 +382,7 @@ public:
     }
 
     // Side-channel high-pass used by the stereo stage (keeps the bass of the wet mono).
-    inline float sideHp(float x) { return sideHp_.hp(x); }
+    inline float sideHp(float x) { return sideHp2_.hp(sideHp_.hp(x)); }   // 12 dB/oct at 150 Hz
 
     float clockRatio() const { return fcRatio_; }
     float lCur() const { return lCur_; }
@@ -366,8 +391,6 @@ public:
 private:
     static constexpr float kCompRef = 0.25f;     // compander reference level (rectified average)
     static constexpr float kEnvFloor = 1.0e-4f;  // max compressor gain sqrt(0.25/1e-4) = +34 dB
-    static constexpr float kEnvFloorE = 1.0e-5f;
-    static constexpr float kExpMax = 8.0f;
 
     static inline float quantise(float x, float step, float dither)
     {
@@ -395,11 +418,13 @@ private:
     }
 
     std::vector<float> cells_;
+    std::vector<float> gains_;     // compressor gain stored with every cell (expander control)
     int w_ = 0;
     float sr_ = 44100.0f;
     float phase_ = 0.0f, fcRatio_ = 1.0f;
     float dacPrev_ = 0.0f, dacCur_ = 0.0f, adcPrevIn_ = 0.0f;
-    float envC_ = 1e-4f, envE_ = 1e-4f, compAtt_ = 0.0f, compRel_ = 0.0f;
+    float envC_ = 1e-4f, compAtt_ = 0.0f, compRel_ = 0.0f;
+    float gRead_ = 1.0f, gExp_ = 1.0f;
     float lastWet_ = 0.0f;
     float lCur_ = 0.0f, lOffset_ = 0.0f;
     float holdMix_ = 0.0f, holdRamp_ = 1.0f / 64.0f;
@@ -408,7 +433,7 @@ private:
     LpSection tone_;
     float toneLastHz_ = -1.0f;
     Shelf1 preEmph_, deEmph_;
-    OnePole fbLowCut_, sideHp_;
+    OnePole fbLowCut_, sideHp_, sideHp2_;
 };
 
 // ---------------------------------------------------------------------------------------------
@@ -418,6 +443,7 @@ class Engine
 {
 public:
     static constexpr int kCtrl = 16;   // control-rate interval (samples)
+    static constexpr float kLatency = 8.0f;
 
     void prepare(float sr)
     {
@@ -465,18 +491,20 @@ public:
         // grit-dependent constants (per block)
         const float bits = gritBits(p.grit);
         const float step = std::pow(2.0f, 1.0f - bits);
-        const float zoh = clamp(0.35f + 0.65f * p.grit * 1.6f, 0.0f, 1.0f);
+        const float zoh = clamp(0.6f + 0.8f * p.grit, 0.0f, 1.0f);
         const float hiss = 0.00012f + 0.0009f * p.grit * p.grit;
-        const float expMis = 1.02f + 0.03f * p.grit;
-        const float expAtt = ch_[0].onePoleMs(2.5f * (1.0f + 1.2f * p.grit));
-        const float expRel = ch_[0].onePoleMs(30.0f * (1.0f + 1.8f * p.grit));
-        const float jitterSec = (8.0f + 60.0f * p.grit) * 1.0e-6f;   // clock jitter / drift (abs. seconds)
+        const float outHiss = 0.00002f + 0.00012f * p.grit;           // ~ -94 .. -82 dBFS rms
+        const float trackLoss = 1.0f / (1.01f + 0.03f * p.grit);
+        const float expLag = ch_[0].onePoleMs(0.4f + 4.0f * p.grit);
+        // clock jitter / drift of the free-running clock oscillator: relative to the period,
+        // so long delays wobble more (0.001 %..0.011 % rms, ~7 Hz wide)
+        const float jitterRel = (0.1f + 1.0f * p.grit) * 1.0e-4f;
 
         Channel::Tick tk[2];
         for (int c = 0; c < 2; ++c)
         {
-            tk[c].bitsStep = step; tk[c].zoh = zoh; tk[c].hiss = hiss; tk[c].expMismatch = expMis;
-            tk[c].expAtt = expAtt; tk[c].expRel = expRel; tk[c].hold = p.hold;
+            tk[c].bitsStep = step; tk[c].zoh = zoh; tk[c].hiss = hiss; tk[c].trackLoss = trackLoss;
+            tk[c].expLag = expLag; tk[c].hold = p.hold;
         }
 
         for (int i = 0; i < n; ++i)
@@ -504,15 +532,19 @@ public:
             const float jR = stereo ? jitterLpR_.lp(rngR_.nextBipolar()) * jitterNorm_ : jL;
             const float spread = widthSm_ * std::fmin(0.02f, 0.004f / std::fmax(tSec, 1e-4f));
 
-            float teffL = tSec * (1.0f - spread) * (1.0f + depthRel * lfoL) + jitterSec * jL;
-            float teffR = tSec * (1.0f + spread) * (1.0f + depthRel * lfoR) + jitterSec * jR;
-            teffL = clamp(teffL, 0.0012f, 1.25f) * sr_;
-            teffR = clamp(teffR, 0.0012f, 1.25f) * sr_;
+            float teffL = tSec * (1.0f - spread) * (1.0f + depthRel * lfoL + jitterRel * jL);
+            float teffR = tSec * (1.0f + spread) * (1.0f + depthRel * lfoR + jitterRel * jR);
+            // minus ~0.18 ms: the converters' own latency (filter group delay, hold), so the
+            // first echo lands on the Time setting
+            teffL = clamp(teffL, 0.0012f, 1.25f) * sr_ - kLatency;
+            teffR = clamp(teffR, 0.0012f, 1.25f) * sr_ - kLatency;
 
             // ---- shared noise (identical on both sides unless Stereoize) ----------------------
             const float nzL = rng_.nextBipolar(), dzL = rng_.nextBipolar();
             const float nzR = stereo ? rngR_.nextBipolar() : nzL;
             const float dzR = stereo ? rngR_.nextBipolar() : dzL;
+            const float ozL = rng_.nextBipolar();
+            const float ozR = stereo ? rngR_.nextBipolar() : ozL;
 
             // ---- input drive (op-amp stage) ---------------------------------------------------
             const float xL = opampClip(dryL * driveG_, 1.4f) * driveComp_;
@@ -531,6 +563,9 @@ public:
                 const float sd = ch_[0].sideHp(0.5f * (wL - wR));
                 wL = m + sd; wR = m - sd;
             }
+
+            wL += outHiss * ozL;   // output stage noise (wet only, outside the loop)
+            wR += outHiss * ozR;
 
             const float dryG = std::fmin(1.0f, 2.0f * (1.0f - mixSm_));
             const float wetG = std::fmin(1.0f, 2.0f * mixSm_);
