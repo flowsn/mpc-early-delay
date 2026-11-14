@@ -1,0 +1,92 @@
+{
+  "style": "C",
+  "title": "EARLY DELAY",
+  "parameters": [
+    {
+      "control": "time",
+      "parameter": "Time",
+      "index": 0,
+      "page": "DELAY",
+      "qlink": 13
+    },
+    {
+      "control": "feedback",
+      "parameter": "Feedback",
+      "index": 1,
+      "page": "DELAY",
+      "qlink": 14
+    },
+    {
+      "control": "mix",
+      "parameter": "Mix",
+      "index": 8,
+      "page": "DELAY",
+      "qlink": 15
+    },
+    {
+      "control": "drive",
+      "parameter": "Drive",
+      "index": 7,
+      "page": "DELAY",
+      "qlink": 16
+    },
+    {
+      "control": "tone",
+      "parameter": "Tone",
+      "index": 4,
+      "page": "DELAY",
+      "qlink": 9
+    },
+    {
+      "control": "grit",
+      "parameter": "Grit",
+      "index": 5,
+      "page": "DELAY",
+      "qlink": 10
+    },
+    {
+      "control": "age",
+      "parameter": "Bandwidth/Age",
+      "index": 6,
+      "page": "DELAY",
+      "qlink": 11
+    },
+    {
+      "control": "width",
+      "parameter": "Width",
+      "index": 9,
+      "page": "DELAY",
+      "qlink": 12
+    },
+    {
+      "control": "mod_speed",
+      "parameter": "Mod Speed",
+      "index": 2,
+      "page": "DELAY",
+      "qlink": 5
+    },
+    {
+      "control": "mod_depth",
+      "parameter": "Mod Depth",
+      "index": 3,
+      "page": "DELAY",
+      "qlink": 6
+    },
+    {
+      "control": "hold",
+      "parameter": "Hold",
+      "index": 10,
+      "page": "DELAY",
+      "qlink": 7
+    },
+    {
+      "control": "stereoize",
+      "parameter": "Stereoize",
+      "index": 11,
+      "page": "DELAY",
+      "qlink": 8
+    }
+  ],
+  "missing": [],
+  "fallback": []
+}

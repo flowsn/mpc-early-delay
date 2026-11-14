@@ -1,0 +1,137 @@
+{
+  "title": "EARLY DELAY",
+  "recommendedStyle": "A",
+  "controls": [
+    {
+      "key": "time",
+      "label": "TIME",
+      "aliases": [
+        "Time",
+        "Delay Time",
+        "Delay",
+        "Time ms"
+      ],
+      "caption": "CLOCK PERIOD"
+    },
+    {
+      "key": "feedback",
+      "label": "FEEDBACK",
+      "aliases": [
+        "Feedback",
+        "Regen",
+        "Regeneration"
+      ],
+      "bipolar": true
+    },
+    {
+      "key": "mix",
+      "label": "MIX",
+      "aliases": [
+        "Mix",
+        "Dry Wet",
+        "Wet Dry",
+        "Wet Mix",
+        "Dry/Wet"
+      ],
+      "caption": "WET / DRY"
+    },
+    {
+      "key": "drive",
+      "label": "INPUT DRIVE",
+      "aliases": [
+        "Drive",
+        "Input Drive",
+        "Input",
+        "Input Gain"
+      ],
+      "caption": "INPUT SATURATION"
+    },
+    {
+      "key": "tone",
+      "label": "TONE",
+      "aliases": [
+        "Tone",
+        "Tone Cutoff",
+        "Filter"
+      ],
+      "caption": "REPEAT COLOUR"
+    },
+    {
+      "key": "grit",
+      "label": "GRIT",
+      "aliases": [
+        "Grit",
+        "Character",
+        "Dirt"
+      ],
+      "caption": "DIGITAL TEXTURE"
+    },
+    {
+      "key": "age",
+      "label": "BANDWIDTH / AGE",
+      "aliases": [
+        "Bandwidth/Age",
+        "Bandwidth",
+        "Age",
+        "Bandwidth Age"
+      ],
+      "caption": "CLOCK CHARACTER"
+    },
+    {
+      "key": "width",
+      "label": "WIDTH",
+      "aliases": [
+        "Width",
+        "Stereo Width"
+      ],
+      "caption": "STEREO SPREAD"
+    },
+    {
+      "key": "mod_speed",
+      "label": "MOD SPEED",
+      "aliases": [
+        "Mod Speed",
+        "Mod Rate",
+        "LFO Rate",
+        "Modulation Rate",
+        "Rate"
+      ],
+      "caption": "MODULATION RATE"
+    },
+    {
+      "key": "mod_depth",
+      "label": "MOD DEPTH",
+      "aliases": [
+        "Mod Depth",
+        "Modulation Depth",
+        "LFO Depth",
+        "Depth"
+      ],
+      "caption": "PITCH MOVEMENT"
+    },
+    {
+      "key": "hold",
+      "label": "HOLD",
+      "aliases": [
+        "Hold",
+        "Freeze",
+        "Infinite Repeat",
+        "Infinite"
+      ],
+      "switch": true,
+      "caption": "INFINITE REPEAT"
+    },
+    {
+      "key": "stereoize",
+      "label": "STEREOIZE",
+      "aliases": [
+        "Stereoize",
+        "Stereoise",
+        "Stereo",
+        "Stereo Mode"
+      ],
+      "switch": true,
+      "caption": "WIDE FIELD"
+    }
+  ]
+}

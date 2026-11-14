@@ -1,0 +1,32 @@
+Validating /home/flow/projects/mpc-plugins/early-delay-design/design/testbed/build/Early Delay Lab - VST - Design Testbed
+OK     plugin.json: Design Testbed by Early Delay Lab (effect, uid EdUi)
+OK     folder name "Early Delay Lab - VST - Design Testbed"
+OK     file32: design-testbed-arm32.so is a 32-bit ARM shared object
+OK     file32: needed libraries: libm.so.6, libc.so.6, ld-linux-armhf.so.3, libdl.so.2
+OK     file32: max GLIBC requirement 2.27
+OK     file32: exports VSTPluginMain
+OK     file64: design-testbed-arm64.so is a 64-bit AArch64 shared object
+OK     file64: needed libraries: libm.so.6, libc.so.6, libpthread.so.0, libdl.so.2
+OK     file64: max GLIBC requirement 2.27
+OK     file64: exports VSTPluginMain
+OK     uid matches the binary (EdUi)
+OK     name matches the binary (Design Testbed)
+OK     manufacturer matches the binary (Early Delay Lab)
+OK     kind matches the binary (effect)
+OK     numInputs matches the binary (2)
+OK     numOutputs matches the binary (2)
+OK     TUI.json: all parameter handles are within 0..11
+OK     TUI.json: image hold_off.png present
+OK     TUI.json: image hold_on.png present
+OK     TUI.json: image knob_112_bi.png present
+OK     TUI.json: image knob_112_uni.png present
+OK     TUI.json: image knob_88_uni.png present
+OK     TUI.json: image logo_plate.png present
+OK     TUI.json: image panel.png present
+OK     TUI.json: image stereoize_off.png present
+OK     TUI.json: image stereoize_on.png present
+OK     TUI.json: image value_plate.png present
+OK     TUI.json: 1 tab
+OK     Q-Links.json: 1 tab map, all values in range
+OK     version.xml uiversion 0.1.0.0
+0 errors, 0 warnings

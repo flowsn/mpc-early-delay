@@ -1,0 +1,154 @@
+{
+  "name": "Design Testbed",
+  "vendor": "Early Delay Lab",
+  "uid": "EdUi",
+  "uidInt": 1164203369,
+  "version": 100,
+  "isInstrument": false,
+  "numInputs": 2,
+  "numOutputs": 2,
+  "numPrograms": 1,
+  "programs": [
+    "Default"
+  ],
+  "params": [
+    {
+      "index": 0,
+      "id": null,
+      "name": "Time",
+      "label": "ms",
+      "display": "384",
+      "default": 0.782886,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 1,
+      "id": null,
+      "name": "Feedback",
+      "label": "%",
+      "display": "-35",
+      "default": 0.325,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 2,
+      "id": null,
+      "name": "Mod Speed",
+      "label": "Hz",
+      "display": "0.35",
+      "default": 0.32478,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 3,
+      "id": null,
+      "name": "Mod Depth",
+      "label": "%",
+      "display": "18",
+      "default": 0.18,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 4,
+      "id": null,
+      "name": "Tone",
+      "label": "%",
+      "display": "62",
+      "default": 0.62,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 5,
+      "id": null,
+      "name": "Grit",
+      "label": "%",
+      "display": "26",
+      "default": 0.26,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 6,
+      "id": null,
+      "name": "Bandwidth/Age",
+      "label": "%",
+      "display": "40",
+      "default": 0.4,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 7,
+      "id": null,
+      "name": "Drive",
+      "label": "dB",
+      "display": "3.0",
+      "default": 0.125,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 8,
+      "id": null,
+      "name": "Mix",
+      "label": "%",
+      "display": "35",
+      "default": 0.35,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 9,
+      "id": null,
+      "name": "Width",
+      "label": "%",
+      "display": "120",
+      "default": 0.6,
+      "automatable": true,
+      "kind": "int",
+      "choices": []
+    },
+    {
+      "index": 10,
+      "id": null,
+      "name": "Hold",
+      "label": "",
+      "display": "Off",
+      "default": 0.0,
+      "automatable": true,
+      "kind": "bool",
+      "choices": [
+        "Off",
+        "On"
+      ]
+    },
+    {
+      "index": 11,
+      "id": null,
+      "name": "Stereoize",
+      "label": "",
+      "display": "On",
+      "default": 1.0,
+      "automatable": true,
+      "kind": "bool",
+      "choices": [
+        "Off",
+        "On"
+      ]
+    }
+  ]
+}

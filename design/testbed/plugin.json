@@ -1,0 +1,6 @@
+{
+  "name": "Design Testbed", "manufacturer": "Early Delay Lab", "version": "0.1.0",
+  "format": "vst2", "kind": "effect", "uid": "EdUi", "numInputs": 2, "numOutputs": 2,
+  "category": "Effect", "file32": "VST/design-testbed-arm32.so", "file64": "VST/design-testbed-arm64.so",
+  "description": "UI validation only: pass-through stub, no delay DSP.", "license": "MIT"
+}

@@ -1,0 +1,11 @@
+test_aliases_and_optional_width (__main__.Integration.test_aliases_and_optional_width) ... ok
+test_ambiguous_names_require_explicit_mapping (__main__.Integration.test_ambiguous_names_require_explicit_mapping) ... ok
+test_missing_asset_is_rejected (__main__.Integration.test_missing_asset_is_rejected) ... ok
+test_more_pages_keep_every_extra_reachable (__main__.Integration.test_more_pages_keep_every_extra_reachable) ... ok
+test_nonboolean_hold_is_never_quantized_by_button (__main__.Integration.test_nonboolean_hold_is_never_quantized_by_button) ... ok
+test_reorder_does_not_change_control_meaning (__main__.Integration.test_reorder_does_not_change_control_meaning) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.137s
+
+OK
