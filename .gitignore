@@ -1,0 +1,6 @@
+build/
+.sdk-tools/
+*.so
+*.dylib
+*.wav
+.DS_Store
