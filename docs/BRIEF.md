@@ -2,6 +2,14 @@
 
 Create an authentic early-digital hardware delay emulation: distinctive bandwidth limits, modulation, feedback behaviour and gritty coloration. Not a clean modern delay with a basic low-pass.
 
+## Corrected stereo contract (2026-11-14)
+
+Always stereo in/stereo out. Stereoize OFF is ordinary independent stereo delay, including dry preservation.
+Stereoize ON is genuine L/R alternating ping-pong feedback for mono sources, not Haas, allpass or antiphase
+widening. First echo left at Time, next right at twice Time. Width controls wet pan separation only.
+HOLD must pitch up and down across the host clock knee using bounded real-time work. No promise that natural
+delay/feedback interference disappears. Preserve all 12 parameter IDs/order and all 11 preset arrays.
+
 ## Essential features
 - Delay range about 1.75-900 ms.
 - Vintage variable-clock behaviour: pitch changes when the delay time is moved.

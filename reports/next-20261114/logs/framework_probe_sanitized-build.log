@@ -1,0 +1,21 @@
+In file included from plugin/src/EarlyDelay.cpp:28,
+                 from /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/framework_probe.cpp:6:
+sdk/framework/mpc_plugin.h: In function ‘VstIntPtr mpc::detail::dispatcher(AEffect*, VstInt32, VstInt32, VstIntPtr, void*, float)’:
+sdk/framework/mpc_plugin.h:734:72: warning: ‘%d’ directive output may be truncated writing between 1 and 10 bytes into a region of size between 5 and 6 [-Wformat-truncation=]
+  734 |             std::snprintf(pin->shortLabel, sizeof(pin->shortLabel), "%s%d", opcode == effGetInputProperties ? "In" : "Out", index + 1);
+      |                                                                        ^~
+sdk/framework/mpc_plugin.h:734:69: note: directive argument in the range [1, 2147483647]
+  734 |             std::snprintf(pin->shortLabel, sizeof(pin->shortLabel), "%s%d", opcode == effGetInputProperties ? "In" : "Out", index + 1);
+      |                                                                     ^~~~~~
+In file included from /usr/include/stdio.h:974,
+                 from /usr/include/c++/15/cstdio:47,
+                 from /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/framework_probe.cpp:1:
+In function ‘int snprintf(char*, size_t, const char*, ...)’,
+    inlined from ‘VstIntPtr mpc::detail::dispatcher(AEffect*, VstInt32, VstInt32, VstIntPtr, void*, float)’ at sdk/framework/mpc_plugin.h:734:26:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:68:35: note: ‘__builtin___snprintf_chk’ output between 4 and 14 bytes into a destination of size 8
+   68 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   69 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   70 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~

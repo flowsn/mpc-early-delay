@@ -26,9 +26,11 @@
 // OLD clock rate, moving Time re-pitches everything already in memory (true variable-clock
 // behaviour, not just Doppler while the knob moves).
 //
-// HOLD: the memory is recirculated digitally (cell[w] = cell[w - L]); no new input, no loss,
-// no growth: loop gain is exactly 1 and the samples are bounded by the ADC range. Moving Time
-// during HOLD changes the clock and therefore the pitch of the frozen loop.
+// HOLD: captures the current cell span without writing it. A bounded (1/8 tap) interpolator
+// reads that immutable span at N/T, including more than one cell per host sample. Ping-pong
+// alternates frozen L/R banks each turn. New input and feedback do not alter held cells;
+// signed feedback polarity is already captured in their contents. Audio memory is not saved.
+// High-ratio playback is intentionally lo-fi; the small aperture is not an ideal antialias filter.
 //
 // Compander: the 2:1 compressor's gain is stored with every memory cell and the 1:2 expander
 // applies its inverse when the cell is read, through a control path that lags with Grit

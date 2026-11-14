@@ -1,3 +1,9 @@
+# Historical 0.1.0 measurement notebook — superseded for Stereoize/HOLD
+
+Retained as source history; not current acceptance evidence. The earlier broadband mono claim was disproved
+by narrow-band probes. The 0.1.1 repair uses ping-pong, not this older widening architecture.
+Current results: [next repair report](../reports/next-20261114/REPAIR.md).
+
 # Early Delay v0.1.0-alpha - offline measurements
 
 All numbers below come from `python3 tools/offline.py measure docs/MEASUREMENTS.md`, which compiles
@@ -16,7 +22,7 @@ Nothing here was measured on an MPC; see "Not verified" at the end.
 | Stable loop gain | at +/-99 % feedback every repeat is quieter than the last (about -1 dB per repeat with Grit 35 %); abuse test (+12 dBFS noise, everything at max) stays bounded and finite |
 | Inverted feedback | every repeat flips polarity (correlation of repeat 2 vs 1 = -0.49 vs +0.50 for positive feedback) |
 | HOLD | level flat within 0.1 dB over 60 s; input fully isolated (bit-identical output with or without input); loop repeats exactly (correlation 1.00000) |
-| Stereoize, mono-compatible | L/R correlation drops from 1.0 to 0.49-0.77; mono sum loses 0.5-1.3 dB broadband and never more than 3.4 dB in any octave (no cancellation notches); bass below 150 Hz stays near-mono (correlation 0.90-0.99) |
+| Stereoize, mono-compatible | L/R correlation drops from 1.0 to 0.49-0.77; mono sum loses 0.5-1.3 dB broadband and never more than 3.4 dB in any octave (historical broadband result; does NOT rule out narrow cancellation notches); bass below 150 Hz stays near-mono (correlation 0.90-0.99) |
 | Real-time cost | about 1.2 % of one x86-64 core per stereo instance, flat across block sizes 32-512 |
 
 ### How to read the figures

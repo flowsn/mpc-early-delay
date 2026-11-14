@@ -33,4 +33,5 @@ int main(){
  // Rapid legal automation, HOLD transitions and signed feedback.
  {Engine e;e.prepare(fs);Audio a(128);unsigned rng=23;double peak=0;int nf=0;for(int block=0;block<20000;block++){auto randf=[&](){rng^=rng<<13;rng^=rng>>17;rng^=rng<<5;return (rng&65535)/65535.f;};auto p=wet();p.timeMs=1.75f+898.25f*randf();p.bandwidth=randf();p.feedback=2*randf()-1;p.drive=randf();p.grit=randf();p.modDepth=randf();p.modSpeedHz=.05+9.95*randf();p.hold=randf()>.5;p.stereoize=randf()>.5;p.width=randf();e.setParams(p);for(int i=0;i<128;i++)a.l[i]=a.r[i]=(block<10000?4:0)*(2*randf()-1);render(e,a);for(float v:a.l){nf+=!std::isfinite(v);peak=std::max(peak,double(fabs(v)));}}printf("AUTOMATION frames=2560000 nonfinite=%d peak=%.6f\n",nf,peak);}
  printf("CALLBACK_NEW_COUNT %zu\n",allocs);
+ return 0;
 }

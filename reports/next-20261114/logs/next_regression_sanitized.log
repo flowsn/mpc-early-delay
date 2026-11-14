@@ -1,0 +1,80 @@
+ECHO input=0 fb=-0.8 n=1 L=0.057678759 R=5.3644713e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=-0.8 n=2 L=5.7439058e-08 R=0.0091576761
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=-0.8 n=3 L=0.0025670472 R=5.5079919e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=-0.8 n=4 L=5.5672051e-08 R=0.00077338086
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=-0.8 n=1 L=0.026022698 R=5.3644513e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=-0.8 n=2 L=5.7107904e-08 R=0.0053798042
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=-0.8 n=3 L=0.0016093037 R=5.4399619e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=-0.8 n=4 L=5.5765402e-08 R=0.00052820045
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=-0.8 n=1 L=0.026022698 R=5.3644513e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=-0.8 n=2 L=5.7107904e-08 R=0.0053798042
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=-0.8 n=3 L=0.0016093037 R=5.4399619e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=-0.8 n=4 L=5.5765402e-08 R=0.00052820045
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=+0.8 n=1 L=0.057678759 R=5.3644713e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=+0.8 n=2 L=5.7059449e-08 R=0.0090932331
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=+0.8 n=3 L=0.0025436244 R=5.4907736e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=0 fb=+0.8 n=4 L=5.697134e-08 R=0.00076495671
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=+0.8 n=1 L=0.026022698 R=5.3644513e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=+0.8 n=2 L=5.6823332e-08 R=0.0053478378
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=+0.8 n=3 L=0.0015967156 R=5.4051817e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=1 fb=+0.8 n=4 L=5.6307183e-08 R=0.00052413435
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=+0.8 n=1 L=0.026022698 R=5.3644513e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=+0.8 n=2 L=5.6823332e-08 R=0.0053478378
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=+0.8 n=3 L=0.0015967156 R=5.4051817e-08
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+ECHO input=2 fb=+0.8 n=4 L=5.6307183e-08 R=0.00052413435
+PASS echo alternates L/R with >14.7 dB separation
+PASS echo timing within 3 ms
+PASS OFF no cross-channel input/feedback leakage above converter noise
+PASS OFF no cross-channel input/feedback leakage above converter noise
+PASS dry stereo bit-exact with Mix zero
+PASS dry stereo bit-exact with Mix zero
+PASS Width preserves wet mono sum (no clock-skew comb scheme)
+PASS HOLD extreme pitch-up crosses host clock ceiling and stays finite
+PASS HOLD extreme pitch-up release stays finite
+NEXT_REGRESSION failures=0 callback_allocations=0

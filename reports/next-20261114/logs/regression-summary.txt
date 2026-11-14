@@ -1,0 +1,1 @@
+PASS: old-fault assertions, new stereo/HOLD assertions, 11 presets, all 12 invalid controls; ASan/UBSan/float-cast-overflow passed.

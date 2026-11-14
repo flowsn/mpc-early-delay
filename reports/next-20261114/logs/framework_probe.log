@@ -21,4 +21,4 @@ PARAM 7 id=bandwidth name=Bandwidth
 PARAM 8 id=drive name=Drive
 PARAM 9 id=hold name=Hold
 PARAM 10 id=stereoize name=Stereoize
-PARAM 11 id=width name=Width
+PARAM 11 id=width name=Ping Width

@@ -10,7 +10,7 @@
         { "param": "Tone",      "widget": "knob" },
         { "param": "Grit",      "widget": "knob" },
         { "param": "Bandwidth", "widget": "knob" },
-        { "param": "Width",     "widget": "knob" },
+        { "param": "Ping Width",     "widget": "knob" },
         { "param": "Mod Speed", "widget": "knob" },
         { "param": "Mod Depth", "widget": "knob" },
         { "param": "Hold",      "widget": "switch" },

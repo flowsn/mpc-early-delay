@@ -1,0 +1,18 @@
+c++ -O2 -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/probe.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/probe
+/home/flow/projects/mpc-plugins/early-delay/build/probe
+c++ -O2 -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/lifecycle_probe.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/lifecycle_probe
+/home/flow/projects/mpc-plugins/early-delay/build/lifecycle_probe
+c++ -O2 -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/spectral_probe.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/spectral_probe
+/home/flow/projects/mpc-plugins/early-delay/build/spectral_probe
+c++ -O2 -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/framework_probe.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/framework_probe
+/home/flow/projects/mpc-plugins/early-delay/build/framework_probe
+c++ -O2 -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/tests/offline/next_regression.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/next_regression
+/home/flow/projects/mpc-plugins/early-delay/build/next_regression /home/flow/projects/mpc-plugins/early-delay/demos/next-20261114
+c++ -O1 -g -fsanitize=address,undefined,float-cast-overflow -fno-omit-frame-pointer -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/probe.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/probe_sanitized
+/home/flow/projects/mpc-plugins/early-delay/build/probe_sanitized
+c++ -O1 -g -fsanitize=address,undefined,float-cast-overflow -fno-omit-frame-pointer -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/tests/offline/next_regression.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/next_regression_sanitized
+/home/flow/projects/mpc-plugins/early-delay/build/next_regression_sanitized
+c++ -O1 -g -fsanitize=address,undefined,float-cast-overflow -fno-omit-frame-pointer -std=c++17 -I sdk/framework -I plugin/src /home/flow/projects/mpc-plugins/early-delay/reports/next-20261114/framework_probe.cpp -o /home/flow/projects/mpc-plugins/early-delay/build/framework_probe_sanitized
+/home/flow/projects/mpc-plugins/early-delay/build/framework_probe_sanitized
+PASS: old-fault assertions, new stereo/HOLD assertions, 11 presets, all 12 invalid controls; ASan/UBSan/float-cast-overflow passed.
+

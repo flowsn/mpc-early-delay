@@ -1,0 +1,14 @@
+$ /usr/bin/python3 /home/flow/projects/mpc-plugins/early-delay/sdk/tools/build.py /home/flow/projects/mpc-plugins/early-delay/plugin --target all
+Building Early Delay by Flat Peach  (/home/flow/projects/mpc-plugins/early-delay/plugin)
+  toolchain: zig   target: all   release
+Using zig 0.17.1 (from $ZIG)
+
+[1/7] Native build (for host_sim and testing on this computer)
+  [native] compiling 1 source file -> build/native/early-delay.so
+  [native] ok (2.5 MB, 2.6s)
+
+[2/7] Parameter dump (host_sim) -> build/params.json
+  host_sim dump -> build/params.json
+
+[3/7] arm32 build (MPC Live/X/One (32-bit))
+  [arm32] compiling 1 source file -> build/Flat Peach - VST - Early Delay/VST/early-delay-arm32.so

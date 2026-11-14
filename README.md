@@ -1,8 +1,17 @@
-# MPC Early Digital Delay (working title)
+# Early Delay — Flat Peach
 
-Native effect plugin for the Akai MPC Live III (64-bit ARM), built with the official inMusic MPC Plugin SDK (MIT).
-Inspiration: early-1980s digital delays in the Ibanez DM1000 class: variable-clock delay, ~8 kHz wet bandwidth, companding grit, modulation, inverted feedback, infinite hold.
+Original proprietary stereo early-digital delay, built on the MIT MPC Plugin SDK.
+**0.1.1 next development candidate — not hardware-ready or publicly released.**
 
-Status: **planning** - SDK build verified, no plugin code yet. See `docs/BRIEF.md` and `docs/ARCHITECTURE.md`.
+Stereo in/stereo out. Stereoize OFF is ordinary stereo delay; ON uses real cross-feedback ping-pong repeats.
+The original companded, variable-clock, roughly 12-bit character remains. HOLD now supports pitch-up above
+one cell per host frame through bounded immutable-buffer resampling.
 
-Private repository. Original code only; no third-party DSP libraries. Use original names/branding for release ("VST", "MPC", "Akai" are third-party trademarks and must not appear in the product name).
+- Player controls/install/limitations: [plugin/README.md](plugin/README.md)
+- Current repair findings and reproducible evidence: [reports/next-20261114/REPAIR.md](reports/next-20261114/REPAIR.md)
+- Interrupted-work recovery: [PROGRESS.md](PROGRESS.md)
+- Build: `python3 tools/build.py` (native, ARM32, ARM64 and all seven simulator block sizes)
+- Focused regression: `python3 tools/next_check.py`
+
+Private repository. No device deployment or public release performed. Hardware use requires MPC OS 3.10.1+
+and enabled External Plugin Support; actual ARM CPU/touchscreen/project persistence remain unverified.

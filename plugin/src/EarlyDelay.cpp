@@ -64,7 +64,7 @@ public:
         addParam(floatParam("drive",     "Drive",     0.0f, 100.0f, 20.0f, "%", 0));
         addParam(boolParam ("hold",      "Hold",      false));
         addParam(boolParam ("stereoize", "Stereoize", false));
-        addParam(floatParam("width",     "Width",     0.0f, 100.0f, 70.0f, "%", 0));
+        addParam(floatParam("width",     "Ping Width",     0.0f, 100.0f, 70.0f, "%", 0));
         if (numParams() != kNumParams) mpc::log("EarlyDelay: parameter count mismatch");
 
         //                                Mix  Time   Fb  MSpd MDep Tone Grit  BW  Drv Hold St  Wid
