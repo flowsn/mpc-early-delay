@@ -1,0 +1,20 @@
+{
+  "kit": "amber",
+  "pages": [
+    { "name": "DELAY",
+      "controls": [
+        { "param": "Time",      "widget": "knob" },
+        { "param": "Feedback",  "widget": "knob", "polarity": "bipolar" },
+        { "param": "Mix",       "widget": "fader" },
+        { "param": "Drive",     "widget": "knob" },
+        { "param": "Tone",      "widget": "knob" },
+        { "param": "Grit",      "widget": "knob" },
+        { "param": "Bandwidth", "widget": "knob" },
+        { "param": "Width",     "widget": "knob" },
+        { "param": "Mod Speed", "widget": "knob" },
+        { "param": "Mod Depth", "widget": "knob" },
+        { "param": "Hold",      "widget": "switch" },
+        { "param": "Stereoize", "widget": "switch" }
+      ] }
+  ]
+}

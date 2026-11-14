@@ -1,0 +1,17 @@
+{
+  "name": "Early Delay",
+  "manufacturer": "Flat Peach",
+  "version": "0.1.0",
+  "format": "vst2",
+  "kind": "effect",
+  "uid": "FpEd",
+  "numInputs": 2,
+  "numOutputs": 2,
+  "category": "Effect",
+  "file32": "VST/early-delay-arm32.so",
+  "file64": "VST/early-delay-arm64.so",
+  "description": "Gritty early-digital variable-clock delay: 12-bit companded memory, clock-tracking converter filters, drifting modulation, inverted feedback, infinite hold, stereoize.",
+  "author": "Flat Peach",
+  "url": "",
+  "license": "Proprietary (built with the MIT-licensed MPC Plugin SDK)"
+}

@@ -4,3 +4,5 @@ build/
 *.dylib
 *.wav
 .DS_Store
+demos/
+__pycache__/
