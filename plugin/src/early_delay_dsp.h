@@ -199,6 +199,7 @@ struct EngineParams
     float bandwidth = 0.6f;    // 0 .. 1 (0 = aged / narrow, 1 = fresh / wide)
     float drive = 0.2f;        // 0 .. 1
     float mix = 0.35f;         // 0 .. 1
+    float outputGain = 1.0f;   // 0 .. 1, post-mix trim (not in feedback loop)
     bool  hold = false;
     bool  stereoize = false;
     float width = 0.7f;        // 0 .. 1 (ping-pong wet pan separation)
@@ -517,7 +518,7 @@ public:
         p_.modSpeedHz = clean(p.modSpeedHz, 0.05f, 10.0f, def.modSpeedHz);
 #define EDLY_CLEAN(field) p_.field = clean(p.field, 0.0f, 1.0f, def.field)
         EDLY_CLEAN(modDepth); EDLY_CLEAN(tone); EDLY_CLEAN(grit); EDLY_CLEAN(bandwidth);
-        EDLY_CLEAN(drive); EDLY_CLEAN(mix); EDLY_CLEAN(width);
+        EDLY_CLEAN(drive); EDLY_CLEAN(mix); EDLY_CLEAN(width); EDLY_CLEAN(outputGain);
 #undef EDLY_CLEAN
     }
 
@@ -528,6 +529,7 @@ public:
         const EngineParams& p = p_;
         if (snap_)
         {
+            outputSm_ = p.outputGain;
             tSm_ = p.timeMs; mixSm_ = p.mix; fbSm_ = feedbackGain(p.feedback); bwSm_ = p.bandwidth;
             toneSm_ = p.tone; driveSm_ = p.drive; widthSm_ = p.width; stereoSm_ = p.stereoize ? 1.0f : 0.0f;
             snap_ = false;
@@ -563,6 +565,7 @@ public:
 
             // ---- smoothing ------------------------------------------------------------------
             tSm_ += timeGlide_ * (p.timeMs - tSm_);
+            outputSm_ += paramGlide_ * (p.outputGain - outputSm_);
             mixSm_ += paramGlide_ * (p.mix - mixSm_);
             fbSm_ += paramGlide_ * (fbT - fbSm_);
             bwSm_ += paramGlide_ * 0.3f * (p.bandwidth - bwSm_);
@@ -617,8 +620,8 @@ public:
 
             const float dryG = std::fmin(1.0f, 2.0f * (1.0f - mixSm_));
             const float wetG = std::fmin(1.0f, 2.0f * mixSm_);
-            outL[i] = dryL * dryG + wL * wetG;
-            outR[i] = dryR * dryG + wR * wetG;
+            outL[i] = (dryL * dryG + wL * wetG) * outputSm_;
+            outR[i] = (dryR * dryG + wR * wetG) * outputSm_;
         }
     }
 
@@ -657,6 +660,7 @@ private:
     float sr_ = 44100.0f, invSr_ = 1.0f / 44100.0f;
     float timeGlide_ = 0.0f, paramGlide_ = 0.0f;
     float tSm_ = 300.0f, mixSm_ = 0.35f, fbSm_ = 0.0f, bwSm_ = 0.6f, toneSm_ = 0.6f, driveSm_ = 0.2f, widthSm_ = 0.0f;
+    float outputSm_ = 1.0f;
     float jitterNorm_ = 1.0f, driveG_ = 1.0f, driveComp_ = 1.0f;
     float cellsCtrl_ = 8192.0f, stereoSm_ = 0.0f;
     unsigned ctrl_ = 0;

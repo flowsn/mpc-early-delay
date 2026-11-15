@@ -49,7 +49,7 @@ def render_previews(skin,params_path,output,style):
                 strip=Image.open(skin/d['filmStrip']).convert('RGBA'); n=d['numFrames']; fh=strip.height//n
                 index=round((p.get('default',.5) if p else .5)*(n-1))
                 im.alpha_composite(strip.crop((0,index*fh,strip.width,(index+1)*fh)),(x+(w-strip.width)//2,y+(h-fh)//2))
-            elif kind=='Button':
+            elif kind in ('Button','Indicator'):
                 on=bool(p and p.get('default',0)>=.5)
                 asset=Image.open(skin/d['onImage' if on else 'offImage']).convert('RGBA')
                 im.alpha_composite(asset,(x+(w-asset.width)//2,y+(h-asset.height)//2))

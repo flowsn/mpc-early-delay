@@ -1,7 +1,7 @@
 {
-  "name": "Early Delay",
+  "name": "80s Lofi Delay Box",
   "manufacturer": "Flat Peach",
-  "version": "0.1.1",
+  "version": "0.5.0",
   "format": "vst2",
   "kind": "effect",
   "uid": "FpEd",

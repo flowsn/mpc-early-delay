@@ -8,7 +8,7 @@ import hashlib
 import json
 import random
 import re
-from PIL import Image, ImageDraw, ImageFont, ImageChops
+from PIL import Image, ImageDraw, ImageFont, ImageChops, ImageFilter
 
 HERE = Path(__file__).resolve().parent
 FRAMES = 127
@@ -135,6 +135,43 @@ def panel_wear(panel, th, wear, seed):
         d.line((x,y,x+rng.randrange(1,4),y),fill=blend(th['bg'],rng.choice(('#14191c','#777367')),.5*wear))
 
 
+def aged_metal_strip(panel, th, wear, seed):
+    """Original procedural material, no photographic pixels or external assets.
+    Layered low-frequency oxidation, anisotropic brushing, directional light,
+    micro-pits and contact-concentrated bare metal imitate aged painted metal.
+    """
+    rng=seeded(seed,'v05-aged-metal')
+    cloud=Image.new('L',(80,6)); cloud.putdata([rng.randrange(256) for _ in range(480)])
+    cloud=cloud.resize((1280,86),Image.Resampling.BICUBIC).filter(ImageFilter.GaussianBlur(9))
+    strip=Image.new('RGB',(1280,86)); px=strip.load(); cp=cloud.load()
+    brush=[rng.uniform(-2.5,2.5) for _ in range(86)]
+    for y in range(86):
+        for x in range(1280):
+            # Broad soft reflection, subtle horizontal brushed channels, paint pitting.
+            light=7*math.exp(-((y-21)/25)**2)+3*math.sin(x/470)-y*.045
+            grain=rng.choice((-2,-1,0,0,0,1,2))*wear
+            base=blend('#30383f','#515a60',max(0,min(1,(light+brush[y]+grain+4)/28)))
+            edge=math.exp(-min(y,85-y)/6)
+            oxide=max(0,(cp[x,y]-130)/125)*wear*(.20+.65*edge)
+            px[x,y]=blend(base,'#79634b',oxide)
+    d=ImageDraw.Draw(strip)
+    # Scratches and rubbed exposed edges have a dark groove + reflected lower lip.
+    for _ in range(round(145*wear)):
+        x=rng.randrange(1280); y=rng.choice((rng.randrange(1,9),rng.randrange(74,85)))
+        length=rng.randrange(3,43)
+        d.line((x,y,min(1279,x+length),y),fill='#20282d')
+        d.line((x,y+1,min(1279,x+length),y+1),fill=blend('#566067','#b2b6ac',rng.uniform(.1,.6)))
+    for _ in range(round(75*wear)):
+        x,y=rng.randrange(1280),rng.randrange(9,74)
+        d.line((x,y,min(1279,x+rng.randrange(4,56)),max(1,y-rng.randrange(2))),fill=blend('#3c454c','#a3aaa6',.16))
+    for _ in range(round(800*wear)):
+        x,y=rng.randrange(1280),rng.randrange(79,86)
+        d.point((x,y),fill=rng.choice(('#767267','#252c31','#56584f')))
+    # Restrained palette keeps the installed skin small, without noisy JPEG artifacts.
+    strip=strip.quantize(colors=96,method=Image.Quantize.MEDIANCUT).convert('RGB')
+    panel.paste(strip,(0,0))
+
+
 def knob_frame(size, t, theme, bipolar=False, wear=0, seed=DEFAULT_SEED):
     # Supersampling keeps the narrow pointer and scalloped grip smooth.
     scale=3
@@ -224,6 +261,7 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
     for y in YS:
         d.rounded_rectangle((20,y-14,1260,y+152),radius=7,fill=th['panel'],outline=th['edge'])
         for x in (328,640,952): d.line((x,y+6,x,y+134),fill=th['edge'])
+    if style=='A': aged_metal_strip(panel,th,wear,seed)
     d.line((28,85,1252,85),fill=th['accent'],width=2)
     for x,y in ((14,14),(1266,14),(14,614),(1266,614)):
         d.ellipse((x-4,y-4,x+4,y+4),fill=th['dark'],outline=th['edge'])
@@ -235,7 +273,7 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
     title_size=40
     while d.textlength(title,font=font(title_size,True))>470 and title_size>18: title_size-=1
     text(d,(0,2),title,th['text'],title_size,True)
-    text(d,(2,46),'VARIABLE CLOCK  /  DIGITAL DELAY',th['muted'],15,True)
+    text(d,(2,46),'v0.5  /  VARIABLE CLOCK DIGITAL DELAY',th['muted'],15,True)
     if style=='A':
         # Sparse partial alpha fade on the title; essential names use protected masks.
         rng=seeded(seed,'title')
@@ -276,23 +314,22 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
     for kind in ('lamp','hold'):
         for on in (False,True):
             save(lamp(th,on,kind,wear=wear,seed=seed),out/f'led_{kind}_{"on" if on else "off"}.png')
-    for key,kind in (('hold','hold'),('stereoize','lamp')):
+    for key,kind in (('hold','hold'),('stereoize','lamp'),('invert','lamp')):
         for on in (False,True):
             im=Image.new('RGBA',(278,76)); d=ImageDraw.Draw(im)
             d.rounded_rectangle((0,3,277,75),radius=5,fill=th['dark'])
-            d.rounded_rectangle((1,1,276,70),radius=5,fill=th['knob'],outline=th[kind] if on else th['light'],width=2)
+            d.rounded_rectangle((1,1,276,70),radius=5,fill=th['knob'],outline=th['light'],width=2)
             if on: d.line((8,65,269,65),fill=th[kind],width=3)
             if style=='A':
-                # Slide-switch visual, still one large latching Button hit target.
-                d.rectangle((11,17,43,57),fill=th['dark'],outline=th['edge'])
-                sy=35 if on else 20
-                d.rectangle((15,sy,39,sy+18),fill=th['knob'],outline=th['light'])
-                for yy in range(sy+3,sy+16,3): d.line((18,yy,36,yy),fill=th['light'])
+                # Recessed latching push key, fixed geometry (never a slider).
+                d.rounded_rectangle((10,16,40,55),radius=5,fill=th['dark'],outline=th['edge'])
+                d.rounded_rectangle((13,19,37,52),radius=4,fill=blend(th['knob'],th['light'],.22 if on else .48))
+                d.line((16,21,34,21),fill=th['light'])
                 rng=seeded(seed,'switch:'+key)
                 for _ in range(int(24*wear)):
                     x=rng.randrange(6,271); y=rng.choice((4,5,68,69))
                     d.line((x,y,x+rng.randrange(1,5),y),fill=blend(th['knob'],'#a5aeaa',.45*wear))
-                # Same wear pattern in on/off images; only thumb and lamp change.
+                # Same wear pattern in on/off images; only lamp and key brightness change.
                 im.alpha_composite(lamp(th,on,kind,wear=wear,seed=seed),(240,5))
             else:
                 im.alpha_composite(lamp(th,on,kind),(12,23))

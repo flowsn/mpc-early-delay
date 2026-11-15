@@ -16,6 +16,8 @@ The SDK's zig toolchain is reused from $ZIG if set, else from a sibling SDK chec
 Exit code 0 only if every step passed.
 """
 import glob
+import json
+import re
 import os
 import shutil
 import subprocess
@@ -65,8 +67,9 @@ def main():
     if skip_test:
         return 0
     host_sim = os.path.join(SDK, ".sdk-tools", "host_sim")
-    libs = glob.glob(os.path.join(PROJECT, "build", "native", "*.so")) + \
-        glob.glob(os.path.join(PROJECT, "build", "native", "*.dylib"))
+    slug = re.sub(r"[^a-z0-9]", "-", json.load(open(os.path.join(PROJECT, "plugin.json")))["name"].lower())
+    libs = glob.glob(os.path.join(PROJECT, "build", "native", slug + ".so")) + \
+        glob.glob(os.path.join(PROJECT, "build", "native", slug + ".dylib"))
     if not (os.path.exists(host_sim) and libs):
         print("host_sim or native build missing; cannot test")
         return 1

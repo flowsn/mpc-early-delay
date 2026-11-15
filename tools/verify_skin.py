@@ -19,7 +19,7 @@ def verify(skin,params_path,quiet=False):
     tui=json.loads((skin/'TUI.json').read_text())['pageData']
     qlinks=json.loads((skin/'Q-Links.json').read_text())
     defs={v['key']:v['value'] for v in tui['componentDefinitions']['localComponentDefinitions']}
-    builtin={'Knob','Label','Button','Focus','Image','Slider','KnobOverlay','MenuOverlay'}
+    builtin={'Knob','Label','Button','Indicator','Focus','Image','Slider','KnobOverlay','MenuOverlay'}
     errors=[]; rendered=set(); referenced=set()
     def check(cond,msg):
         if not cond: errors.append(msg)

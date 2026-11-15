@@ -84,10 +84,10 @@ def control_definition(spec,p,index,th):
     if is_switch:
         key=spec['key']
         children.append(label('caption',spec['caption'],(4,0,276,28),th['muted'],18))
-        children.append(element('toggle','Button',ui.button_data(key+'_on.png',key+'_off.png',1,1),(3,35,278,76)))
+        children.append(element('state lamp','Indicator',ui.obj(('version',1),('onImage',key+'_on.png'),('offImage',key+'_off.png'),('indicatorId',1),('numIndicatorsInGroup',2),('handleName','Data')),(3,35,278,76)))
         children.append(image_entry('name',f'name_{spec["key"]}.png',(48,46,176,45)) if th.get('engraved') else label('name',spec['label'],(48,46,176,45),th.get('buttonText',th['text']),25,bold=True))
         children.append(label('state','',(220,49,52,40),th.get('buttonText',th['text']),22,kind='Value',align='right verticallyCentred'))
-        children.append(label('hint','LATCHING',(4,115,276,24),th['muted'],15))
+        children.append(label('hint','TAP TO TOGGLE',(4,115,276,24),th['muted'],15))
     else:
         size=112 if index<4 else 88
         ky=33 if size==112 else 45
@@ -98,8 +98,10 @@ def control_definition(spec,p,index,th):
         hint='NEGATIVE = INVERTED' if bipolar else ('SELECT / ENTER' if p.is_discrete else spec.get('caption',''))
         children.append(label('hint',hint,(128,103,150,28),th['muted'],14))
         if bipolar: children.append(label('zero','−          0          +',(2,132,108,16),th['muted'],12,align='horizontallyCentred verticallyCentred'))
-    children.append(ui.entry('focus','Focus',ui.focus_data(argb(th['accent'])),rect(0,0,SLOT_W,SLOT_H),'No','Show','WhenFocussed'))
-    return ui.component_definition(ui.control_actions(overlay,double_click=not is_switch),children,'00000000')
+    # One touch owner: passive Indicator/labels cannot compete with the parent toggle.
+    actions=([ui.action('Mouse Down','Toggle Switch','Data',''),
+              ui.action('Enter Pressed','Toggle Switch','Data','')] if is_switch else ui.control_actions(overlay))
+    return ui.component_definition(actions,children,'00000000')
 
 
 def make_documents(params,assigned,extras,th,title):
@@ -127,18 +129,20 @@ def make_documents(params,assigned,extras,th,title):
     # Any unmatched real parameter remains editable, without guessing its semantics.
     for start in range(0,len(extras),16):
         chunk=extras[start:start+16]; page_name='MORE' if start==0 else f'MORE{start//16+1}'
-        contents=[]; qmap={f'Q-Link {q}':-1 for q in range(1,17)}
+        contents=[image_entry('panel','panel.png',(0,0,1280,628)),image_entry('product title','logo_plate.png',(30,10,500,64))]; qmap={f'Q-Link {q}':-1 for q in range(1,17)}
         for i,p in enumerate(chunk):
             r,c=divmod(i,4)
             defname='extra '+str(p.index)
-            defs.append((defname,ui.knob_component(styles,'knob overlay',('knob_88_uni.png',FRAMES,88),FRAMES)))
-            contents.append(ui.entry(p.name,defname,ui.obj(('version',1),('handleName','Data')),rect(ui.SLOT_X[c],ui.SLOT_Y[r],ui.SLOT_W,ui.SLOT_H),'Yes','Hide','Always',remap=[('Data',p.handle)]))
+            extra_spec=dict(key='extra',label=p.name.upper(),caption='WET PAN SEPARATION' if p.name=='Ping Width' else 'POST-MIX LEVEL')
+            extra_th=dict(th,engraved=False)
+            defs.append((defname,control_definition(extra_spec,p,4,extra_th)))
+            contents.append(ui.entry(p.name,defname,ui.obj(('version',1),('handleName','Data')),rect(XS[c],YS[r],SLOT_W,SLOT_H),'Yes','Hide','Always',remap=[('Data',p.handle)]))
             q=ui.slot_qlink(r,c); qmap[f'Q-Link {q}']=p.index
             mapping_report.append(dict(control='fallback',parameter=p.name,index=p.index,page=page_name,qlink=q))
         tabidx=len(tabs)
         tabs.append(ui.obj(('version',1),('tabName',page_name),('fnKeyIndex',tabidx),('fnKeySubIndex',0),
                            ('componentDefinition',ui.component_definition([],contents,styles['background'])),
-                           ('qlinkBoundsData',[rect(16,y-8,1248,123) for y in ui.SLOT_Y])))
+                           ('qlinkBoundsData',[rect(20,y-14,1240,166) for y in YS]+['0 0 0 0'])))
         maps.append(ui.obj(('Tab',tabidx+1),('SubTab',1),('Bank Direction','RowTopDown'),('Q-Links',qmap)))
     if len(tabs)>32: raise ValueError('Host supports at most 32 pages')
     replacements=[ui.obj(('key',p.handle),('value',p.choices)) for p in params if p.is_discrete]

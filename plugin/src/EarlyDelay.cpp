@@ -23,6 +23,8 @@
 //  8  drive      Drive       0..100 %              input op-amp drive 0..+24 dB
 //  9  hold       Hold        Off/On                infinite repeat (frozen memory loop)
 // 10  stereoize  Stereoize   Off/On                alternating L/R cross-feedback repeats
+// 12  invert     Invert      Off/On                reverses signed Feedback (negative + invert = positive)
+// 13  output     Output      -24..0 dB             post-mix trim, outside feedback/HOLD loop
 // 11  width      Width       0..100 %              wet ping-pong pan separation
 
 #include "mpc_plugin.h"
@@ -34,15 +36,15 @@ class EarlyDelay : public mpc::Plugin
 {
 public:
     enum Params { kMix, kTime, kFeedback, kModSpeed, kModDepth, kTone, kGrit, kBandwidth,
-                  kDrive, kHold, kStereoize, kWidth, kNumParams };
+                  kDrive, kHold, kStereoize, kWidth, kInvert, kOutput, kNumParams };
 
     static mpc::PluginInfo makeInfo()
     {
         mpc::PluginInfo i;
-        i.name = "Early Delay";
+        i.name = "80s Lofi Delay Box";
         i.vendor = "Flat Peach";
         i.uniqueId = MPC_FOURCC('F', 'p', 'E', 'd');   // == "uid" in plugin.json
-        i.version = 110;                                // 0.1.1 development candidate
+        i.version = 500;                                // 0.5.0
         i.isInstrument = false;
         i.numInputs = 2;
         i.numOutputs = 2;
@@ -65,20 +67,29 @@ public:
         addParam(boolParam ("hold",      "Hold",      false));
         addParam(boolParam ("stereoize", "Stereoize", false));
         addParam(floatParam("width",     "Ping Width",     0.0f, 100.0f, 70.0f, "%", 0));
+        addParam(boolParam ("invert",    "Invert",    false));
+        addParam(floatParam("output",    "Output",    -24.0f, 0.0f, 0.0f, "dB", 1));
         if (numParams() != kNumParams) mpc::log("EarlyDelay: parameter count mismatch");
 
         //                                Mix  Time   Fb  MSpd MDep Tone Grit  BW  Drv Hold St  Wid
-        addProgram("Classic Echo",      { 35, 300,   35, 0.6f, 15,  60,  35,  60,  20, 0, 0, 70 });
-        addProgram("Slap",              { 35,  95,   10, 0.5f,  5,  70,  35,  65,  25, 0, 0, 60 });
-        addProgram("Tape-ish Short",    { 40, 140,   30, 0.9f, 30,  50,  30,  55,  35, 0, 0, 60 });
-        addProgram("Dirty Echo",        { 40, 380,   55, 0.4f, 12,  45,  75,  35,  55, 0, 0, 60 });
-        addProgram("Dub Throw",         { 50, 600,   82, 0.25f,18,  35,  50,  40,  45, 0, 1, 70 });
-        addProgram("Inverted Flange",   { 50, 2.2f, -85, 0.18f,70,  85,  25,  80,  20, 0, 0, 60 });
-        addProgram("Long Hold Drone",   { 60, 850,   90, 0.12f,25,  40,  55,  25,  30, 0, 1, 80 });
-        addProgram("Wide Chorus Delay", { 45,  22,   15, 0.7f, 45,  70,  30,  70,  20, 0, 1, 90 });
-        addProgram("Broken Clock",      { 50, 450,   60, 6.5f, 55,  50,  95,  10,  50, 0, 1, 80 });
-        addProgram("Doubler",           { 45,  28,    0, 1.2f, 20,  75,  20,  75,  15, 0, 1, 100 });
-        addProgram("Metal Comb",        { 55,   6,   80, 0.08f,10,  80,  45,  60,  30, 0, 0, 60 });
+        addProgram("Classic Echo",      { 35, 300,   35, 0.6f, 15,  60,  35,  60,  20, 0, 0, 70, 0, 0 });
+        addProgram("Slap",              { 35,  95,   10, 0.5f,  5,  70,  35,  65,  25, 0, 0, 60, 0, 0 });
+        addProgram("Tape-ish Short",    { 40, 140,   30, 0.9f, 30,  50,  30,  55,  35, 0, 0, 60, 0, 0 });
+        addProgram("Dirty Echo",        { 40, 380,   55, 0.4f, 12,  45,  75,  35,  55, 0, 0, 60, 0, 0 });
+        addProgram("Dub Throw",         { 50, 600,   82, 0.25f,18,  35,  50,  40,  45, 0, 1, 70, 0, 0 });
+        addProgram("Inverted Flange",   { 50, 2.2f, -85, 0.18f,70,  85,  25,  80,  20, 0, 0, 60, 0, 0 });
+        addProgram("Long Hold Drone",   { 60, 850,   90, 0.12f,25,  40,  55,  25,  30, 0, 1, 80, 0, 0 });
+        addProgram("Wide Chorus Delay", { 45,  22,   15, 0.7f, 45,  70,  30,  70,  20, 0, 1, 90, 0, 0 });
+        addProgram("Broken Clock",      { 50, 450,   60, 6.5f, 55,  50,  95,  10,  50, 0, 1, 80, 0, 0 });
+        addProgram("Doubler",           { 45,  28,    0, 1.2f, 20,  75,  20,  75,  15, 0, 1, 100, 0, 0 });
+        addProgram("Metal Comb",        { 55,   4,   94, 0.08f, 2,  90,  28,  85,  12, 0, 0, 60, 0, -12 });
+        addProgram("Inverted Comb",     { 55, 3.2f, 94, 0.08f, 0,  90,  22,  90,  10, 0, 0, 60, 1, -12 });
+        addProgram("Bell Comb",         { 65, 2.4f, 97, 0.06f, 0,  95,  18,  95,   8, 0, 0, 60, 0, -15 });
+        addProgram("Robot Voice",       { 60,   8,   92, 0.09f, 0,  82,  40,  85,  15, 0, 0, 60, 1, -12 });
+        addProgram("Ringing Pipe",      { 65, 6.5f, 96, 0.07f, 1,  72,  25,  80,  10, 0, 0, 60, 0, -15 });
+        addProgram("Flange Comb",       { 55, 2.8f, 92, 0.16f,65,  85,  30,  88,  12, 0, 0, 60, 1, -12 });
+        // HOLD starts off: play an excitation, then tap HOLD to capture the comb.
+        addProgram("Hold Drone Comb",   { 80,   7,   97, 0.06f, 3,  84,  32,  90,  10, 0, 0, 80, 0, -15 });
     }
 
     void prepare(double sampleRate, int /*maxBlockSize*/) override
@@ -93,7 +104,8 @@ public:
         edly::EngineParams p;
         p.mix = safeGet(kMix) * 0.01f;
         p.timeMs = safeGet(kTime);
-        p.feedback = safeGet(kFeedback) * 0.01f;
+        p.feedback = safeGet(kFeedback) * 0.01f * (safeGet(kInvert) >= 0.5f ? -1.0f : 1.0f);
+        p.outputGain = std::pow(10.0f, safeGet(kOutput) / 20.0f);
         p.modSpeedHz = safeGet(kModSpeed);
         p.modDepth = safeGet(kModDepth) * 0.01f;
         p.tone = safeGet(kTone) * 0.01f;
@@ -133,12 +145,16 @@ public:
                 if (std::fabs(v) < 0.5f) std::snprintf(buf, sizeof buf, "0%%");
                 else std::snprintf(buf, sizeof buf, "%+.0f%%", (double)v);
                 break;
+            case kOutput:
+                std::snprintf(buf, sizeof buf, "%.1f dB", (double)v);
+                break;
             case kModSpeed:
                 if (v < 1.0f) std::snprintf(buf, sizeof buf, "%.2f Hz", (double)v);
                 else std::snprintf(buf, sizeof buf, "%.1f Hz", (double)v);
                 break;
             case kHold:
             case kStereoize:
+            case kInvert:
                 return false;   // "On" / "Off"
             default:
                 std::snprintf(buf, sizeof buf, "%.0f%%", (double)v);

@@ -1,5 +1,5 @@
 {
-  "title": "EARLY DELAY",
+  "title": "80s LOFI DELAY BOX",
   "recommendedStyle": "A",
   "controls": [
     {
@@ -24,6 +24,15 @@
       "bipolar": true
     },
     {
+      "key": "invert",
+      "label": "INVERT",
+      "aliases": [
+        "Invert"
+      ],
+      "switch": true,
+      "caption": "FLIP FEEDBACK SIGN"
+    },
+    {
       "key": "mix",
       "label": "MIX",
       "aliases": [
@@ -34,6 +43,16 @@
         "Dry/Wet"
       ],
       "caption": "WET / DRY"
+    },
+    {
+      "key": "tone",
+      "label": "TONE",
+      "aliases": [
+        "Tone",
+        "Tone Cutoff",
+        "Filter"
+      ],
+      "caption": "REPEAT COLOUR"
     },
     {
       "key": "drive",
@@ -47,26 +66,6 @@
       "caption": "INPUT SATURATION"
     },
     {
-      "key": "tone",
-      "label": "TONE",
-      "aliases": [
-        "Tone",
-        "Tone Cutoff",
-        "Filter"
-      ],
-      "caption": "REPEAT COLOUR"
-    },
-    {
-      "key": "grit",
-      "label": "GRIT",
-      "aliases": [
-        "Grit",
-        "Character",
-        "Dirt"
-      ],
-      "caption": "DIGITAL TEXTURE"
-    },
-    {
       "key": "age",
       "label": "BANDWIDTH",
       "aliases": [
@@ -78,14 +77,14 @@
       "caption": "CLOCK CHARACTER"
     },
     {
-      "key": "width",
-      "label": "WIDTH",
+      "key": "grit",
+      "label": "GRIT",
       "aliases": [
-        "Width",
-        "Stereo Width"
+        "Grit",
+        "Character",
+        "Dirt"
       ],
-      "caption": "WET PAN SEPARATION",
-      "fallbackOnly": true
+      "caption": "DIGITAL TEXTURE"
     },
     {
       "key": "mod_speed",

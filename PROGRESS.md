@@ -1,34 +1,22 @@
-# Next candidate repair — durable checkpoint
+# v0.5 hardware-feedback update — durable progress
 
-Branch: repair/stereo-pingpong-next-20261114, private GitHub origin.
-Verified implementation/package commit: 7d4125f (this subsequent update only records that durable checkpoint).
-Starting HEAD b0310e6. d7deded preserved ALL inherited dirty/untracked work.
-f624c7c implemented initial repair and was pushed successfully.
+Branch: v0.5-hardware-feedback, forked from c2a90e0. Private origin via github-mpc-delay only.
+Single code/skin owner. No hardware deployment or external messaging permitted.
 
-Implemented:
-- Ordinary stereo OFF; ON mono wet injection L with signed cross-feedback, shared timing, Ping Width output panning.
-- Constant-cost immutable HOLD ring resampling; frozen banks alternate in ping-pong.
-- Deterministic reset/control/clock; nonfinite wrapper/audio/engine containment; recursive recovery; control-rate pow.
-- Version 0.1.1, unchanged 12 IDs/indices and 11 presets.
-- Approved design 97f239c integrated (distressed charcoal/amber), updated PING-PONG caption, Ping Width MORE knob,
-  all 12 program Q-Link slots; font OFL included. Preview visually inspected; static verification passed.
-- Updated README/brief/architecture/player notes; marked old measurements historical.
+Milestone 1: implementation sources complete; native build + real parameter dump PASS.
+- Product 80s Lofi Delay Box / Flat Peach, version 0.5.0, UID FpEd unchanged.
+- Existing indices 0..11, IDs and signed Feedback normalization preserved. Appended Invert (12)
+  flips signed feedback; Output (13) -24..0 dB post-mix trim, smoothed outside the loop.
+- 17 presets (seven comb-focused), new comb presets have -12/-15 dB output trim.
+- Page 1: Time / Feedback / Invert / Mix; Tone / Drive / Bandwidth / Grit;
+  Mod Speed / Mod Depth / Hold / Stereoize. MORE: Ping Width and Output.
+- SDK ui-reference §§4.2/6.4/6.18: whole-slot Mouse Down -> Toggle Switch; passive Indicator
+  avoids overlaid labels stealing an inner Button tap and avoids double toggles. Enter toggles too.
+  Removed explicit yellow Focus widgets. All state cues are key brightness/lamp/On-Off text.
+- Original seeded brushed-metal patina renderer with oxidation, scratches, edge wear, dust;
+  no private reference photographs read/copied/uploaded. Title and v0.5 on strip.
 
-Verified: original offline selftest PASS; all 7 native host simulator sizes PASS (20 checks each, zero warnings).
-Old-fault probes: reset deltas exactly zero; NaN/Inf audio finite and recovered; all 12 NaN controls finite;
-HOLD 100→50ms ~2007Hz and 300→150ms ~2002Hz; 2.56M automation frames finite; callback allocations zero.
-New assertions: impulses alternate L/R at T/2T/3T/4T with ±feedback, mono/left/right input; ordinary stereo no
-cross-leakage above noise; dry stereo bit-exact; Width mono sum unchanged; extreme HOLD pitchup/release finite.
-Demos: demos/next-20261114/*.wav. Logs: reports/next-20261114/logs/.
-
-COMPLETE implementation/build/package checks as of final verification commit (see git log):
-- native/ARM32/ARM64 PASS with final custom skin; all7 hostsim sizes 20pass/0warn/0fail.
-- python3 tools/next_check.py --sanitize PASS, including all12 NaN/±Inf controls and signed burst polarity.
-- UI screen/program full12 mapping verifier PASS.
-- ZIP plugin/dist/early-delay-0.1.1-mpc.zip produced, integrity/content checked.
-- reports/next-20261114/artifacts.json contains exact binary/ZIP/demo paths and SHA256.
-- reports/next-20261114/REPAIR.md is the detailed repair handoff.
-
-Next step: parent independent QA; fix concrete findings if any, otherwise report this as a next development
-candidate, NOT hardware-ready. No device deployment, public release, or external messages. Original review untouched.
-Reproduction: python3 tools/build.py ; python3 tools/next_check.py --sanitize ; python3 tools/offline.py selftest.
+IN PROGRESS: generated skin, preview inspection, v0.5 regression/peak demos, full native/ARM/validator/
+all-block hostsim/sanitizer gates, reproducibility, package + checksums + private rclone delivery.
+Important: tools/build.py now selects manifest's exact native library, not a stale pre-rename .so.
+Read reports/next-20261114/REPAIR.md for baseline evidence; current checks go under reports/v0.5/.
