@@ -1,17 +1,20 @@
-# Early Delay — Flat Peach
+# 80s Lofi Delay Box — Flat Peach
 
 Original proprietary stereo early-digital delay, built on the MIT MPC Plugin SDK.
-**0.1.1 next development candidate — not hardware-ready or publicly released.**
+**v0.5 / 0.5.0 — private hardware-feedback candidate.** Stable internal UID `FpEd`.
 
-Stereo in/stereo out. Stereoize OFF is ordinary stereo delay; ON uses real cross-feedback ping-pong repeats.
-The original companded, variable-clock, roughly 12-bit character remains. HOLD now supports pitch-up above
-one cell per host frame through bounded immutable-buffer resampling.
+Variable-clock companded memory, signed feedback/INVERT, repitchable HOLD, genuine ping-pong,
+17 factory presets including seven resonating combs, and original aged-metal charcoal/amber skin.
 
-- Player controls/install/limitations: [plugin/README.md](plugin/README.md)
-- Current repair findings and reproducible evidence: [reports/next-20261114/REPAIR.md](reports/next-20261114/REPAIR.md)
+- Player controls and install: [plugin/README.md](plugin/README.md)
+- Changes: [CHANGES-v0.5.md](CHANGES-v0.5.md)
+- Verification and handoff: [reports/v0.5/REPORT.md](reports/v0.5/REPORT.md)
+- UI implementation/evidence: [docs/DESIGN.md](docs/DESIGN.md)
 - Interrupted-work recovery: [PROGRESS.md](PROGRESS.md)
-- Build: `python3 tools/build.py` (native, ARM32, ARM64 and all seven simulator block sizes)
-- Focused regression: `python3 tools/next_check.py`
+- Build: `python3 tools/build.py` (native/ARM32/ARM64, validator, seven host-sim block sizes)
+- Regressions/demos: `python3 tools/next_check.py --sanitize`
+- Baseline tests: `python3 tools/offline.py selftest`
 
-Private repository. No device deployment or public release performed. Hardware use requires MPC OS 3.10.1+
-and enabled External Plugin Support; actual ARM CPU/touchscreen/project persistence remain unverified.
+Prior version ran on the MPC Live III. v0.5 is checked offline; no deployment, restart,
+public publication or external messaging was performed. Physical tap/Q-Link behavior remains
+unverified. Historical reports in `reports/next-20261114` describe the prior candidate.

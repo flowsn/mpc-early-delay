@@ -1,0 +1,28 @@
+OK     TUI.json: all parameter handles are within 0..13
+OK     TUI.json: image hold_off.png present
+OK     TUI.json: image hold_on.png present
+OK     TUI.json: image invert_off.png present
+OK     TUI.json: image invert_on.png present
+OK     TUI.json: image knob_112_bi.png present
+OK     TUI.json: image knob_112_uni.png present
+OK     TUI.json: image knob_88_uni.png present
+OK     TUI.json: image logo_plate.png present
+OK     TUI.json: image name_age.png present
+OK     TUI.json: image name_drive.png present
+OK     TUI.json: image name_feedback.png present
+OK     TUI.json: image name_grit.png present
+OK     TUI.json: image name_hold.png present
+OK     TUI.json: image name_invert.png present
+OK     TUI.json: image name_mix.png present
+OK     TUI.json: image name_mod_depth.png present
+OK     TUI.json: image name_mod_speed.png present
+OK     TUI.json: image name_stereoize.png present
+OK     TUI.json: image name_time.png present
+OK     TUI.json: image name_tone.png present
+OK     TUI.json: image panel.png present
+OK     TUI.json: image stereoize_off.png present
+OK     TUI.json: image stereoize_on.png present
+OK     TUI.json: image value_plate.png present
+OK     TUI.json: 2 tabs
+OK     Q-Links.json: 2 tab maps, all values in range
+PASS: 14 named controls and Q-Links; 24 images; bounds, bindings, overlays resolved

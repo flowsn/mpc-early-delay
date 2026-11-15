@@ -1,0 +1,4 @@
+Packaged 35 files into:
+  /home/flow/projects/mpc-plugins/early-delay/plugin/dist/80s-lofi-delay-box-0.5.0-mpc.zip
+Share that zip. Users unzip it and copy the "Flat Peach - VST - 80s Lofi Delay Box" folder into "VST2 Plugins" on their MPC drive
+(full instructions are in INSTALL.txt inside the zip).

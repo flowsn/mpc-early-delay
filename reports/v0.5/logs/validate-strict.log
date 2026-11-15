@@ -1,0 +1,47 @@
+Validating /home/flow/projects/mpc-plugins/early-delay/plugin/build/Flat Peach - VST - 80s Lofi Delay Box
+OK     plugin.json: 80s Lofi Delay Box by Flat Peach (effect, uid FpEd)
+OK     folder name "Flat Peach - VST - 80s Lofi Delay Box"
+OK     file32: early-delay-arm32.so is a 32-bit ARM shared object
+OK     file32: needed libraries: libm.so.6, libc.so.6, ld-linux-armhf.so.3, libdl.so.2
+OK     file32: max GLIBC requirement 2.27
+OK     file32: exports VSTPluginMain
+OK     file64: early-delay-arm64.so is a 64-bit AArch64 shared object
+OK     file64: needed libraries: libm.so.6, libc.so.6, libpthread.so.0, libdl.so.2
+OK     file64: max GLIBC requirement 2.27
+OK     file64: exports VSTPluginMain
+OK     uid matches the binary (FpEd)
+OK     name matches the binary (80s Lofi Delay Box)
+OK     manufacturer matches the binary (Flat Peach)
+OK     kind matches the binary (effect)
+OK     numInputs matches the binary (2)
+OK     numOutputs matches the binary (2)
+OK     TUI.json: all parameter handles are within 0..13
+OK     TUI.json: image hold_off.png present
+OK     TUI.json: image hold_on.png present
+OK     TUI.json: image invert_off.png present
+OK     TUI.json: image invert_on.png present
+OK     TUI.json: image knob_112_bi.png present
+OK     TUI.json: image knob_112_uni.png present
+OK     TUI.json: image knob_88_uni.png present
+OK     TUI.json: image logo_plate.png present
+OK     TUI.json: image name_age.png present
+OK     TUI.json: image name_drive.png present
+OK     TUI.json: image name_feedback.png present
+OK     TUI.json: image name_grit.png present
+OK     TUI.json: image name_hold.png present
+OK     TUI.json: image name_invert.png present
+OK     TUI.json: image name_mix.png present
+OK     TUI.json: image name_mod_depth.png present
+OK     TUI.json: image name_mod_speed.png present
+OK     TUI.json: image name_stereoize.png present
+OK     TUI.json: image name_time.png present
+OK     TUI.json: image name_tone.png present
+OK     TUI.json: image panel.png present
+OK     TUI.json: image stereoize_off.png present
+OK     TUI.json: image stereoize_on.png present
+OK     TUI.json: image value_plate.png present
+OK     TUI.json: 2 tabs
+OK     Q-Links.json: 2 tab maps, all values in range
+OK     version.xml uiversion 0.1.0.0
+OK     Content/: 2 files, 0.0 MB (loaded by the plugin at run time, see framework/mpc_resources.h)
+0 errors, 0 warnings

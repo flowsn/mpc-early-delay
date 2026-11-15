@@ -1,0 +1,195 @@
+{
+  "name": "80s Lofi Delay Box",
+  "vendor": "Flat Peach",
+  "uid": "FpEd",
+  "uidInt": 1181762916,
+  "version": 500,
+  "isInstrument": false,
+  "numInputs": 2,
+  "numOutputs": 2,
+  "numPrograms": 17,
+  "programs": [
+    "Classic Echo",
+    "Slap",
+    "Tape-ish Short",
+    "Dirty Echo",
+    "Dub Throw",
+    "Inverted Flange",
+    "Long Hold Drone",
+    "Wide Chorus Delay",
+    "Broken Clock",
+    "Doubler",
+    "Metal Comb",
+    "Inverted Comb",
+    "Bell Comb",
+    "Robot Voice",
+    "Ringing Pipe",
+    "Flange Comb",
+    "Hold Drone Comb"
+  ],
+  "params": [
+    {
+      "index": 0,
+      "id": null,
+      "name": "Mix",
+      "label": "%",
+      "display": "35%",
+      "default": 0.35,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 1,
+      "id": null,
+      "name": "Time",
+      "label": "ms",
+      "display": "300 ms",
+      "default": 0.824019,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 2,
+      "id": null,
+      "name": "Feedback",
+      "label": "%",
+      "display": "+35%",
+      "default": 0.675,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 3,
+      "id": null,
+      "name": "Mod Speed",
+      "label": "Hz",
+      "display": "0.60 Hz",
+      "default": 0.468999,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 4,
+      "id": null,
+      "name": "Mod Depth",
+      "label": "%",
+      "display": "15%",
+      "default": 0.15,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 5,
+      "id": null,
+      "name": "Tone",
+      "label": "%",
+      "display": "60%",
+      "default": 0.6,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 6,
+      "id": null,
+      "name": "Grit",
+      "label": "%",
+      "display": "35%",
+      "default": 0.35,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 7,
+      "id": null,
+      "name": "Bandwidth",
+      "label": "%",
+      "display": "60%",
+      "default": 0.6,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 8,
+      "id": null,
+      "name": "Drive",
+      "label": "%",
+      "display": "20%",
+      "default": 0.2,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 9,
+      "id": null,
+      "name": "Hold",
+      "label": "",
+      "display": "Off",
+      "default": 0.0,
+      "automatable": true,
+      "kind": "bool",
+      "choices": [
+        "Off",
+        "On"
+      ]
+    },
+    {
+      "index": 10,
+      "id": null,
+      "name": "Stereoize",
+      "label": "",
+      "display": "Off",
+      "default": 0.0,
+      "automatable": true,
+      "kind": "bool",
+      "choices": [
+        "Off",
+        "On"
+      ]
+    },
+    {
+      "index": 11,
+      "id": null,
+      "name": "Ping Width",
+      "label": "%",
+      "display": "70%",
+      "default": 0.7,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    },
+    {
+      "index": 12,
+      "id": null,
+      "name": "Invert",
+      "label": "",
+      "display": "Off",
+      "default": 0.0,
+      "automatable": true,
+      "kind": "bool",
+      "choices": [
+        "Off",
+        "On"
+      ]
+    },
+    {
+      "index": 13,
+      "id": null,
+      "name": "Output",
+      "label": "dB",
+      "display": "-9.0 dB",
+      "default": 0.625,
+      "automatable": true,
+      "kind": "float",
+      "choices": []
+    }
+  ]
+}

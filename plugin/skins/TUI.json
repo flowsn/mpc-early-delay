@@ -571,7 +571,7 @@
                                         },
                                         "type": "Text",
                                         "handleName": "Invalid",
-                                        "text": "NEGATIVE = INVERTED"
+                                        "text": "BASE LOOP SIGN"
                                     }
                                 },
                                 "handle remapping": {

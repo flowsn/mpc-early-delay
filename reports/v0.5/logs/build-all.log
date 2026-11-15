@@ -1,0 +1,148 @@
+$ /usr/bin/python3 /home/flow/projects/mpc-plugins/early-delay/sdk/tools/build.py /home/flow/projects/mpc-plugins/early-delay/plugin --target all
+Building 80s Lofi Delay Box by Flat Peach  (/home/flow/projects/mpc-plugins/early-delay/plugin)
+  toolchain: zig   target: all   release
+Using zig 0.17.1 (from $ZIG)
+
+[1/7] Native build (for host_sim and testing on this computer)
+  [native] compiling 1 source file -> build/native/80s-lofi-delay-box.so
+  [native] ok (2.6 MB, 2.7s)
+
+[2/7] Parameter dump (host_sim) -> build/params.json
+  host_sim dump -> build/params.json
+
+[3/7] arm32 build (MPC Live/X/One (32-bit))
+  [arm32] compiling 1 source file -> build/Flat Peach - VST - 80s Lofi Delay Box/VST/early-delay-arm32.so
+  [arm32] ok (209 KB, 2.2s)
+
+[4/7] arm64 build (MPC Live II/One+/Key 61/X SE/3 (64-bit))
+  [arm64] compiling 1 source file -> build/Flat Peach - VST - 80s Lofi Delay Box/VST/early-delay-arm64.so
+  [arm64] ok (254 KB, 2.4s)
+
+[5/7] Assemble output folder: build/Flat Peach - VST - 80s Lofi Delay Box/
+  copied plugin.json
+  copying hand-written skins/ -> Plugin Skins/ (gen_ui.py not run)
+  copied 2 files from Content/ into Content/
+
+[6/7] version.xml
+  version 0.5.0.0, uiversion 0.1.0.0
+
+[7/7] Validate
+Validating /home/flow/projects/mpc-plugins/early-delay/plugin/build/Flat Peach - VST - 80s Lofi Delay Box
+OK     plugin.json: 80s Lofi Delay Box by Flat Peach (effect, uid FpEd)
+OK     folder name "Flat Peach - VST - 80s Lofi Delay Box"
+OK     file32: early-delay-arm32.so is a 32-bit ARM shared object
+OK     file32: needed libraries: libm.so.6, libc.so.6, ld-linux-armhf.so.3, libdl.so.2
+OK     file32: max GLIBC requirement 2.27
+OK     file32: exports VSTPluginMain
+OK     file64: early-delay-arm64.so is a 64-bit AArch64 shared object
+OK     file64: needed libraries: libm.so.6, libc.so.6, libpthread.so.0, libdl.so.2
+OK     file64: max GLIBC requirement 2.27
+OK     file64: exports VSTPluginMain
+OK     uid matches the binary (FpEd)
+OK     name matches the binary (80s Lofi Delay Box)
+OK     manufacturer matches the binary (Flat Peach)
+OK     kind matches the binary (effect)
+OK     numInputs matches the binary (2)
+OK     numOutputs matches the binary (2)
+OK     TUI.json: all parameter handles are within 0..13
+OK     TUI.json: image hold_off.png present
+OK     TUI.json: image hold_on.png present
+OK     TUI.json: image invert_off.png present
+OK     TUI.json: image invert_on.png present
+OK     TUI.json: image knob_112_bi.png present
+OK     TUI.json: image knob_112_uni.png present
+OK     TUI.json: image knob_88_uni.png present
+OK     TUI.json: image logo_plate.png present
+OK     TUI.json: image name_age.png present
+OK     TUI.json: image name_drive.png present
+OK     TUI.json: image name_feedback.png present
+OK     TUI.json: image name_grit.png present
+OK     TUI.json: image name_hold.png present
+OK     TUI.json: image name_invert.png present
+OK     TUI.json: image name_mix.png present
+OK     TUI.json: image name_mod_depth.png present
+OK     TUI.json: image name_mod_speed.png present
+OK     TUI.json: image name_stereoize.png present
+OK     TUI.json: image name_time.png present
+OK     TUI.json: image name_tone.png present
+OK     TUI.json: image panel.png present
+OK     TUI.json: image stereoize_off.png present
+OK     TUI.json: image stereoize_on.png present
+OK     TUI.json: image value_plate.png present
+OK     TUI.json: 2 tabs
+OK     Q-Links.json: 2 tab maps, all values in range
+OK     version.xml uiversion 0.1.0.0
+OK     Content/: 2 files, 0.0 MB (loaded by the plugin at run time, see framework/mpc_resources.h)
+0 errors, 0 warnings
+
+========================================================================
+Build finished: Flat Peach - VST - 80s Lofi Delay Box
+  Output folder: /home/flow/projects/mpc-plugins/early-delay/plugin/build/Flat Peach - VST - 80s Lofi Delay Box
+    plugin.json                              636 B
+    version.xml                              152 B
+    Content/LICENSES.txt                     2 KB
+    Content/TitilliumWeb-OFL.txt             4 KB
+    Plugin Skins/Q-Links.json                2 KB
+    Plugin Skins/TUI.json                    180 KB
+    Plugin Skins/hold_off.png                889 B
+    Plugin Skins/hold_on.png                 905 B
+    Plugin Skins/invert_off.png              906 B
+    Plugin Skins/invert_on.png               914 B
+    Plugin Skins/knob_112_bi.png             46 KB
+    Plugin Skins/knob_112_uni.png            46 KB
+    Plugin Skins/knob_88_uni.png             33 KB
+    Plugin Skins/logo_plate.png              7 KB
+    Plugin Skins/name_age.png                3 KB
+    Plugin Skins/name_drive.png              1 KB
+    Plugin Skins/name_feedback.png           2 KB
+    Plugin Skins/name_grit.png               1 KB
+    Plugin Skins/name_hold.png               1 KB
+    Plugin Skins/name_invert.png             2 KB
+    Plugin Skins/name_mix.png                1 KB
+    Plugin Skins/name_mod_depth.png          2 KB
+    Plugin Skins/name_mod_speed.png          2 KB
+    Plugin Skins/name_stereoize.png          2 KB
+    Plugin Skins/name_time.png               1 KB
+    Plugin Skins/name_tone.png               1 KB
+    Plugin Skins/panel.png                   108 KB
+    Plugin Skins/skin-map.json               2 KB
+    Plugin Skins/stereoize_off.png           903 B
+    Plugin Skins/stereoize_on.png            911 B
+    Plugin Skins/value_plate.png             187 B
+    VST/early-delay-arm32.so                 209 KB
+    VST/early-delay-arm64.so                 254 KB
+  Native test build: /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so
+
+Next:
+  * Make a zip for sharing:   python tools/package.py plugin
+  * Or copy the output folder into a folder named "VST2 Plugins" on your MPC's drive (see INSTALL.txt in the zip).
+params.json -> build/params.json
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 32
+== Teardown ==
+PASS  effStopProcess, effMainsChanged(0), effClose
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 64
+== Teardown ==
+PASS  effStopProcess, effMainsChanged(0), effClose
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 96
+== Teardown ==
+PASS  effStopProcess, effMainsChanged(0), effClose
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 128 --wav /home/flow/projects/mpc-plugins/early-delay/build/host-sim.wav
+PASS  effStopProcess, effMainsChanged(0), effClose
+INFO  wrote /home/flow/projects/mpc-plugins/early-delay/build/host-sim.wav (3.00 s, 16-bit stereo, main pass only)
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 192
+== Teardown ==
+PASS  effStopProcess, effMainsChanged(0), effClose
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 256
+== Teardown ==
+PASS  effStopProcess, effMainsChanged(0), effClose
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+$ /home/flow/projects/mpc-plugins/early-delay/sdk/.sdk-tools/host_sim /home/flow/projects/mpc-plugins/early-delay/plugin/build/native/80s-lofi-delay-box.so test --seconds 3 --block 512
+== Teardown ==
+PASS  effStopProcess, effMainsChanged(0), effClose
+Result: PASS  (20 passed, 0 warnings, 0 failures)
+host_sim: PASS

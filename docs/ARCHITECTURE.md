@@ -1,4 +1,4 @@
-# Architecture — next stereo ping-pong candidate
+# Architecture — 80s Lofi Delay Box v0.5
 
 ## Signal and memory
 
@@ -45,7 +45,11 @@ nonlinear time-varying feedback. Host's raw parameter storage is not modified by
 
 ## Identity and UI
 
-UID FpEd, manufacturer Flat Peach, name Early Delay. Twelve permanent parameter IDs and indices, eleven original
-program value arrays. Width keeps ID width/index 11 and is labelled Ping Width. Approved design 97f239c is
-integrated as deterministic distressed charcoal/amber skin; all controls, including the MORE-page width knob,
-are reachable. Program Q-Links enumerate all 12 controls. Static inspection is not device interaction testing.
+UID FpEd, manufacturer Flat Peach, name 80s Lofi Delay Box, version 0.5.0 (integer 500).
+Indices/IDs 0..11 remain unchanged, including signed Feedback -100..+100% and Width (Ping Width).
+Append-only Invert (12) multiplies signed Feedback by -1; Output (13) is -24..0 dB, converted once
+per block then smoothed with the existing 25 ms glide. The post-mix multiplication lies outside
+feedback/HOLD memory, so trim does not change resonance. Default gain 1 preserves engine tests
+and legacy fresh-instance loads. Seventeen presets; first ten add -9 dB trim, seven combs -12/-15 dB.
+No audio-thread allocation added. Program Q-Links expose all14 parameters. See DESIGN.md for
+whole-slot Toggle Switch actions, passive Indicators, focus removal, materials and page maps.

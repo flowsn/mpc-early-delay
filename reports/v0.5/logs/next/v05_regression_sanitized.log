@@ -1,0 +1,77 @@
+PASS fixed 14 parameters / 17 programs
+PASS mix
+PASS time
+PASS feedback
+PASS modspeed
+PASS moddepth
+PASS tone
+PASS grit
+PASS bandwidth
+PASS drive
+PASS hold
+PASS stereoize
+PASS width
+PASS invert
+PASS output
+PASS 12-ID legacy state loads into fresh v0.5 instance
+PASS legacy signed values exact; appended controls default neutral
+PASS Invert exactly reverses signed feedback; double negative is positive
+PASS Invert exactly reverses signed feedback; double negative is positive
+PASS Invert exactly reverses signed feedback; double negative is positive
+PASS Output is an exact post-mix trim, outside the feedback loop
+PRESET 00 Classic Echo        output_db= -9.0 feedback=+35.0 invert=0 peak=0.6563642 peak_dbfs=-3.657 late_rms_dbfs=-100.99
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 01 Slap                output_db= -9.0 feedback=+10.0 invert=0 peak=0.5975221 peak_dbfs=-4.473 late_rms_dbfs=-100.99
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 02 Tape-ish Short      output_db= -9.0 feedback=+30.0 invert=0 peak=0.6522297 peak_dbfs=-3.712 late_rms_dbfs=-100.71
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 03 Dirty Echo          output_db= -9.0 feedback=+55.0 invert=0 peak=0.6325702 peak_dbfs=-3.978 late_rms_dbfs=-94.85
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 04 Dub Throw           output_db= -9.0 feedback=+82.0 invert=0 peak=0.6762565 peak_dbfs=-3.398 late_rms_dbfs=-94.63
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 05 Inverted Flange     output_db= -9.0 feedback=-85.0 invert=0 peak=0.7870249 peak_dbfs=-2.080 late_rms_dbfs=-99.75
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 06 Long Hold Drone     output_db= -9.0 feedback=+90.0 invert=0 peak=0.5999922 peak_dbfs=-4.437 late_rms_dbfs=-59.36
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 07 Wide Chorus Delay   output_db= -9.0 feedback=+15.0 invert=0 peak=0.6187535 peak_dbfs=-4.170 late_rms_dbfs=-99.70
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 08 Broken Clock        output_db= -9.0 feedback=+60.0 invert=0 peak=0.6085584 peak_dbfs=-4.314 late_rms_dbfs=-91.21
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 09 Doubler             output_db= -9.0 feedback=+0.0 invert=0 peak=0.6352648 peak_dbfs=-3.941 late_rms_dbfs=-101.79
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 10 Metal Comb          output_db=-12.0 feedback=+94.0 invert=0 peak=0.5822083 peak_dbfs=-4.698 late_rms_dbfs=-102.13
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 11 Inverted Comb       output_db=-12.0 feedback=+94.0 invert=1 peak=0.5540575 peak_dbfs=-5.129 late_rms_dbfs=-103.38
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 12 Bell Comb           output_db=-15.0 feedback=+97.0 invert=0 peak=0.3790364 peak_dbfs=-8.426 late_rms_dbfs=-107.32
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 13 Robot Voice         output_db=-12.0 feedback=+92.0 invert=1 peak=0.5607599 peak_dbfs=-5.024 late_rms_dbfs=-100.06
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 14 Ringing Pipe        output_db=-15.0 feedback=+96.0 invert=0 peak=0.3735663 peak_dbfs=-8.553 late_rms_dbfs=-105.74
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 15 Flange Comb         output_db=-12.0 feedback=+92.0 invert=1 peak=0.5762377 peak_dbfs=-4.788 late_rms_dbfs=-101.76
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+PRESET 16 Hold Drone Comb     output_db=-15.0 feedback=+97.0 invert=0 peak=0.3203646 peak_dbfs=-9.887 late_rms_dbfs=-104.37
+PASS factory preset finite, no full-scale clipping under stress
+PASS factory preset decays below -50 dBFS after 20s
+HOLD_COMB peak_dbfs=-18.111 early_rms_dbfs=-26.424 late_rms_dbfs=-26.425
+PASS 30s Hold Drone Comb finite and sustained
+PASS Output remains active while HOLD is frozen
+PASS zero C++ allocations in actual plugin audio callbacks
+V05_REGRESSION failures=0 callback_allocations=0

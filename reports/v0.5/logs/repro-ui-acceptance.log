@@ -1,0 +1,4 @@
+PASS byte-identical skin (27 files, 461176 bytes / 450.37 KiB) and both page previews
+PASS whole-slot one-handler tap/Enter toggles, passive state children, no Focus widgets
+PASS Feedback/Invert adjacency; Tone/Drive/Bandwidth order; product identity, 14 parameters/17 presets
+LIMIT: static SDK validation is not physical-device gesture execution

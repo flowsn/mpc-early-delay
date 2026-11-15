@@ -30,3 +30,16 @@ at near-full-scale input. Fixed by appending -9 dB Output to first ten presets (
 unchanged); comb presets -12/-15 dB. Revised test/demos and reproducibility in progress.
 No feedback loop code or legacy Feedback normalization changed. New docs/DESIGN.md records
 actual SDK touch evidence and the exact focus-highlight cause; hardware tap remains unverified.
+
+Milestone 3 COMPLETE verification/package (2026-11-15 UTC): final builds/native+ARM32+ARM64,
+strict validator 0 errors/0 warnings, all7 hostsim sizes20pass/0warn/0fail; baseline offlinePASS;
+next_check --sanitize PASS including v05 wrapper tests (all17 presets, invert, trim, legacy state,
+30s HOLD, zero callback allocations). Worst factory stress sample peak -2.080 dBFS; combs<=-4.698.
+All27 skin files (461176 bytes /450.37KiB) and both previews byte-reproducible; all14 mappingsPASS;
+no Focus widget; actual tap behavior hardware-only. Three previews visually inspected.
+Exact package: plugin/dist/80s-lofi-delay-box-0.5-mpc.zip
+SHA256 aefa2078262bb1d639ee365d7cc43f10ad93e0ad2ac8262df136ea8202363977
+Five8-second stereo44.1kHz/16-bit demos in demos/v0.5; CRC/metadata/skin/WAVs verified.
+Full report reports/v0.5/REPORT.md; short CHANGES-v0.5.md; hashes/artifacts.json in reports/v0.5.
+REMAINING: private rclone upload/check to klawsapp:MPC-plugins/early-delay/v0.5/ and delivery checkpoint.
+No device work, messages, public publishing or share links.

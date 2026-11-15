@@ -1,0 +1,10 @@
+RESET history=44103 max_delta=0
+RESET history=44160 max_delta=0
+SAMPLE_RATE sr=44100 delay_ms=99.9093 nonfinite=0
+SAMPLE_RATE sr=48000 delay_ms=99.9375 nonfinite=0
+SAMPLE_RATE sr=96000 delay_ms=100.0312 nonfinite=0
+HOLD_SUSTAIN second=2 RMS_dB=-3.4212
+HOLD_SUSTAIN second=10 RMS_dB=-3.4189
+HOLD_SUSTAIN second=30 RMS_dB=-3.4191
+HOLD_SUSTAIN second=60 RMS_dB=-3.4185
+HOLD_RELEASE early_RMS_dB=-12.103 final_RMS_dB=-42.562

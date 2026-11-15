@@ -1,0 +1,32 @@
+PARAMS 14 PROGRAMS 17
+PROGRAM 0 Classic Echo roundtrip=1 chunk_bytes=225
+PROGRAM 1 Slap roundtrip=1 chunk_bytes=225
+PROGRAM 2 Tape-ish Short roundtrip=1 chunk_bytes=225
+PROGRAM 3 Dirty Echo roundtrip=1 chunk_bytes=225
+PROGRAM 4 Dub Throw roundtrip=1 chunk_bytes=225
+PROGRAM 5 Inverted Flange roundtrip=1 chunk_bytes=225
+PROGRAM 6 Long Hold Drone roundtrip=1 chunk_bytes=225
+PROGRAM 7 Wide Chorus Delay roundtrip=1 chunk_bytes=225
+PROGRAM 8 Broken Clock roundtrip=1 chunk_bytes=225
+PROGRAM 9 Doubler roundtrip=1 chunk_bytes=225
+PROGRAM 10 Metal Comb roundtrip=1 chunk_bytes=225
+PROGRAM 11 Inverted Comb roundtrip=1 chunk_bytes=225
+PROGRAM 12 Bell Comb roundtrip=1 chunk_bytes=225
+PROGRAM 13 Robot Voice roundtrip=1 chunk_bytes=225
+PROGRAM 14 Ringing Pipe roundtrip=1 chunk_bytes=225
+PROGRAM 15 Flange Comb roundtrip=1 chunk_bytes=225
+PROGRAM 16 Hold Drone Comb roundtrip=1 chunk_bytes=225
+PARAM 0 id=mix name=Mix
+PARAM 1 id=time name=Time
+PARAM 2 id=feedback name=Feedback
+PARAM 3 id=modspeed name=Mod Speed
+PARAM 4 id=moddepth name=Mod Depth
+PARAM 5 id=tone name=Tone
+PARAM 6 id=grit name=Grit
+PARAM 7 id=bandwidth name=Bandwidth
+PARAM 8 id=drive name=Drive
+PARAM 9 id=hold name=Hold
+PARAM 10 id=stereoize name=Stereoize
+PARAM 11 id=width name=Ping Width
+PARAM 12 id=invert name=Invert
+PARAM 13 id=output name=Output
