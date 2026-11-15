@@ -1,6 +1,6 @@
 {
   "style": "A",
-  "title": "EARLY DELAY",
+  "title": "80s LOFI DELAY BOX",
   "wear": 0.55,
   "seed": 1471,
   "parameters": [
@@ -19,16 +19,16 @@
       "qlink": 14
     },
     {
-      "control": "mix",
-      "parameter": "Mix",
-      "index": 0,
+      "control": "invert",
+      "parameter": "Invert",
+      "index": 12,
       "page": "DELAY",
       "qlink": 15
     },
     {
-      "control": "drive",
-      "parameter": "Drive",
-      "index": 8,
+      "control": "mix",
+      "parameter": "Mix",
+      "index": 0,
       "page": "DELAY",
       "qlink": 16
     },
@@ -40,9 +40,9 @@
       "qlink": 9
     },
     {
-      "control": "grit",
-      "parameter": "Grit",
-      "index": 6,
+      "control": "drive",
+      "parameter": "Drive",
+      "index": 8,
       "page": "DELAY",
       "qlink": 10
     },
@@ -52,6 +52,13 @@
       "index": 7,
       "page": "DELAY",
       "qlink": 11
+    },
+    {
+      "control": "grit",
+      "parameter": "Grit",
+      "index": 6,
+      "page": "DELAY",
+      "qlink": 12
     },
     {
       "control": "mod_speed",
@@ -87,12 +94,18 @@
       "index": 11,
       "page": "MORE",
       "qlink": 13
+    },
+    {
+      "control": "fallback",
+      "parameter": "Output",
+      "index": 13,
+      "page": "MORE",
+      "qlink": 14
     }
   ],
-  "missing": [
-    "width"
-  ],
+  "missing": [],
   "fallback": [
-    "Ping Width"
+    "Ping Width",
+    "Output"
   ]
 }

@@ -1,4 +1,4 @@
-// EarlyDelay.cpp - Early Delay by Flat Peach: a gritty early-digital variable-clock delay.
+// EarlyDelay.cpp - 80s Lofi Delay Box by Flat Peach: a gritty early-digital variable-clock delay.
 //
 // Copyright (c) 2026 Flat Peach. All rights reserved.
 // Built on the inMusic MPC Plugin SDK framework (MIT, see docs/LICENSES.md).
@@ -23,9 +23,9 @@
 //  8  drive      Drive       0..100 %              input op-amp drive 0..+24 dB
 //  9  hold       Hold        Off/On                infinite repeat (frozen memory loop)
 // 10  stereoize  Stereoize   Off/On                alternating L/R cross-feedback repeats
+// 11  width      Ping Width  0..100 %              wet ping-pong pan separation
 // 12  invert     Invert      Off/On                reverses signed Feedback (negative + invert = positive)
 // 13  output     Output      -24..0 dB             post-mix trim, outside feedback/HOLD loop
-// 11  width      Width       0..100 %              wet ping-pong pan separation
 
 #include "mpc_plugin.h"
 #include "early_delay_dsp.h"
@@ -71,17 +71,17 @@ public:
         addParam(floatParam("output",    "Output",    -24.0f, 0.0f, 0.0f, "dB", 1));
         if (numParams() != kNumParams) mpc::log("EarlyDelay: parameter count mismatch");
 
-        //                                Mix  Time   Fb  MSpd MDep Tone Grit  BW  Drv Hold St  Wid
-        addProgram("Classic Echo",      { 35, 300,   35, 0.6f, 15,  60,  35,  60,  20, 0, 0, 70, 0, 0 });
-        addProgram("Slap",              { 35,  95,   10, 0.5f,  5,  70,  35,  65,  25, 0, 0, 60, 0, 0 });
-        addProgram("Tape-ish Short",    { 40, 140,   30, 0.9f, 30,  50,  30,  55,  35, 0, 0, 60, 0, 0 });
-        addProgram("Dirty Echo",        { 40, 380,   55, 0.4f, 12,  45,  75,  35,  55, 0, 0, 60, 0, 0 });
-        addProgram("Dub Throw",         { 50, 600,   82, 0.25f,18,  35,  50,  40,  45, 0, 1, 70, 0, 0 });
-        addProgram("Inverted Flange",   { 50, 2.2f, -85, 0.18f,70,  85,  25,  80,  20, 0, 0, 60, 0, 0 });
-        addProgram("Long Hold Drone",   { 60, 850,   90, 0.12f,25,  40,  55,  25,  30, 0, 1, 80, 0, 0 });
-        addProgram("Wide Chorus Delay", { 45,  22,   15, 0.7f, 45,  70,  30,  70,  20, 0, 1, 90, 0, 0 });
-        addProgram("Broken Clock",      { 50, 450,   60, 6.5f, 55,  50,  95,  10,  50, 0, 1, 80, 0, 0 });
-        addProgram("Doubler",           { 45,  28,    0, 1.2f, 20,  75,  20,  75,  15, 0, 1, 100, 0, 0 });
+        //                                Mix  Time   Fb  MSpd MDep Tone Grit  BW  Drv Hold St  Wid Inv Out(dB)
+        addProgram("Classic Echo",      { 35, 300,   35, 0.6f, 15,  60,  35,  60,  20, 0, 0, 70, 0, -9 });
+        addProgram("Slap",              { 35,  95,   10, 0.5f,  5,  70,  35,  65,  25, 0, 0, 60, 0, -9 });
+        addProgram("Tape-ish Short",    { 40, 140,   30, 0.9f, 30,  50,  30,  55,  35, 0, 0, 60, 0, -9 });
+        addProgram("Dirty Echo",        { 40, 380,   55, 0.4f, 12,  45,  75,  35,  55, 0, 0, 60, 0, -9 });
+        addProgram("Dub Throw",         { 50, 600,   82, 0.25f,18,  35,  50,  40,  45, 0, 1, 70, 0, -9 });
+        addProgram("Inverted Flange",   { 50, 2.2f, -85, 0.18f,70,  85,  25,  80,  20, 0, 0, 60, 0, -9 });
+        addProgram("Long Hold Drone",   { 60, 850,   90, 0.12f,25,  40,  55,  25,  30, 0, 1, 80, 0, -9 });
+        addProgram("Wide Chorus Delay", { 45,  22,   15, 0.7f, 45,  70,  30,  70,  20, 0, 1, 90, 0, -9 });
+        addProgram("Broken Clock",      { 50, 450,   60, 6.5f, 55,  50,  95,  10,  50, 0, 1, 80, 0, -9 });
+        addProgram("Doubler",           { 45,  28,    0, 1.2f, 20,  75,  20,  75,  15, 0, 1, 100, 0, -9 });
         addProgram("Metal Comb",        { 55,   4,   94, 0.08f, 2,  90,  28,  85,  12, 0, 0, 60, 0, -12 });
         addProgram("Inverted Comb",     { 55, 3.2f, 94, 0.08f, 0,  90,  22,  90,  10, 0, 0, 60, 1, -12 });
         addProgram("Bell Comb",         { 65, 2.4f, 97, 0.06f, 0,  95,  18,  95,   8, 0, 0, 60, 0, -15 });

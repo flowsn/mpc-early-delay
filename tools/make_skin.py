@@ -95,7 +95,7 @@ def control_definition(spec,p,index,th):
         children.append(element('knob','Knob',ui.knob_filmstrip_data(f'knob_{size}_{"bi" if bipolar else "uni"}.png',FRAMES),(0,ky,size,size)))
         children.append(image_entry('readout plate','value_plate.png',(128,48,150,48)))
         children.append(label('value','',(132,48,142,48),th['value'],28,kind='Value',align='horizontallyCentred verticallyCentred'))
-        hint='NEGATIVE = INVERTED' if bipolar else ('SELECT / ENTER' if p.is_discrete else spec.get('caption',''))
+        hint='BASE LOOP SIGN' if bipolar else ('SELECT / ENTER' if p.is_discrete else spec.get('caption',''))
         children.append(label('hint',hint,(128,103,150,28),th['muted'],14))
         if bipolar: children.append(label('zero','−          0          +',(2,132,108,16),th['muted'],12,align='horizontallyCentred verticallyCentred'))
     # One touch owner: passive Indicator/labels cannot compete with the parent toggle.

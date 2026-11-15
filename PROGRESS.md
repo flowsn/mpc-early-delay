@@ -20,3 +20,13 @@ IN PROGRESS: generated skin, preview inspection, v0.5 regression/peak demos, ful
 all-block hostsim/sanitizer gates, reproducibility, package + checksums + private rclone delivery.
 Important: tools/build.py now selects manifest's exact native library, not a stale pre-rename .so.
 Read reports/next-20261114/REPAIR.md for baseline evidence; current checks go under reports/v0.5/.
+
+Milestone 2: initial generated skin validated (14/14 controls, two pages, ~451 KiB) and
+both page previews visually inspected. Native/ARM32/ARM64 + SDK validator 0 errors/0 warnings;
+all seven host simulator block sizes 20 passed/0 warnings/0 failures. Existing offline selftest
+and tools/next_check.py --sanitize PASS (17 programs, all14 NaN/Inf controls).
+New actual-wrapper stress test exposed +4.5..+6.9 dBFS peaks in inherited factory presets
+at near-full-scale input. Fixed by appending -9 dB Output to first ten presets (old controls
+unchanged); comb presets -12/-15 dB. Revised test/demos and reproducibility in progress.
+No feedback loop code or legacy Feedback normalization changed. New docs/DESIGN.md records
+actual SDK touch evidence and the exact focus-highlight cause; hardware tap remains unverified.
