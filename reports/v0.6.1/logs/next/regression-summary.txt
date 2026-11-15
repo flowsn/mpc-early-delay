@@ -1,0 +1,1 @@
+PASS: old-fault assertions, new stereo/HOLD assertions, 20 presets, all 14 invalid controls, v0.5 polarity/trim/state/peak/HOLD/RT plus v0.6 spectral distinction tests; ASan/UBSan/float-cast-overflow passed.

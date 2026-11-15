@@ -1,0 +1,5 @@
+PASS ZIP CRC, exact manifest, ARM ELF, metadata and unchanged skins/content: 56 entries
+PASS SDK LocalPlugin: 0 errors/0 warnings, same in-place update folder
+ZIP /home/flow/projects/mpc-plugins/early-delay/plugin/dist/80s-lofi-delay-box-0.6.1-mpc.zip (518991 bytes)
+SHA256 1f741d930bb99c0b4162a3c8dd3f1a0ba20109d5fdd80e648291bdc5e9243ba7
+PASS second package build byte-identical SHA256

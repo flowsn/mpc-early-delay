@@ -2,9 +2,9 @@
 """Rebuild and run repaired-design regressions, preserving each log as it finishes.
 Use --sanitize for ASan/UBSan/float-cast-overflow runs in addition to normal probes.
 """
-import argparse, pathlib, subprocess, re, sys
+import argparse, os, pathlib, subprocess, re, sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-R=ROOT/'reports/next-20261114'; LOG=ROOT/'reports/v0.6/logs/next'; LOG.mkdir(parents=True,exist_ok=True)
+R=ROOT/'reports/next-20261114'; LOG=ROOT/os.environ.get('DELAY_CHECK_LOG_DIR','reports/v0.6/logs/next'); LOG.mkdir(parents=True,exist_ok=True)
 def run(cmd, log):
     print(' '.join(map(str,cmd)),flush=True)
     with (LOG/log).open('w') as f:

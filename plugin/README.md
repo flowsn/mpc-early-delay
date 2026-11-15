@@ -1,6 +1,6 @@
 # 80s Lofi Delay Box — Flat Peach
 
-A gritty early-digital stereo delay. Version **0.6.0**, displayed as **v0.6**.
+A gritty early-digital stereo delay. Version **0.6.1**, retaining the **v0.6** series artwork.
 Flo confirmed v0.5 single-tap interaction on the MPC Live III. This v0.6 update retains
 that event topology, with badge-safe labels, restored slide-switch artwork and new presets.
 Final v0.6 visual/device performance checks remain pending; no deployment was performed.
@@ -14,6 +14,13 @@ and the Time control changes the clock speed:
 - The signal is stored as ~12-bit samples behind a 2:1 / 1:2 compander. The compander's tracking is imperfect, so
   onsets soften and the noise floor breathes with the music. There are op-amp soft clipping stages, and the
   feedback loop saturates.
+
+## v0.6.1 hotfix
+
+Program and saved-state loads now request a host GUI refresh after all parameters
+are restored, updating knobs, live values and switches on DELAY and MORE.
+DSP, all 20 factory programs, single-tap toggles and all skin files are unchanged.
+The native notification/cache regression passes; physical MPC redraw is unverified.
 
 ## Controls
 
@@ -61,7 +68,7 @@ retain neutral 0 dB Output to preserve legacy signal levels; lower Output if nee
    and **External Plugin Support**, then restart the MPC.
 3. Load "80s Lofi Delay Box" by Flat Peach as an insert effect.
 
-For v0.5 → v0.6, **update/replace the same existing folder**; do not install side by side.
+For v0.5/v0.6 → v0.6.1, **update/replace the same existing folder**; do not install side by side.
 SDK `mpc_remote.py update` computes **Flat Peach - VST - 80s Lofi Delay Box** from the
 unchanged manufacturer/name and replaces that folder. No old-folder removal is needed.
 UID `FpEd` and parameter IDs/normalization stay unchanged. No device access/update/restart

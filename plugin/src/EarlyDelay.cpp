@@ -44,7 +44,7 @@ public:
         i.name = "80s Lofi Delay Box";
         i.vendor = "Flat Peach";
         i.uniqueId = MPC_FOURCC('F', 'p', 'E', 'd');   // == "uid" in plugin.json
-        i.version = 600;                                // 0.6.0
+        i.version = 601;                                // 0.6.1
         i.isInstrument = false;
         i.numInputs = 2;
         i.numOutputs = 2;
@@ -178,4 +178,33 @@ private:
     edly::Engine engine_;
 };
 
-MPC_PLUGIN_ENTRY(EarlyDelay)
+// The SDK's program/chunk loaders update atomic parameters but never invalidate
+// the MPC's host-owned JSON skin. Sound changes while its cached widgets stay stale.
+// Keep this adapter local: the SDK is an unmodified, pinned upstream submodule.
+// The host contract says UpdateDisplay re-reads parameters/text and rebuilds its
+// UI page. Send it once AFTER a complete successful bulk load, not per parameter
+// (which can run on the audio thread), and never synthesize automation gestures.
+namespace {
+VstIntPtr dispatchWithGuiRefresh(AEffect* effect, VstInt32 opcode, VstInt32 index,
+                                VstIntPtr value, void* ptr, float opt)
+{
+    const bool validProgram = opcode == effSetProgram && value >= 0 && value < effect->numPrograms;
+    const VstIntPtr result = mpc::detail::dispatcher(effect, opcode, index, value, ptr, opt);
+    if (validProgram || (opcode == effSetChunk && result != 0))
+        mpc::detail::self(effect)->requestDisplayUpdate();
+    return result;
+}
+}
+
+extern "C" MPC_EXPORT AEffect* VSTPluginMain(audioMasterCallback host)
+{
+    if (host != nullptr && host(nullptr, audioMasterVersion, 0, 0, nullptr, 0.0f) == 0)
+        return nullptr;
+    AEffect* effect = mpc::detail::createEffect(new EarlyDelay(), host);
+    if (effect != nullptr) effect->dispatcher = &dispatchWithGuiRefresh;
+    return effect;
+}
+#if defined(__APPLE__)
+extern "C" MPC_EXPORT AEffect* main_macho(audioMasterCallback host)
+{ return VSTPluginMain(host); }
+#endif

@@ -1,0 +1,11 @@
+2026/11/15 02:33:47 INFO  : 80s-lofi-delay-box-0.6.1-mpc.zip: Copied (new)
+2026/11/15 02:33:47 INFO  : CHANGES-v0.6.1.md: Copied (new)
+2026/11/15 02:33:47 INFO  : REPORT.md: Copied (new)
+2026/11/15 02:33:47 INFO  : SHA256SUMS.txt: Copied (new)
+2026/11/15 02:33:47 INFO  : 
+Transferred:   	  514.819 KiB / 514.819 KiB, 100%, 257.316 KiB/s, ETA 0s
+Checks:                 0 / 0, -, Listed 4
+Transferred:            4 / 4, 100%
+Elapsed time:         2.6s
+
+2026/11/15 02:33:47 INFO  : Dropbox root 'MPC-plugins/early-delay/v0.6.1': Committing uploads - please wait...

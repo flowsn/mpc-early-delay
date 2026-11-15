@@ -49,3 +49,25 @@ reports/v0.6/logs/upload.log and upload-check.log. No share links.
 TASK COMPLETE. No device access/deploy/remove/restart or external messages occurred.
 Only physical v0.6 visuals/Q-Link/contrast/performance/reload/audition remain unverified.
 All files committed; final checkpoint pushed to own branch only.
+
+# v0.6.1 GUI-refresh hotfix — COMPLETE locally and privately delivered
+
+Branch: v0.6.1-gui-refresh, based on v0.6-ui-presets at 4f3b4ab.
+Root cause: SDK program/chunk bulk loads change DSP atomics but emit no host
+UpdateDisplay. Plugin-local dispatcher now requests exactly one display refresh
+after successful complete loads; no per-parameter/audio callback redraw or fake
+automation. SDK/DSP/factory declarations/all47skin files unchanged.
+Metadata0.6.1 / binary601 / version.xml0.6.1.0; same UID/name/install folder.
+Base has20factory programs, not21; tested all20 plus initial/manual and a custom
+switch state:82loads,2296widget-model checks, both pages/all14controls.
+Native/ARM32/ARM64 PASS, strict validator0errors/0warnings, all7hostsim block sizes
+20pass/0warn/0fail each. Baseline + existing full regression/sanitizer suite PASS.
+New real-VST refresh test reproduces failure on0.6 and passes0.6.1, also sanitized.
+Report: reports/v0.6.1/REPORT.md. Changes: CHANGES-v0.6.1.md.
+ZIP:plugin/dist/80s-lofi-delay-box-0.6.1-mpc.zip (518991bytes), SHA256
+1f741d930bb99c0b4162a3c8dd3f1a0ba20109d5fdd80e648291bdc5e9243ba7.
+Repackaged twice byte-identically. Uploaded exactly4files (ZIP/SHA256/CHANGES/report)
+to klawsapp:MPC-plugins/early-delay/v0.6.1/; downloaded comparison4matching/0differences.
+Logs:reports/v0.6.1/logs/upload.log and upload-check.log.
+No device access/deployment/restart, external messages/share links or private photos.
+Physical MPC redraw/page-focus/touch/Q-Link/device CPU still unverified.

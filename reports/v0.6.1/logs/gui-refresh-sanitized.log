@@ -1,0 +1,4 @@
+PASS 20 factory programs + initial/manual state; repeat loads, bank/preset chunks, custom switches, invalid loads, no audio-thread refresh/automation
+PASS 82 loads x 14 controls x 2 bound widgets = 2296 widget-model checks on DELAY/MORE
+PASS all three switches both states; 47 skin files byte-identical to v0.6; DSP/ui.json unchanged
+LIMIT: SDK host callback/cache and skin binding model, not execution of proprietary MPC rendering/touch code

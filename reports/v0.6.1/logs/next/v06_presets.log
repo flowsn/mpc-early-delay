@@ -1,0 +1,50 @@
+MEASURE 44100Hz, actual preset with Mix=100 only, deterministic white noise +/-0.35, 2s warmup, 8 nonoverlap Hann16384 windows, summed L/R power, peak70..4000Hz; centroid70..8000Hz
+SPECTRUM 10 Metal Comb peak_hz=772.50 centroid_hz=3578.58 early_peak_hz=516.80 late_peak_hz=772.50 peak_dbfs=-14.093
+PASS wet measurement finite and nonzero
+SPECTRUM 11 Inverted Comb peak_hz=635.23 centroid_hz=2771.56 early_peak_hz=917.85 late_peak_hz=718.67 peak_dbfs=-17.294
+PASS wet measurement finite and nonzero
+SPECTRUM 12 Bell Comb peak_hz=1063.20 centroid_hz=3627.71 early_peak_hz=1596.15 late_peak_hz=1585.38 peak_dbfs=-16.071
+PASS wet measurement finite and nonzero
+SPECTRUM 13 Robot Voice peak_hz=134.58 centroid_hz=2143.10 early_peak_hz=366.06 late_peak_hz=126.51 peak_dbfs=-20.154
+PASS wet measurement finite and nonzero
+SPECTRUM 14 Ringing Pipe peak_hz=667.53 centroid_hz=1096.05 early_peak_hz=226.10 late_peak_hz=772.50 peak_dbfs=-21.187
+PASS wet measurement finite and nonzero
+SPECTRUM 15 Flange Comb peak_hz=554.48 centroid_hz=3508.86 early_peak_hz=748.28 late_peak_hz=1623.07 peak_dbfs=-15.683
+PASS wet measurement finite and nonzero
+SPECTRUM 16 Hold Drone Comb peak_hz=234.17 centroid_hz=2096.94 early_peak_hz=191.11 late_peak_hz=231.48 peak_dbfs=-19.789
+PASS wet measurement finite and nonzero
+DISTANCE 10 11 normalized_power_L1=1.21191
+DISTANCE 10 12 normalized_power_L1=1.56149
+DISTANCE 10 13 normalized_power_L1=1.23553
+DISTANCE 10 14 normalized_power_L1=1.45523
+DISTANCE 10 15 normalized_power_L1=1.18943
+DISTANCE 10 16 normalized_power_L1=1.21067
+DISTANCE 11 12 normalized_power_L1=1.36830
+DISTANCE 11 13 normalized_power_L1=0.66138
+DISTANCE 11 14 normalized_power_L1=1.25710
+DISTANCE 11 15 normalized_power_L1=0.51796
+DISTANCE 11 16 normalized_power_L1=0.60543
+DISTANCE 12 13 normalized_power_L1=1.38552
+DISTANCE 12 14 normalized_power_L1=1.58975
+DISTANCE 12 15 normalized_power_L1=1.37019
+DISTANCE 12 16 normalized_power_L1=1.39117
+DISTANCE 13 14 normalized_power_L1=1.21686
+DISTANCE 13 15 normalized_power_L1=0.46667
+DISTANCE 13 16 normalized_power_L1=0.52213
+DISTANCE 14 15 normalized_power_L1=1.24781
+DISTANCE 14 16 normalized_power_L1=1.17817
+DISTANCE 15 16 normalized_power_L1=0.48199
+MIN_SPECTRAL_L1 0.46667
+PASS all 21 comb pairs differ in normalized spectral shape (L1 > 0.1)
+DEMO 01-seven-combs-comparison.wav peak_dbfs=-13.708 rms_dbfs=-42.260 frames=926100
+PASS demo below -1 dBFS without normalization
+DEMO 02-chorus-flange-tour.wav peak_dbfs=-12.157 rms_dbfs=-22.393 frames=882000
+PASS demo below -1 dBFS without normalization
+DEMO 03-robot-voice-flutter.wav peak_dbfs=-19.562 rms_dbfs=-30.515 frames=352800
+PASS demo below -1 dBFS without normalization
+DEMO 04-stereo-flange-plucks.wav peak_dbfs=-13.804 rms_dbfs=-39.371 frames=352800
+PASS demo below -1 dBFS without normalization
+DEMO 05-hold-drone-capture.wav peak_dbfs=-15.241 rms_dbfs=-22.857 frames=352800
+PASS demo below -1 dBFS without normalization
+PASS zero wrapper callback C++ allocations in measurement/demo runs
+V06_PRESETS failures=0 callback_allocations=0
