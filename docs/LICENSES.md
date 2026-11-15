@@ -7,3 +7,10 @@
 - Integrated UI artwork/generator from the approved project design branch 97f239c (original Flat Peach work).
 - Titillium Web Regular/SemiBold build-time fonts: SIL Open Font License, bundled in design/fonts/OFL.txt;
   license copied to plugin Content. Rendered PNG labels are shipped, not the font binaries.
+
+## v0.6 faceplate texture
+
+`design/textures/charcoal-original.png`: AI-generated texture, original, no reference photos used.
+Supplied by the coordinating agent for this release; no logos or third-party artwork.
+Only this generated material is embedded in the skin. The private hardware test photo was
+viewed to diagnose layout but was not copied, committed, or uploaded.

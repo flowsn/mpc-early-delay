@@ -172,6 +172,39 @@ def aged_metal_strip(panel, th, wear, seed):
     panel.paste(strip,(0,0))
 
 
+def texture_strip(panel, path):
+    """Original generated artwork, edge-preserving resize, no tiling seams.
+    Default source has 4px black padding at its bottom; drop-ins can be any size.
+    Protect title contrast with a soft dark glaze; quantize only the material.
+    """
+    source=Image.open(path).convert('RGB')
+    # Trim solid black/white padding rows, not chipped paint/metal edges.
+    import PIL.ImageStat
+    top,bottom=0,source.height
+    def padding(y):
+        row=source.crop((0,y,source.width,y+1)); stat=PIL.ImageStat.Stat(row)
+        return max(stat.stddev)<2 and (max(stat.mean)<12 or min(stat.mean)>245)
+    while top<bottom-32 and padding(top): top+=1
+    while bottom>top+32 and padding(bottom-1): bottom-=1
+    source=source.crop((0,top,source.width,bottom))
+    edge=max(2,round(source.height*.035))
+    strip=Image.new('RGB',(1280,86))
+    for box,dest,height in [((0,0,source.width,edge),0,8),
+                            ((0,edge,source.width,source.height-edge),8,70),
+                            ((0,source.height-edge,source.width,source.height),78,8)]:
+        strip.paste(source.crop(box).resize((1280,height),Image.Resampling.LANCZOS),(0,dest))
+    # Charcoal-blue paint; preserve photographic chips, scratches and dusty seams.
+    rr,gg,bb=strip.split()
+    strip=Image.merge('RGB',(rr.point(lambda v:round(v*.90)),gg.point(lambda v:round(v*.98)),bb.point(lambda v:min(255,round(v*1.15)))))
+    shade=Image.new('RGBA',strip.size); sd=ImageDraw.Draw(shade)
+    for x in range(1280):
+        alpha=round(35*max(0,1-x/750))
+        sd.line((x,10,x,74),fill=(7,13,20,alpha))
+    strip=Image.alpha_composite(strip.convert('RGBA'),shade).convert('RGB')
+    strip=strip.quantize(colors=96,method=Image.Quantize.MEDIANCUT).convert('RGB')
+    panel.paste(strip,(0,0))
+
+
 def knob_frame(size, t, theme, bipolar=False, wear=0, seed=DEFAULT_SEED):
     # Supersampling keeps the narrow pointer and scalloped grip smooth.
     scale=3
@@ -250,7 +283,7 @@ def lamp(theme, on, kind='lamp', size=24, wear=0, seed=DEFAULT_SEED):
             d.point((x,y),fill=blend(theme['dark'],c,.55 if on else .16))
     return im
 
-def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
+def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED, texture=None):
     out=Path(out); out.mkdir(parents=True,exist_ok=True)
     wear=wear_amount(wear)
     check_art_text(title)
@@ -261,7 +294,7 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
     for y in YS:
         d.rounded_rectangle((20,y-14,1260,y+152),radius=7,fill=th['panel'],outline=th['edge'])
         for x in (328,640,952): d.line((x,y+6,x,y+134),fill=th['edge'])
-    if style=='A': aged_metal_strip(panel,th,wear,seed)
+    if style=='A': texture_strip(panel, texture or HERE/'textures/charcoal-original.png')
     d.line((28,85,1252,85),fill=th['accent'],width=2)
     for x,y in ((14,14),(1266,14),(14,614),(1266,614)):
         d.ellipse((x-4,y-4,x+4,y+4),fill=th['dark'],outline=th['edge'])
@@ -273,7 +306,7 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
     title_size=40
     while d.textlength(title,font=font(title_size,True))>470 and title_size>18: title_size-=1
     text(d,(0,2),title,th['text'],title_size,True)
-    text(d,(2,46),'v0.5  /  VARIABLE CLOCK DIGITAL DELAY',th['muted'],15,True)
+    text(d,(2,46),'v0.6  /  VARIABLE CLOCK DIGITAL DELAY',th['muted'],15,True)
     if style=='A':
         # Sparse partial alpha fade on the title; essential names use protected masks.
         rng=seeded(seed,'title')
@@ -284,11 +317,11 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
         layout=json.loads((HERE/'layout.json').read_text())
         for spec in layout['controls']:
             if spec.get('fallbackOnly'): continue
-            size=(176,45) if spec.get('switch') else (276,30)
+            size=(176,45) if spec.get('switch') else (248,30)
             im=engraved_label(spec['label'],size,th['text'],wear,seed,font_size=25 if spec.get('switch') else 22)
             save(im,out/f'name_{spec["key"]}.png')
             if spec.get('switch'):
-                save(engraved_label(spec['label'],(276,30),th['text'],wear,seed),out/f'name_{spec["key"]}_knob.png')
+                save(engraved_label(spec['label'],(248,30),th['text'],wear,seed),out/f'name_{spec["key"]}_knob.png')
         # Unbound headroom material study: kept OUT of the runtime skin.
         meter=Image.new('RGB',(180,30),th['bg']); md=ImageDraw.Draw(meter)
         rng=seeded(seed,'headroom')
@@ -321,15 +354,16 @@ def render_assets(out, style, title, wear=DEFAULT_WEAR, seed=DEFAULT_SEED):
             d.rounded_rectangle((1,1,276,70),radius=5,fill=th['knob'],outline=th['light'],width=2)
             if on: d.line((8,65,269,65),fill=th[kind],width=3)
             if style=='A':
-                # Recessed latching push key, fixed geometry (never a slider).
-                d.rounded_rectangle((10,16,40,55),radius=5,fill=th['dark'],outline=th['edge'])
-                d.rounded_rectangle((13,19,37,52),radius=4,fill=blend(th['knob'],th['light'],.22 if on else .48))
-                d.line((16,21,34,21),fill=th['light'])
+                # design-ui slide-switch artwork, on the proven passive tap indicator.
+                d.rectangle((11,17,43,57),fill=th['dark'],outline=th['edge'])
+                sy=35 if on else 20
+                d.rectangle((15,sy,39,sy+18),fill=th['knob'],outline=th['light'])
+                for yy in range(sy+3,sy+16,3): d.line((18,yy,36,yy),fill=th['light'])
                 rng=seeded(seed,'switch:'+key)
                 for _ in range(int(24*wear)):
                     x=rng.randrange(6,271); y=rng.choice((4,5,68,69))
                     d.line((x,y,x+rng.randrange(1,5),y),fill=blend(th['knob'],'#a5aeaa',.45*wear))
-                # Same wear pattern in on/off images; only lamp and key brightness change.
+                # Same wear pattern in on/off images; only slider thumb and lamp change.
                 im.alpha_composite(lamp(th,on,kind,wear=wear,seed=seed),(240,5))
             else:
                 im.alpha_composite(lamp(th,on,kind),(12,23))

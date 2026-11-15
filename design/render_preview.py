@@ -74,9 +74,18 @@ def render_previews(skin,params_path,output,style):
         im=Image.new('RGBA',(1280,800),th['bg']); d=ImageDraw.Draw(im)
         d.rectangle((0,0,1279,109),fill='#111519')
         text(d,(30,16),'UI MOCK-UP  /  OPTION '+style+'  /  '+th['name'],'#f0f0eb',24,True)
-        text(d,(30,58),'1280 × 800  •  Illustrative defaults  •  Not a hardware screenshot','#aeb6bb',18)
+        text(d,(30,58),'1280 × 800  •  Illustrative defaults  •  Simulated Q badges / not hardware','#aeb6bb',18)
         text(d,(1248,86),'HOST HEADER RESERVED','#78858b',14,anchor='rt')
         render_component(im,tab['componentDefinition'],(0,110))
+        # Conservative firmware badge envelope inferred from the private screen photo;
+        # shown for every occupied group so label clearance is inspectable, not host proof.
+        d=ImageDraw.Draw(im)
+        for row in tab['qlinkBoundsData']:
+            rx,ry,rw,rh=map(int,row.split())
+            if not rw: continue
+            if any(int(e['bounds']['bounds'].split()[1])>=ry and int(e['bounds']['bounds'].split()[1])<ry+rh and e['handle remapping']['map'] for e in tab['componentDefinition']['componentsData']):
+                d.rounded_rectangle((rx+2,ry+112,rx+40,ry+149),3,fill='#292b2d')
+                text(d,(rx+10,ry+119),'Q','#efb34e',22,True)
         d=ImageDraw.Draw(im); d.rectangle((0,738,1279,799),fill='#111519')
         for j,t in enumerate(tui['tabs']):
             bx=26+j*152

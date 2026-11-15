@@ -26,10 +26,10 @@ float noise(){rng^=rng<<13;rng^=rng>>17;rng^=rng<<5;return (rng&65535)/32767.5f-
 int main(int argc,char**argv){
  setvbuf(stdout,nullptr,_IOLBF,0);
  const char* ids[]={"mix","time","feedback","modspeed","moddepth","tone","grit","bandwidth","drive","hold","stereoize","width","invert","output"};
- EarlyDelay base;check(base.numParams()==14&&base.numPrograms()==17,"fixed 14 parameters / 17 programs");for(int i=0;i<14;i++)check(base.param(i).id==ids[i],ids[i]);
+ EarlyDelay base;check(base.numParams()==14&&base.numPrograms()==20,"fixed 14 parameters / 20 programs");for(int i=0;i<14;i++)check(base.param(i).id==ids[i],ids[i]);
  // A real v2 SDK state reduced to its first 12 records models a v0.1.1 project.
  base.setProgram(5);auto legacy=base.internalSaveState();size_t pos=12;for(int i=0;i<12;i++)pos+=1+legacy[pos]+8;legacy.resize(pos+4);for(size_t i=pos;i<pos+4;i++)legacy[i]=0;legacy[8]=12;
- EarlyDelay restored;check(restored.internalLoadState(legacy.data(),legacy.size()),"12-ID legacy state loads into fresh v0.5 instance");bool same=true;for(int i=0;i<12;i++)same&=base.getNormalised(i)==restored.getNormalised(i);check(same&&restored.get(12)==0&&restored.get(13)==0,"legacy signed values exact; appended controls default neutral");
+ EarlyDelay restored;check(restored.internalLoadState(legacy.data(),legacy.size()),"12-ID legacy state loads into fresh v0.6 instance");bool same=true;for(int i=0;i<12;i++)same&=base.getNormalised(i)==restored.getNormalised(i);check(same&&restored.get(12)==0&&restored.get(13)==0,"legacy signed values exact; appended controls default neutral");
  for(float fb:{-85.f,0.f,85.f}){EarlyDelay a,b;prepare(a);prepare(b);a.set(2,fb);a.set(12,1);b.set(2,-fb);a.set(1,4);b.set(1,4);Audio x(SR),y(SR);for(int i=0;i<SR;i++)x.l[i]=x.r[i]=y.l[i]=y.r[i]=i<1000?.5f*noise():0;process(a,x);process(b,y);check(x.l==y.l&&x.r==y.r,"Invert exactly reverses signed feedback; double negative is positive");}
  {EarlyDelay a,b;prepare(a);prepare(b);a.set(13,-12);Audio x(SR),y(SR);for(int i=0;i<SR;i++)x.l[i]=x.r[i]=y.l[i]=y.r[i]=.4f*sin(.031*i);process(a,x);process(b,y);double delta=0;float gain=pow(10.f,-12.f/20);for(int i=0;i<SR;i++)delta=std::max(delta,double(fabs(x.l[i]-gain*y.l[i])));check(delta<1e-6,"Output is an exact post-mix trim, outside the feedback loop");}
  // Full-scale (+/-0.98) multitone, broad-band bursts, sine sweep, and square wave,

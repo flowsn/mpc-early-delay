@@ -4,7 +4,7 @@ Use --sanitize for ASan/UBSan/float-cast-overflow runs in addition to normal pro
 """
 import argparse, pathlib, subprocess, re, sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-R=ROOT/'reports/next-20261114'; LOG=ROOT/'reports/v0.5/logs/next'; LOG.mkdir(parents=True,exist_ok=True)
+R=ROOT/'reports/next-20261114'; LOG=ROOT/'reports/v0.6/logs/next'; LOG.mkdir(parents=True,exist_ok=True)
 def run(cmd, log):
     print(' '.join(map(str,cmd)),flush=True)
     with (LOG/log).open('w') as f:
@@ -30,7 +30,7 @@ def main():
     assert len(re.findall(r'RESET history=\d+ max_delta=0',life))==2
     compile_run('spectral_probe',R/'spectral_probe.cpp')
     framework=compile_run('framework_probe',R/'framework_probe.cpp')
-    assert 'PARAMS 14 PROGRAMS 17' in framework and framework.count('roundtrip=1')==17
+    assert 'PARAMS 14 PROGRAMS 20' in framework and framework.count('roundtrip=1')==20
     with (LOG/'parameter-nan.log').open('w') as f:
         for bad in ('nan','inf','-inf'):
             for i in range(14):
@@ -38,11 +38,11 @@ def main():
                 f.write(bad+' '+text);f.flush();assert 'nonfinite=0' in text
     demos=ROOT/'demos/next-20261114';demos.mkdir(parents=True,exist_ok=True)
     compile_run('next_regression',ROOT/'tests/offline/next_regression.cpp',args=[demos])
-    v05_demos=ROOT/'demos/v0.5';v05_demos.mkdir(parents=True,exist_ok=True)
+    v05_demos=ROOT/'demos/v0.6';v05_demos.mkdir(parents=True,exist_ok=True)
     compile_run('v05_regression',ROOT/'tests/offline/v05_regression.cpp',args=[v05_demos])
     if a.sanitize:
         for name,src in [('probe',R/'probe.cpp'),('next_regression',ROOT/'tests/offline/next_regression.cpp'),('framework_probe',R/'framework_probe.cpp'),('v05_regression',ROOT/'tests/offline/v05_regression.cpp')]:
             compile_run(name,src,True)
-    (LOG/'regression-summary.txt').write_text('PASS: old-fault assertions, new stereo/HOLD assertions, 17 presets, all 14 invalid controls, v0.5 polarity/trim/state/peak/HOLD/RT tests; '+('ASan/UBSan/float-cast-overflow passed.\n' if a.sanitize else 'sanitizers not requested.\n'))
+    (LOG/'regression-summary.txt').write_text('PASS: old-fault assertions, new stereo/HOLD assertions, 20 presets, all 14 invalid controls, v0.5 polarity/trim/state/peak/HOLD/RT tests; '+('ASan/UBSan/float-cast-overflow passed.\n' if a.sanitize else 'sanitizers not requested.\n'))
     print((LOG/'regression-summary.txt').read_text())
 if __name__=='__main__':main()

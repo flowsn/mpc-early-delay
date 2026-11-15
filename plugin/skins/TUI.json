@@ -254,7 +254,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -353,24 +353,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "CLOCK PERIOD"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_376d7ad9f5941d87.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -455,7 +443,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -554,24 +542,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "BASE LOOP SIGN"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_a532eb295172879c.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -592,24 +568,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "zero",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 12.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "horizontallyCentred verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "−          0          +"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_b436846732bf2c14.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -669,24 +633,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "caption",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 18.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "FLIP FEEDBACK SIGN"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_422f0f2ba356b799.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -699,7 +651,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 28"
+                                    "bounds": "36 0 248 28"
                                 }
                             },
                             {
@@ -798,24 +750,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 15.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "TAP TO TOGGLE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_94678f79cffdc39a.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -900,7 +840,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -999,24 +939,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "WET / DRY"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_76b3a1096a2981e4.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1101,7 +1029,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -1200,24 +1128,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "REPEAT COLOUR"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_21b41355b382295d.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1302,7 +1218,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -1401,24 +1317,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "INPUT SATURATION"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_63af35ffc9ae3459.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1503,7 +1407,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -1602,24 +1506,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "CLOCK CHARACTER"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_c0551858af9fe4c9.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1704,7 +1596,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -1803,24 +1695,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "DIGITAL TEXTURE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_e4587eddaaa0f2df.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -1905,7 +1785,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -2004,24 +1884,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "MODULATION RATE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_874cace7dd761d42.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2106,7 +1974,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -2205,24 +2073,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "PITCH MOVEMENT"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_29fc46ee55303a3a.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2282,24 +2138,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "caption",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 18.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "INFINITE REPEAT"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_a6b155a506c7b27b.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2312,7 +2156,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 28"
+                                    "bounds": "36 0 248 28"
                                 }
                             },
                             {
@@ -2411,24 +2255,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 15.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "TAP TO TOGGLE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_94678f79cffdc39a.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2488,24 +2320,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "caption",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 18.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "PING-PONG REPEATS"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_e0b8da6ee391fa92.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2518,7 +2338,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 28"
+                                    "bounds": "36 0 248 28"
                                 }
                             },
                             {
@@ -2617,24 +2437,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 15.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "TAP TO TOGGLE"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_94678f79cffdc39a.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2701,24 +2509,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffe5dfcb",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "PING WIDTH"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_c643d1878004140b.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2731,7 +2527,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -2830,24 +2626,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "WET PAN SEPARATION"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_812e3497e8885e64.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2914,24 +2698,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "name",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "SemiBold",
-                                                "height": 22.0
-                                            },
-                                            "colour": "ffe5dfcb",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "OUTPUT"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_652f74d99c39ad97.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -2944,7 +2716,7 @@
                                     "showWhenDataModelInvalid": "Show",
                                     "whenVisible": "Always",
                                     "boundsType": "Absolute",
-                                    "bounds": "4 0 276 30"
+                                    "bounds": "36 0 248 30"
                                 }
                             },
                             {
@@ -3043,24 +2815,12 @@
                                 "componentData": {
                                     "version": 1,
                                     "name": "hint",
-                                    "type": "Label",
+                                    "type": "Image",
                                     "data": {
-                                        "version": 1,
-                                        "textStyle": {
-                                            "version": 1,
-                                            "font": {
-                                                "version": 1,
-                                                "name": "Titillium Web",
-                                                "style": "Regular",
-                                                "height": 14.0
-                                            },
-                                            "colour": "ffc6bda5",
-                                            "justification": "left verticallyCentred",
-                                            "case": "Original"
-                                        },
-                                        "type": "Text",
-                                        "handleName": "Invalid",
-                                        "text": "POST-MIX LEVEL"
+                                        "version": 2,
+                                        "imageType": "Regular",
+                                        "colour": "0",
+                                        "image": "legend_7228fbe32d6deacc.png"
                                     }
                                 },
                                 "handle remapping": {
@@ -3190,24 +2950,12 @@
                             "componentData": {
                                 "version": 1,
                                 "name": "header right",
-                                "type": "Label",
+                                "type": "Image",
                                 "data": {
-                                    "version": 1,
-                                    "textStyle": {
-                                        "version": 1,
-                                        "font": {
-                                            "version": 1,
-                                            "name": "Titillium Web",
-                                            "style": "Regular",
-                                            "height": 20.0
-                                        },
-                                        "colour": "ffc6bda5",
-                                        "justification": "right verticallyCentred",
-                                        "case": "Original"
-                                    },
-                                    "type": "Text",
-                                    "handleName": "Invalid",
-                                    "text": "MEMORY  /  MOVEMENT  /  SPACE"
+                                    "version": 2,
+                                    "imageType": "Regular",
+                                    "colour": "0",
+                                    "image": "legend_291f601b1d74e1dc.png"
                                 }
                             },
                             "handle remapping": {
@@ -3228,24 +2976,12 @@
                             "componentData": {
                                 "version": 1,
                                 "name": "header hint",
-                                "type": "Label",
+                                "type": "Image",
                                 "data": {
-                                    "version": 1,
-                                    "textStyle": {
-                                        "version": 1,
-                                        "font": {
-                                            "version": 1,
-                                            "name": "Titillium Web",
-                                            "style": "Regular",
-                                            "height": 16.0
-                                        },
-                                        "colour": "ffc6bda5",
-                                        "justification": "right verticallyCentred",
-                                        "case": "Original"
-                                    },
-                                    "type": "Text",
-                                    "handleName": "Invalid",
-                                    "text": "VARIABLE SPEED.  IMPERFECT REPEATS."
+                                    "version": 2,
+                                    "imageType": "Regular",
+                                    "colour": "0",
+                                    "image": "legend_9b33c2aee48f9506.png"
                                 }
                             },
                             "handle remapping": {

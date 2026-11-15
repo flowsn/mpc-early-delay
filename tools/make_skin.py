@@ -3,6 +3,7 @@
 No fixed parameter indices; explicit name aliases live in design/layout.json.
 """
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -44,6 +45,37 @@ def label(name,value,bounds,colour,size=22,kind='Text',bold=False,align='left ve
     if bold: replace(get(get(data,'textStyle'),'font'),'style','SemiBold')
     return element(name,'Label',data,bounds)
 
+def bake_fixed_labels(node, assets):
+    """Firmware on the tested device omitted fixed Text; PNG legends avoid that path.
+    Preserve ordered/duplicate SDK keys, bounds and passive hit-test behavior.
+    """
+    from PIL import Image, ImageDraw
+    from render_assets import font, save
+    if isinstance(node, ui.Obj):
+        keys=dict(node)
+        if 'componentData' in keys:
+            comp=keys['componentData']; c=dict(comp)
+            if c.get('type')=='Label' and get(c['data'],'type')=='Text':
+                data=c['data']; style=get(data,'textStyle'); f=get(style,'font')
+                value=get(data,'text'); rgba=get(style,'colour')
+                _,_,w,h=map(int,get(keys['bounds'],'bounds').split())
+                ft=font(round(get(f,'height')),get(f,'style')=='SemiBold')
+                tile=Image.new('RGBA',(w,h)); draw=ImageDraw.Draw(tile)
+                bb=draw.textbbox((0,0),value,font=ft); tw=draw.textlength(value,font=ft)
+                align=get(style,'justification')
+                x=(w-tw)/2 if 'horizontallyCentred' in align else (w-tw if 'right' in align else 0)
+                y=(h-(bb[3]-bb[1]))/2-bb[1]
+                colour=tuple(int(rgba[i:i+2],16) for i in (2,4,6,0))
+                draw.text((x,y),value,font=ft,fill=colour)
+                filename='legend_'+hashlib.sha256((value+str((w,h))+str(style)).encode()).hexdigest()[:16]+'.png'
+                save(tile,assets/filename)
+                replace(comp,'type','Image')
+                replace(comp,'data',ui.obj(('version',2),('imageType','Regular'),('colour','0'),('image',filename)))
+        for _,child in node: bake_fixed_labels(child,assets)
+    elif isinstance(node,list):
+        for child in node: bake_fixed_labels(child,assets)
+
+
 def match_params(params,layout,mapping):
     known={c['key'] for c in layout['controls']}
     unknown=set(mapping)-known
@@ -83,7 +115,7 @@ def control_definition(spec,p,index,th):
     children=[]
     if is_switch:
         key=spec['key']
-        children.append(label('caption',spec['caption'],(4,0,276,28),th['muted'],18))
+        children.append(label('caption',spec['caption'],(36,0,248,28),th['muted'],18))
         children.append(element('state lamp','Indicator',ui.obj(('version',1),('onImage',key+'_on.png'),('offImage',key+'_off.png'),('indicatorId',1),('numIndicatorsInGroup',2),('handleName','Data')),(3,35,278,76)))
         children.append(image_entry('name',f'name_{spec["key"]}.png',(48,46,176,45)) if th.get('engraved') else label('name',spec['label'],(48,46,176,45),th.get('buttonText',th['text']),25,bold=True))
         children.append(label('state','',(220,49,52,40),th.get('buttonText',th['text']),22,kind='Value',align='right verticallyCentred'))
@@ -91,7 +123,7 @@ def control_definition(spec,p,index,th):
     else:
         size=112 if index<4 else 88
         ky=33 if size==112 else 45
-        children.append(image_entry('name',f'name_{spec["key"]}' + ('_knob.png' if spec.get('switch') else '.png'),(4,0,276,30)) if th.get('engraved') else label('name',spec['label'],(4,0,276,30),th['text'],22,bold=True))
+        children.append(image_entry('name',f'name_{spec["key"]}' + ('_knob.png' if spec.get('switch') else '.png'),(36,0,248,30)) if th.get('engraved') else label('name',spec['label'],(36,0,248,30),th['text'],22,bold=True))
         children.append(element('knob','Knob',ui.knob_filmstrip_data(f'knob_{size}_{"bi" if bipolar else "uni"}.png',FRAMES),(0,ky,size,size)))
         children.append(image_entry('readout plate','value_plate.png',(128,48,150,48)))
         children.append(label('value','',(132,48,142,48),th['value'],28,kind='Value',align='horizontallyCentred verticallyCentred'))
@@ -154,7 +186,7 @@ def make_documents(params,assigned,extras,th,title):
     return tui,qlinks,mapping_report
 
 
-def generate(params_path,out,style='A',title=None,mapping=None,assets_out=None,preview=None,wear=DEFAULT_WEAR,seed=DEFAULT_SEED):
+def generate(params_path,out,style='A',title=None,mapping=None,assets_out=None,preview=None,wear=DEFAULT_WEAR,seed=DEFAULT_SEED,texture=None):
     wear=wear_amount(wear)
     layout=json.loads((ROOT/'design/layout.json').read_text())
     title=title or layout['title']; params=ui.load_params(str(params_path))
@@ -166,8 +198,9 @@ def generate(params_path,out,style='A',title=None,mapping=None,assets_out=None,p
     if (out/'TUI.json').exists():
         old=json.loads((out/'TUI.json').read_text(),object_pairs_hook=ui.Obj)
         previous=ui.referenced_images(old,set())
-    th=render_assets(assets,style,title,wear,seed)
+    th=render_assets(assets,style,title,wear,seed,texture)
     tui,qlinks,report=make_documents(params,assigned,extras,th,title)
+    bake_fixed_labels(tui,assets)
     required=ui.referenced_images(tui,set())
     if assets.resolve()!=out.resolve():
         for filename in sorted(required): shutil.copyfile(assets/filename,out/filename)
@@ -201,10 +234,11 @@ def main():
     ap.add_argument('--assets-out',type=Path,help='Optional source asset directory (copies only used images to skin)')
     ap.add_argument('--preview',type=Path,help='Main page mock-up path; fallback pages get -moreN suffix')
     ap.add_argument('--wear',type=wear_amount,default=DEFAULT_WEAR,help='0 clean .. 1 most worn (style A only)')
+    ap.add_argument('--texture',type=Path,help='Original texture replacement; no private reference images')
     ap.add_argument('--seed',type=int,default=DEFAULT_SEED,help='Stable procedural wear seed')
     a=ap.parse_args()
     try:
-        generate(a.params,a.out,a.style,a.title,json.loads(a.mapping.read_text()) if a.mapping else None,a.assets_out,a.preview,a.wear,a.seed)
+        generate(a.params,a.out,a.style,a.title,json.loads(a.mapping.read_text()) if a.mapping else None,a.assets_out,a.preview,a.wear,a.seed,a.texture)
     except (ValueError,OSError,ui.UiError) as e: ap.exit(1,str(e)+'\n')
 
 if __name__=='__main__': main()

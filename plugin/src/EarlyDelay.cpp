@@ -44,7 +44,7 @@ public:
         i.name = "80s Lofi Delay Box";
         i.vendor = "Flat Peach";
         i.uniqueId = MPC_FOURCC('F', 'p', 'E', 'd');   // == "uid" in plugin.json
-        i.version = 500;                                // 0.5.0
+        i.version = 600;                                // 0.6.0
         i.isInstrument = false;
         i.numInputs = 2;
         i.numOutputs = 2;
@@ -82,14 +82,19 @@ public:
         addProgram("Wide Chorus Delay", { 45,  22,   15, 0.7f, 45,  70,  30,  70,  20, 0, 1, 90, 0, -9 });
         addProgram("Broken Clock",      { 50, 450,   60, 6.5f, 55,  50,  95,  10,  50, 0, 1, 80, 0, -9 });
         addProgram("Doubler",           { 45,  28,    0, 1.2f, 20,  75,  20,  75,  15, 0, 1, 100, 0, -9 });
-        addProgram("Metal Comb",        { 55,   4,   94, 0.08f, 2,  90,  28,  85,  12, 0, 0, 60, 0, -12 });
-        addProgram("Inverted Comb",     { 55, 3.2f, 94, 0.08f, 0,  90,  22,  90,  10, 0, 0, 60, 1, -12 });
-        addProgram("Bell Comb",         { 65, 2.4f, 97, 0.06f, 0,  95,  18,  95,   8, 0, 0, 60, 0, -15 });
-        addProgram("Robot Voice",       { 60,   8,   92, 0.09f, 0,  82,  40,  85,  15, 0, 0, 60, 1, -12 });
-        addProgram("Ringing Pipe",      { 65, 6.5f, 96, 0.07f, 1,  72,  25,  80,  10, 0, 0, 60, 0, -15 });
-        addProgram("Flange Comb",       { 55, 2.8f, 92, 0.16f,65,  85,  30,  88,  12, 0, 0, 60, 1, -12 });
-        // HOLD starts off: play an excitation, then tap HOLD to capture the comb.
-        addProgram("Hold Drone Comb",   { 80,   7,   97, 0.06f, 3,  84,  32,  90,  10, 0, 0, 80, 0, -15 });
+        // Seven deliberately different resonators: static, slow sweep, flutter and capture.
+        addProgram("Metal Comb",        { 55,   4,   88, 0.05f, 0,  95,  12,  95,   8, 0, 0, 60, 0, -12 });
+        addProgram("Inverted Comb",     { 60,   6,  -82, 0.12f,38,  72,  20,  78,  15, 0, 1, 85, 0, -12 });
+        addProgram("Bell Comb",         { 70,   2,   96, 0.05f, 0, 100,   4, 100,   0, 0, 0, 40, 0, -15 });
+        addProgram("Robot Voice",       { 65,  12,  -72, 7.5f, 60,  58,  70,  45,  32, 0, 0, 50, 0, -15 });
+        addProgram("Ringing Pipe",      { 70,   9,   93, 0.35f,12,  38,  18,  62,  10, 0, 0, 60, 0, -15 });
+        addProgram("Flange Comb",       { 50, 2.8f, 80, 0.8f, 90,  88,  32,  90,  18, 0, 1,100, 1, -12 });
+        // HOLD starts off: a held empty buffer is silent. Play, then tap HOLD.
+        addProgram("Hold Drone Comb",   { 80,  11,   97, 0.09f,75,  65,  48,  72,  22, 0, 1, 75, 0, -15 });
+        // Original chorus/flange programs above retain their first twelve values.
+        addProgram("Slow Velvet Chorus",{ 45,  32,   10, 0.18f,65,  55,  12,  78,  10, 0, 1,100, 0, -9 });
+        addProgram("Fast Shimmer Chorus",{40,  18,   22, 3.2f, 32,  90,   8,  95,   5, 0, 1, 85, 0, -9 });
+        addProgram("Hollow Tape Flange",{ 50, 4.8f,-62, 0.09f,95,  62,  40,  65,  25, 0, 0, 60, 0, -12 });
     }
 
     void prepare(double sampleRate, int /*maxBlockSize*/) override
