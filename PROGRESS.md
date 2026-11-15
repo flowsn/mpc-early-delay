@@ -29,3 +29,14 @@ New wet-spectrum measurement: all7 peaks distinct, all21 normalized spectrum pai
 (20pass/0warn/0fail each); baseline offline PASS; initial next_check --sanitize PASS.
 New v0.6 spectrum/demo harness is being added to the permanent runner and sanitized separately.
 Source milestone1:4196e5a pushed. Reproduction and final package/delivery still pending.
+
+Milestone 3 COMPLETE verification/package (2026-11-15 02:14UTC): final integrated
+next_check --sanitize includes v06_presets, all5sanitized harnesses PASS; all20state
+roundtrips/all14invalid controls/zero callback allocations. Strict validator0errors/0warnings;
+all47skin files and both previews byte-identical. Three previews visually inspected.
+Fixed verifier's stale0.5.0 expectation; final UI check PASS without relaxing criteria.
+ZIP:plugin/dist/80s-lofi-delay-box-0.6-mpc.zip (520478bytes), SHA256
+a7fac3228feb7d390bb57fca9a1b219508d0a95281eb02b7932bdbd3e9b665b2.
+5WAVs/ZIPCRC/ARMELF/metadata/unchanged installer folder/skin/content verified.
+Report:reports/v0.6/REPORT.md. Milestone2:c87e291 pushed.
+REMAINING: exact11file private rclone upload+download-check, then final checkpoint.

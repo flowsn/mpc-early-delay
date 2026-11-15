@@ -1,0 +1,14 @@
+PASS ZIP CRC and exact manifest/versions/ARM ELF/skin/content matches; 56 entries
+PASS unchanged installer folder; SDK LocalPlugin checks both architectures with 0 errors/warnings; update sets replace=True
+PASS exactly five WAVs: stereo/44.1kHz/16-bit PCM, all below -1dBFS
+{"path": "plugin/dist/80s-lofi-delay-box-0.6-mpc.zip", "bytes": 520478, "sha256": "a7fac3228feb7d390bb57fca9a1b219508d0a95281eb02b7932bdbd3e9b665b2"}
+{"path": "demos/v0.6/01-seven-combs-comparison.wav", "bytes": 3704444, "sha256": "19888eb038ac43512b12c6637d4240e44a163c90a154933cdb058044eea9c9d6", "duration_seconds": 21.0, "channels": 2, "sample_rate": 44100, "pcm_bits": 16, "sample_peak_dbfs": -13.707495370599357}
+{"path": "demos/v0.6/02-chorus-flange-tour.wav", "bytes": 3528044, "sha256": "7ae8cdbb70664c974f4ca0df7b08d7279ea5edac2c0fc36fde4b368e523cc8f6", "duration_seconds": 20.0, "channels": 2, "sample_rate": 44100, "pcm_bits": 16, "sample_peak_dbfs": -12.15754712322334}
+{"path": "demos/v0.6/03-robot-voice-flutter.wav", "bytes": 1411244, "sha256": "ac0143a605aab342595fffea2a511d2c950e01e47dc00f3525fbc1b3d0f4a048", "duration_seconds": 8.0, "channels": 2, "sample_rate": 44100, "pcm_bits": 16, "sample_peak_dbfs": -19.562693236954164}
+{"path": "demos/v0.6/04-stereo-flange-plucks.wav", "bytes": 1411244, "sha256": "b13e600d0c65ded346503c58f0cf80c1473e7733b9b9c645c745eee1e61cd58a", "duration_seconds": 8.0, "channels": 2, "sample_rate": 44100, "pcm_bits": 16, "sample_peak_dbfs": -13.804372235196356}
+{"path": "demos/v0.6/05-hold-drone-capture.wav", "bytes": 1411244, "sha256": "9956826478937f46f0b8821fa8bd660fee56ece41cdb0b909efdcf12ab9aa4d4", "duration_seconds": 8.0, "channels": 2, "sample_rate": 44100, "pcm_bits": 16, "sample_peak_dbfs": -15.240401867685902}
+{"path": "reports/v0.6/preview-delay.png", "bytes": 261798, "sha256": "8832c8b62f7deb47092141187603e73254057d7fcb7c26d654713db08378a376"}
+{"path": "reports/v0.6/preview-delay-more1.png", "bytes": 200966, "sha256": "1fc1d0b0267a6d4b6c054d1b076399c686953f61ee91baae1010b0d3b31027ea"}
+{"path": "reports/v0.6/preview-keys-on.png", "bytes": 261900, "sha256": "71eb8cc3863d48cac9e3f4081e3e0af045462afaa8b220582a55b5db3c1157a7"}
+{"path": "CHANGES-v0.6.md", "bytes": 5646, "sha256": "1bbe5663e66a79ac9518e470bb58f07844862a731a02156ca75119d83f600c14"}
+ZIP_SHA256 a7fac3228feb7d390bb57fca9a1b219508d0a95281eb02b7932bdbd3e9b665b2

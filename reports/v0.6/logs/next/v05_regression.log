@@ -82,15 +82,5 @@ PASS factory preset decays below -50 dBFS after 20s
 HOLD_COMB peak_dbfs=-19.207 early_rms_dbfs=-31.611 late_rms_dbfs=-31.684
 PASS 30s Hold Drone Comb finite and sustained
 PASS Output remains active while HOLD is frozen
-DEMO 01-metal-comb-plucks.wav peak_dbfs=-12.942 rms_dbfs=-40.101 frames=352800
-PASS demo unnormalized peak below -1 dBFS
-DEMO 02-inverted-comb-drums.wav peak_dbfs=-17.590 rms_dbfs=-42.934 frames=352800
-PASS demo unnormalized peak below -1 dBFS
-DEMO 03-bell-comb.wav peak_dbfs=-21.605 rms_dbfs=-50.100 frames=352800
-PASS demo unnormalized peak below -1 dBFS
-DEMO 04-robot-voice-synthetic.wav peak_dbfs=-19.562 rms_dbfs=-30.514 frames=352800
-PASS demo unnormalized peak below -1 dBFS
-DEMO 05-hold-drone-comb.wav peak_dbfs=-15.241 rms_dbfs=-22.912 frames=352800
-PASS demo unnormalized peak below -1 dBFS
 PASS zero C++ allocations in actual plugin audio callbacks
 V05_REGRESSION failures=0 callback_allocations=0

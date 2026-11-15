@@ -57,7 +57,7 @@ def main():
     assert names.index('FEEDBACK')+1==names.index('INVERT')
     params=json.loads((ROOT/'build/params.json').read_text());meta=json.loads((ROOT/'plugin/plugin.json').read_text())
     assert params['name']==meta['name']=='80s Lofi Delay Box' and params['vendor']=='Flat Peach'
-    assert params['uid']==meta['uid']=='FpEd' and params['version']==600 and meta['version']=='0.5.0'
+    assert params['uid']==meta['uid']=='FpEd' and params['version']==600 and meta['version']=='0.6.0'
     assert len(params['params'])==14 and params['numPrograms']==20
     print(f'PASS byte-identical skin ({len(a)} files, {size} bytes / {size/1024:.2f} KiB) and both page previews')
     print('PASS whole-slot one-handler tap/Enter toggles, passive state children, no Focus widgets')

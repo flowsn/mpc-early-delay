@@ -31,3 +31,8 @@ SOFTWARE.
 Professional" are trademarks of inMusic Brands, Inc. This SDK contains no code
 from Steinberg's VST SDK.
 ----------------------------------------------------------------------------
+
+Artwork provenance (v0.6):
+The charcoal-blue faceplate uses an AI-generated texture, original, no reference
+photos used. Generated material and original Flat Peach control artwork are
+rendered into the installed PNGs. Private hardware feedback photos are not included.
