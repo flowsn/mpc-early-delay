@@ -107,7 +107,10 @@ chorus/flange patches at4s each. Full sequence/capture times in CHANGES-v0.6.md.
 
 Private delivery target: **klawsapp:MPC-plugins/early-delay/v0.6/**. Exact11files only
 (ZIP,5WAVs,3PNGs,CHANGES,SHA256SUMS); no share links. Delivery/check status is recorded in
-PROGRESS.md and logs/upload.log / logs/upload-check.log after transfer.
+PROGRESS.md and logs/upload.log / logs/upload-check.log. **Delivery COMPLETE** at
+2026-11-15 02:15:55UTC: downloaded comparison found **11matching files /0differences**.
+Verified package commit **a7d082f** was pushed before upload; final delivery checkpoint
+is the subsequent commit on this branch.
 
 ## Remaining uncertainty
 

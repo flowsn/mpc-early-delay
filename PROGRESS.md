@@ -40,3 +40,12 @@ a7fac3228feb7d390bb57fca9a1b219508d0a95281eb02b7932bdbd3e9b665b2.
 5WAVs/ZIPCRC/ARMELF/metadata/unchanged installer folder/skin/content verified.
 Report:reports/v0.6/REPORT.md. Milestone2:c87e291 pushed.
 REMAINING: exact11file private rclone upload+download-check, then final checkpoint.
+
+Milestone4 COMPLETE private delivery (2026-11-15 02:15:55UTC).
+Verified package commit:a7d082f pushed; earlier4196e5a/c87e291 pushed.
+Uploaded exactly11deliverables to klawsapp:MPC-plugins/early-delay/v0.6/.
+rclone check --one-way --download:11matching files,0differences. Evidence:
+reports/v0.6/logs/upload.log and upload-check.log. No share links.
+TASK COMPLETE. No device access/deploy/remove/restart or external messages occurred.
+Only physical v0.6 visuals/Q-Link/contrast/performance/reload/audition remain unverified.
+All files committed; final checkpoint pushed to own branch only.
