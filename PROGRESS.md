@@ -21,3 +21,11 @@ Milestone 1: sources implemented; native build + real parameter dump PASS (20 pr
 IN PROGRESS: skin generation, preview review, spectrum/preset peak measurements and demos;
 full native/ARM32/ARM64/strict validator/all7 hostsim/offline/sanitizer/repro gates, package,
 CHANGES-v0.6.md, private rclone delivery/check. Logs will be reports/v0.6/logs/.
+
+Milestone 2: texture integrated, both previews visually inspected, 47 skin files/508178bytes
+(496.27KiB). All20 factory peak tests PASS; worst-2.080dBFS, combs<=-4.777dBFS.
+New wet-spectrum measurement: all7 peaks distinct, all21 normalized spectrum pairs L1>0.4666;
+5 new demos rendered (all below-12dBFS). Native/ARM32/ARM64 build and all7 hostsim sizes PASS
+(20pass/0warn/0fail each); baseline offline PASS; initial next_check --sanitize PASS.
+New v0.6 spectrum/demo harness is being added to the permanent runner and sanitized separately.
+Source milestone1:4196e5a pushed. Reproduction and final package/delivery still pending.

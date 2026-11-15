@@ -1,8 +1,9 @@
 # 80s Lofi Delay Box — Flat Peach
 
-A gritty early-digital stereo delay. Version **0.5.0**, displayed as **v0.5**.
-The preceding version ran on the MPC Live III; this hardware-feedback update is verified offline,
-with physical single-tap interaction and on-device performance still to be checked.
+A gritty early-digital stereo delay. Version **0.6.0**, displayed as **v0.6**.
+Flo confirmed v0.5 single-tap interaction on the MPC Live III. This v0.6 update retains
+that event topology, with badge-safe labels, restored slide-switch artwork and new presets.
+Final v0.6 visual/device performance checks remain pending; no deployment was performed.
 
 It models a free-running-clock digital delay of the early 1980s. It has a fixed block of memory,
 and the Time control changes the clock speed:
@@ -37,15 +38,18 @@ and the Time control changes the clock speed:
 
 Classic Echo, Slap, Tape-ish Short, Dirty Echo, Dub Throw, Inverted Flange, Long Hold Drone (press Hold to freeze),
 Wide Chorus Delay, Broken Clock, Doubler, Metal Comb, Inverted Comb, Bell Comb, Robot Voice,
-Ringing Pipe, Flange Comb, Hold Drone Comb — **17 total**. Save your own versions with the host preset function.
+Ringing Pipe, Flange Comb, Hold Drone Comb, Slow Velvet Chorus, Fast Shimmer Chorus,
+Hollow Tape Flange — **20 total**. Save your own versions with the host preset function.
 
 The first ten factory presets use -9 dB Output; the seven resonating comb presets use -12/-15 dB.
-Metal/Bell/Pipe/Robot/Flange presets explore 2.4–8 ms and high signed feedback. For Hold Drone Comb,
+Metal/Bell/Pipe/Robot/Flange presets explore 2–12 ms, static/slow/fast modulation,
+wide tone/grit/drive differences and signed feedback. Three added chorus/flange variants
+use -9/-12 dB output trim. For Hold Drone Comb,
 play a sustained sound then tap HOLD; change Time to repitch the frozen loop. HOLD starts OFF so
 selecting a preset never freezes empty memory. Output remains accessible on MORE.
 
 Factory stress tests use near-full-scale noise, a swept sine, square wave and multitone followed
-by silence. See the v0.5 report for measured sample peaks; these tests are not a guarantee against
+by silence. See the v0.6 report for measured sample peaks; these tests are not a guarantee against
 arbitrary input levels or high playback volume. Default/manual controls and imported old states
 retain neutral 0 dB Output to preserve legacy signal levels; lower Output if needed.
 
@@ -57,15 +61,17 @@ retain neutral 0 dB Output to preserve legacy signal levels; lower Output if nee
    and **External Plugin Support**, then restart the MPC.
 3. Load "80s Lofi Delay Box" by Flat Peach as an insert effect.
 
-Before replacing the old install, remove the **old folder `Flat Peach - VST - Early Delay`**
-with `mpc_remote.py remove` on the correct device/drive, then add the new folder. Both versions
-use the same stable UID `FpEd`; keeping both installed risks ambiguous discovery. No device
-remove/add/restart was performed for this update. Back up projects before a later migration.
+For v0.5 → v0.6, **update/replace the same existing folder**; do not install side by side.
+SDK `mpc_remote.py update` computes **Flat Peach - VST - 80s Lofi Delay Box** from the
+unchanged manufacturer/name and replaces that folder. No old-folder removal is needed.
+UID `FpEd` and parameter IDs/normalization stay unchanged. No device access/update/restart
+was performed. For a much older pre-rename Early Delay installation, remove the conflicting
+old-name copy as part of a separately authorized migration, not this v0.5 update.
 
-## Status and limits (v0.5)
+## Status and limits (v0.6)
 
-- v0.5 built and tested offline and in the SDK host simulator. The prior version ran on hardware;
-  v0.5 tap/Enter actions, Q-Link interaction, CPU and project reloading still need a physical check.
+- v0.6 built and tested offline and in the SDK host simulator. v0.5 taps worked on hardware;
+  v0.6 label clearance/contrast, Q-Link interaction, CPU and project reloading need a physical check.
 - Desktop tests do not establish device CPU or latency. No numerical ARM CPU guarantee is made.
 - Feedback zero gives only the first left echo in ping-pong mode; use nonzero Feedback for travel.
 - Ping-pong intentionally mono-sums the wet input; anti-phase stereo material can cancel there. OFF is the choice
@@ -76,12 +82,14 @@ remove/add/restart was performed for this update. Back up projects before a late
 - State/presets persist all 14 controls, not held audio. Existing indices/IDs 0–11 and signed Feedback
   range remain intact; Invert and Output append at 12/13. A 12-ID old state loads exactly into a fresh
   instance with new controls neutral. If importing an old state into an already edited instance, set
-  Invert Off / Output 0 dB first: SDK missing-ID loading retains the current values. Metal Comb is retuned;
-  the first ten presets retain their original twelve controls and add a -9 dB output trim.
+  Invert Off / Output 0 dB first: SDK missing-ID loading retains the current values. Seven comb presets are differentiated;
+  the first ten presets are unchanged from v0.5 including their -9 dB output trim.
 - Invalid audio samples become zero; finite audio is bounded to ±16 before processing. Invalid normalized controls
   use their declared defaults in the audio wrapper. Host storage may still contain the invalid raw value until changed.
-- Whole-slot tap toggles, no yellow control focus rectangles, and original brushed aged-metal artwork
-  are integrated and statically verified. The two-page skin has all14 touchscreen and Q-Link controls.
+- Whole-slot tap toggles, no yellow control focus rectangles, and original AI-generated worn charcoal-blue metal texture
+  and restored slide-switch artwork are integrated and statically verified. The two-page skin has all14 touchscreen and Q-Link controls.
+  All fixed legends are PNG Image assets; live values remain host-bound labels.
+  See CHANGES-v0.6.md and reports/v0.6/REPORT.md for measurements and five demo descriptions.
 - The sound is a model built from the published behaviour of this class of unit. It has not been compared with
   recordings of the original hardware yet.
 

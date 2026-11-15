@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/flow/projects/mpc-plugins/early-delay/tools/v06_verify.py", line 67, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/flow/projects/mpc-plugins/early-delay/tools/v06_verify.py", line 60, in main
+    assert params['uid']==meta['uid']=='FpEd' and params['version']==600 and meta['version']=='0.5.0'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

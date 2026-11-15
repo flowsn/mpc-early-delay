@@ -38,11 +38,12 @@ def main():
                 f.write(bad+' '+text);f.flush();assert 'nonfinite=0' in text
     demos=ROOT/'demos/next-20261114';demos.mkdir(parents=True,exist_ok=True)
     compile_run('next_regression',ROOT/'tests/offline/next_regression.cpp',args=[demos])
-    v05_demos=ROOT/'demos/v0.6';v05_demos.mkdir(parents=True,exist_ok=True)
-    compile_run('v05_regression',ROOT/'tests/offline/v05_regression.cpp',args=[v05_demos])
+    compile_run('v05_regression',ROOT/'tests/offline/v05_regression.cpp')
+    v06_demos=ROOT/'demos/v0.6';v06_demos.mkdir(parents=True,exist_ok=True)
+    compile_run('v06_presets',ROOT/'tests/offline/v06_presets.cpp',args=[v06_demos])
     if a.sanitize:
-        for name,src in [('probe',R/'probe.cpp'),('next_regression',ROOT/'tests/offline/next_regression.cpp'),('framework_probe',R/'framework_probe.cpp'),('v05_regression',ROOT/'tests/offline/v05_regression.cpp')]:
+        for name,src in [('probe',R/'probe.cpp'),('next_regression',ROOT/'tests/offline/next_regression.cpp'),('framework_probe',R/'framework_probe.cpp'),('v05_regression',ROOT/'tests/offline/v05_regression.cpp'),('v06_presets',ROOT/'tests/offline/v06_presets.cpp')]:
             compile_run(name,src,True)
-    (LOG/'regression-summary.txt').write_text('PASS: old-fault assertions, new stereo/HOLD assertions, 20 presets, all 14 invalid controls, v0.5 polarity/trim/state/peak/HOLD/RT tests; '+('ASan/UBSan/float-cast-overflow passed.\n' if a.sanitize else 'sanitizers not requested.\n'))
+    (LOG/'regression-summary.txt').write_text('PASS: old-fault assertions, new stereo/HOLD assertions, 20 presets, all 14 invalid controls, v0.5 polarity/trim/state/peak/HOLD/RT plus v0.6 spectral distinction tests; '+('ASan/UBSan/float-cast-overflow passed.\n' if a.sanitize else 'sanitizers not requested.\n'))
     print((LOG/'regression-summary.txt').read_text())
 if __name__=='__main__':main()

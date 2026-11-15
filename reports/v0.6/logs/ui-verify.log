@@ -1,0 +1,48 @@
+OK     TUI.json: all parameter handles are within 0..13
+OK     TUI.json: image hold_off.png present
+OK     TUI.json: image hold_on.png present
+OK     TUI.json: image invert_off.png present
+OK     TUI.json: image invert_on.png present
+OK     TUI.json: image knob_112_bi.png present
+OK     TUI.json: image knob_112_uni.png present
+OK     TUI.json: image knob_88_uni.png present
+OK     TUI.json: image legend_21b41355b382295d.png present
+OK     TUI.json: image legend_291f601b1d74e1dc.png present
+OK     TUI.json: image legend_29fc46ee55303a3a.png present
+OK     TUI.json: image legend_376d7ad9f5941d87.png present
+OK     TUI.json: image legend_422f0f2ba356b799.png present
+OK     TUI.json: image legend_63af35ffc9ae3459.png present
+OK     TUI.json: image legend_652f74d99c39ad97.png present
+OK     TUI.json: image legend_7228fbe32d6deacc.png present
+OK     TUI.json: image legend_76b3a1096a2981e4.png present
+OK     TUI.json: image legend_812e3497e8885e64.png present
+OK     TUI.json: image legend_874cace7dd761d42.png present
+OK     TUI.json: image legend_94678f79cffdc39a.png present
+OK     TUI.json: image legend_9b33c2aee48f9506.png present
+OK     TUI.json: image legend_a532eb295172879c.png present
+OK     TUI.json: image legend_a6b155a506c7b27b.png present
+OK     TUI.json: image legend_b436846732bf2c14.png present
+OK     TUI.json: image legend_c0551858af9fe4c9.png present
+OK     TUI.json: image legend_c643d1878004140b.png present
+OK     TUI.json: image legend_e0b8da6ee391fa92.png present
+OK     TUI.json: image legend_e4587eddaaa0f2df.png present
+OK     TUI.json: image logo_plate.png present
+OK     TUI.json: image name_age.png present
+OK     TUI.json: image name_drive.png present
+OK     TUI.json: image name_feedback.png present
+OK     TUI.json: image name_grit.png present
+OK     TUI.json: image name_hold.png present
+OK     TUI.json: image name_invert.png present
+OK     TUI.json: image name_mix.png present
+OK     TUI.json: image name_mod_depth.png present
+OK     TUI.json: image name_mod_speed.png present
+OK     TUI.json: image name_stereoize.png present
+OK     TUI.json: image name_time.png present
+OK     TUI.json: image name_tone.png present
+OK     TUI.json: image panel.png present
+OK     TUI.json: image stereoize_off.png present
+OK     TUI.json: image stereoize_on.png present
+OK     TUI.json: image value_plate.png present
+OK     TUI.json: 2 tabs
+OK     Q-Links.json: 2 tab maps, all values in range
+PASS: 14 named controls and Q-Links; 44 images; bounds, bindings, overlays resolved

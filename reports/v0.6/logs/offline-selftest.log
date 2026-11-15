@@ -1,0 +1,26 @@
+PASS  stable fb -100 time 1.75 bw 0 stereo 0: peak 0.92, last-second -81.9 dBFS
+PASS  stable fb -100 time 1.75 bw 0 stereo 1: peak 0.69, last-second -81.9 dBFS
+PASS  stable fb -100 time 1.75 bw 100 stereo 0: peak 1.02, last-second -81.8 dBFS
+PASS  stable fb -100 time 1.75 bw 100 stereo 1: peak 0.79, last-second -81.9 dBFS
+PASS  stable fb -100 time 900.00 bw 0 stereo 0: peak 0.64, last-second -29.6 dBFS
+PASS  stable fb -100 time 900.00 bw 0 stereo 1: peak 0.44, last-second -33.0 dBFS
+PASS  stable fb -100 time 900.00 bw 100 stereo 0: peak 1.04, last-second -20.1 dBFS
+PASS  stable fb -100 time 900.00 bw 100 stereo 1: peak 0.79, last-second -23.1 dBFS
+PASS  stable fb +100 time 1.75 bw 0 stereo 0: peak 0.95, last-second -81.9 dBFS
+PASS  stable fb +100 time 1.75 bw 0 stereo 1: peak 0.74, last-second -81.9 dBFS
+PASS  stable fb +100 time 1.75 bw 100 stereo 0: peak 1.01, last-second -81.9 dBFS
+PASS  stable fb +100 time 1.75 bw 100 stereo 1: peak 0.82, last-second -81.9 dBFS
+PASS  stable fb +100 time 900.00 bw 0 stereo 0: peak 0.62, last-second -29.1 dBFS
+PASS  stable fb +100 time 900.00 bw 0 stereo 1: peak 0.44, last-second -32.7 dBFS
+PASS  stable fb +100 time 900.00 bw 100 stereo 0: peak 0.98, last-second -20.1 dBFS
+PASS  stable fb +100 time 900.00 bw 100 stereo 1: peak 0.72, last-second -23.0 dBFS
+PASS  HOLD steady for 60 s: -12.68 dBFS at 3 s, -12.68 dBFS at 60 s
+PASS  HOLD: nothing from the input reaches the frozen loop (bit-identical wet output)
+PASS  Stereoize off keeps a mono input exactly mono
+PASS  output is independent of the block size (32 vs 512)
+PASS  Mix 0 % passes the dry signal untouched
+PASS  delay 1.75 ms measured 1.66 ms
+PASS  delay 50.00 ms measured 49.91 ms
+PASS  delay 450.00 ms measured 449.93 ms
+PASS  delay 900.00 ms measured 900.02 ms
+SELFTEST PASSED (0 failures)

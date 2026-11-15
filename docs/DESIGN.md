@@ -76,3 +76,33 @@ python3 tools/build.py
 
 Static composition was inspected for both pages. Text hit-testing, Q-Link bank feedback,
 right sidebar overlap, physical contrast, and firmware-drawn highlights need hardware.
+
+## v0.6 hardware-feedback corrections (supersedes v0.5 material notes above)
+
+- Hardware v0.5 taps are confirmed by Flo. Keep the exact whole-slot Mouse Down/Enter
+  Toggle Switch topology and passive Indicator. Only its artwork changes back to the
+  design-ui vertical slide-switch thumb; no SDK draggable Switch/Slider was introduced.
+- The firmware paints the orange Q at the upper-left of the active qlinkBoundsData row.
+  SDK ui-reference section3.6 documents that row rectangle but does not expose badge
+  dimensions or firmware painting code. In the private photo it intersects the old x34
+  label anchor. Reserve a conservative x20..62 envelope in logical1280px coordinates;
+  move all top label anchors to slot x+36 (first label x66), leaving4px clearance.
+  Previews deliberately draw simulated badges on every occupied row as a worst-case check.
+  Exact physical badge extent and post-fix hardware appearance still need confirmation.
+- MORE used fixed Label(type=Text, handleName=Invalid), whereas page1 names used PNGs.
+  Its label assets were absent by design, not misspelled. Source JSON order/mappings passed
+  SDK validation; the photo also lacks other fixed Text captions/header lines. Firmware
+  fixed-text rendering is the evidenced failure path, but its internal cause cannot be
+  determined offline. Bake ALL fixed text to bound-correct PNG Image entries, preserving
+  passive behavior. Live values stay Label(type=Value, handleName=Data). Both pages now
+  use the same proven image path; generic fallback labels are generated from real names.
+- Top strip now uses original generated photographic material, not procedural line art:
+  design/textures/charcoal-original.png. The --texture option allows a replacement source.
+  Trim solid padding; preserve chipped top/bottom edges; resample a single strip without
+  tiling seams; grade charcoal-blue; glaze text area; quantize96colours. Title/version are
+  separate protected text imagery. No reference-photo pixels are included.
+- Product0.6.0 / integer600; uiversion remains0.1.0.0 (minimum host format, NOT product).
+  Folder remains Flat Peach - VST - 80s Lofi Delay Box; SDK update replaces this folder.
+
+Reproduce with reports/v0.6/preview-delay.png and tools/v06_verify.py (repro directory
+  build/v06-repro); see CHANGES-v0.6.md and reports/v0.6/REPORT.md for all measured results.

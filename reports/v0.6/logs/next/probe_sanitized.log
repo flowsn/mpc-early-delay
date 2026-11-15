@@ -1,0 +1,20 @@
+STEREO f=62.5 corr=0.002093 mono_loss_dB=-3.010 channel_rms=0.122048
+STEREO f=187.5 corr=0.004016 mono_loss_dB=-3.010 channel_rms=0.122072
+STEREO f=312.5 corr=-0.001228 mono_loss_dB=-3.010 channel_rms=0.122093
+STEREO f=437.5 corr=0.006116 mono_loss_dB=-3.010 channel_rms=0.122075
+STEREO f=562.5 corr=0.002358 mono_loss_dB=-3.010 channel_rms=0.122003
+STEREO f=687.5 corr=0.002584 mono_loss_dB=-3.010 channel_rms=0.121901
+STEREO f=812.5 corr=0.007427 mono_loss_dB=-3.010 channel_rms=0.121775
+STEREO f=1000.0 corr=0.001811 mono_loss_dB=-3.010 channel_rms=0.121550
+HOLD start=100 end=50 before_Hz=1001.82 after_Hz=2007.05 expected_Hz=2000.00 clock_ratio=2.003417
+HOLD start=100 end=150 before_Hz=1001.82 after_Hz=667.61 expected_Hz=666.67 clock_ratio=0.666372
+HOLD start=100 end=600 before_Hz=1001.82 after_Hz=166.84 expected_Hz=166.67 clock_ratio=0.166442
+HOLD start=300 end=50 before_Hz=1000.63 after_Hz=6021.23 expected_Hz=6000.00 clock_ratio=4.919340
+HOLD start=300 end=150 before_Hz=1000.63 after_Hz=2002.18 expected_Hz=2000.00 clock_ratio=1.635745
+HOLD start=300 end=600 before_Hz=1000.63 after_Hz=500.28 expected_Hz=500.00 clock_ratio=0.408694
+RESET max_delta=0 first_difference_sample=-1
+INPLACE identical=1
+BAD_AUDIO kind=NaN nonfinite=0 late_rms_dB=-15.25
+BAD_AUDIO kind=Inf nonfinite=0 late_rms_dB=-15.25
+AUTOMATION frames=2560000 nonfinite=0 peak=1.440885
+CALLBACK_NEW_COUNT 0
