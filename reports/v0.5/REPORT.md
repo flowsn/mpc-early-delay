@@ -5,7 +5,7 @@ Branch `v0.5-hardware-feedback`, from `repair/stereo-pingpong-next-20261114` at 
 SDK unchanged at `febd2ca5bd9eb16c4a412837196e145566bc981b`.
 
 Milestone commits: `2474fc2` (code/materials), `a3be4df` (skin, measured preset trims/tests).
-Subsequent verification/package/delivery commits are in branch history and PROGRESS.md.
+Verification/package commit: `212b092`; final delivery checkpoint is in branch history and PROGRESS.md.
 Every milestone was committed and pushed using the private origin via `github-mpc-delay`.
 The design worktree was read, not modified. No private reference photos were opened, copied,
 committed or uploaded; prior textual material observations guided original procedural artwork.
@@ -101,7 +101,8 @@ not an exhaustive allocator interposition. Peak tests are sample peaks, not over
 No post-normalization; they reflect actual factory trims. HOLD demo plays/captures a sustained
 excitation then repitches with Time. WAVs structurally/numerically verified, not physically auditioned.
 Delivery target: **`klawsapp:MPC-plugins/early-delay/v0.5/`**, exact files only. Final upload/check
-result is recorded in `logs/upload.log`, `logs/upload-check.log` and PROGRESS.md.
+result: **11/11 files uploaded; downloaded comparison found 0 differences /11 matching files**.
+Evidence: `logs/upload.log`, `logs/upload-check.log` and PROGRESS.md.
 
 ## Remaining hardware-only checks
 

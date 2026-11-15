@@ -43,3 +43,10 @@ Five8-second stereo44.1kHz/16-bit demos in demos/v0.5; CRC/metadata/skin/WAVs ve
 Full report reports/v0.5/REPORT.md; short CHANGES-v0.5.md; hashes/artifacts.json in reports/v0.5.
 REMAINING: private rclone upload/check to klawsapp:MPC-plugins/early-delay/v0.5/ and delivery checkpoint.
 No device work, messages, public publishing or share links.
+
+Milestone 4 COMPLETE private delivery: 2026-11-15 00:55:53 UTC.
+Implementation/package verification commit212b092 pushed; previous milestones2474fc2/a3be4df pushed.
+Uploaded11 explicit files to klawsapp:MPC-plugins/early-delay/v0.5/ (ZIP,5WAVs,3PNGs,CHANGES,SHA256SUMS).
+rclone check --one-way --download: 11matching files,0differences. Logs saved under reports/v0.5/logs/.
+TASK COMPLETE. Working tree should be clean after final delivery checkpoint. No MPC changes/restart,
+external messages, public links/publication. Only physical tap/Enter/Q-Link/CPU/project-reload checks remain.
